@@ -213,7 +213,7 @@ public:
     virtual void addChild(CCNode * child, int zOrder);
     virtual void addChild(CCNode * child);
     void setTouchEnabled(bool e);
-private:
+protected:
     /**
      * Relocates the container at the proper offset, in bounds of max/min offsets.
      *

@@ -156,6 +156,7 @@ display.COLOR_BLACK = ccc3(0, 0, 0)
 display.COLOR_RED   = ccc3(255, 0, 0)
 display.COLOR_GREEN = ccc3(0, 255, 0)
 display.COLOR_BLUE  = ccc3(0, 0, 255)
+display.COLOR_GRAY  = ccc3(166,166,166)
 
 display.AUTO_SIZE      = 0
 display.FIXED_SIZE     = 1
@@ -377,6 +378,16 @@ end
 ]]
 function display.resume()
     sharedDirector:resume()
+end
+
+--[[--
+
+判断当前场景是否暂停
+
+]]
+
+function display.isPaused()
+    return sharedDirector:isPaused()
 end
 
 --[[--

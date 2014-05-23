@@ -35,6 +35,7 @@
 #include "GUI/CCControlExtension/CCControlExtensions.h"
 #include "GUI/CCScrollView/CCScrollView.h"
 #include "GUI/CCScrollView/CCTableView.h"
+#include "GUI/CCScrollView/PageScrollView.h"
 #include "GUI/CCEditBox/CCEditBox.h"
 
 #include "CocoStudio/Armature/CCArmature.h"

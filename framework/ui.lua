@@ -564,6 +564,14 @@ function ui.newTTFLabelWithOutline(params)
         g.shadow4:setOpacity(opacity)
     end
 
+    function g:setAnchorPoint(ap)
+        g.shadow1:setAnchorPoint(ap)
+        g.shadow2:setAnchorPoint(ap)
+        g.shadow3:setAnchorPoint(ap)
+        g.shadow4:setAnchorPoint(ap)
+        g.label:setAnchorPoint(ap)
+    end
+
     if x and y then
         g:setPosition(x, y)
     end
