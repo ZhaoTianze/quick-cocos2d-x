@@ -29,7 +29,12 @@
 		49832219187FE2DF00733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832217187FE2DF00733BFB /* HelperFunc.cpp */; };
 		7F67276E18D6A04400CCEAEB /* GameCenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F67276C18D6A04400CCEAEB /* GameCenter.mm */; };
 		B214823219271AE600AF41C6 /* PageScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B214823019271AE600AF41C6 /* PageScrollView.cpp */; };
-		B25A24AF192F549A00BBAF11 /* CCScriptEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B25A24AD192F549A00BBAF11 /* CCScriptEventDispatcher.cpp */; };
+		B2CD85BF19307446006D9A6F /* LuaCocos2d-mini.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */; };
+		B2CD85D51930748B006D9A6F /* LuaEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85C11930748B006D9A6F /* LuaEventHandler.cpp */; };
+		B2CD85D61930748B006D9A6F /* luaopen_LuaProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85C61930748B006D9A6F /* luaopen_LuaProxy.cpp */; };
+		B2CD85D71930748B006D9A6F /* CursorTextField.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85D11930748B006D9A6F /* CursorTextField.cpp */; };
+		B2CD85D81930748B006D9A6F /* UIUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85D31930748B006D9A6F /* UIUtil.cpp */; };
+		B2CD85DB19307512006D9A6F /* CCEventDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85D919307512006D9A6F /* CCEventDispatcher.cpp */; };
 		B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC798F181BA55A001341D6 /* lsqlite3.c */; };
 		B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7991181BA55A001341D6 /* sqlite3.c */; };
 		F40118BD180C9E57002A74D5 /* CCBProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F40118BB180C9E57002A74D5 /* CCBProxy.cpp */; };
@@ -431,8 +436,29 @@
 		7F67276D18D6A04400CCEAEB /* GameCenterIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterIos.h; sourceTree = "<group>"; };
 		B214823019271AE600AF41C6 /* PageScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PageScrollView.cpp; sourceTree = "<group>"; };
 		B214823119271AE600AF41C6 /* PageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageScrollView.h; sourceTree = "<group>"; };
-		B25A24AD192F549A00BBAF11 /* CCScriptEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCScriptEventDispatcher.cpp; sourceTree = "<group>"; };
-		B25A24AE192F549A00BBAF11 /* CCScriptEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCScriptEventDispatcher.h; sourceTree = "<group>"; };
+		B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "LuaCocos2d-mini.cpp"; sourceTree = "<group>"; };
+		B2CD85BD19307446006D9A6F /* LuaCocos2d-mini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LuaCocos2d-mini.h"; sourceTree = "<group>"; };
+		B2CD85BE19307446006D9A6F /* xxdefaultkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxdefaultkey.h; sourceTree = "<group>"; };
+		B2CD85C11930748B006D9A6F /* LuaEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaEventHandler.cpp; sourceTree = "<group>"; };
+		B2CD85C21930748B006D9A6F /* LuaEventHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LuaEventHandler.hpp; sourceTree = "<group>"; };
+		B2CD85C31930748B006D9A6F /* LuaProxy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LuaProxy.hpp; sourceTree = "<group>"; };
+		B2CD85C41930748B006D9A6F /* LuaTableView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LuaTableView.hpp; sourceTree = "<group>"; };
+		B2CD85C61930748B006D9A6F /* luaopen_LuaProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = luaopen_LuaProxy.cpp; sourceTree = "<group>"; };
+		B2CD85C71930748B006D9A6F /* luaopen_LuaProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaopen_LuaProxy.h; sourceTree = "<group>"; };
+		B2CD85C81930748B006D9A6F /* tolua_CCBAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_CCBAnimationManager.h; sourceTree = "<group>"; };
+		B2CD85C91930748B006D9A6F /* tolua_CCControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_CCControl.h; sourceTree = "<group>"; };
+		B2CD85CA1930748B006D9A6F /* tolua_CCGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_CCGLProgram.h; sourceTree = "<group>"; };
+		B2CD85CB1930748B006D9A6F /* tolua_CCScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_CCScrollView.h; sourceTree = "<group>"; };
+		B2CD85CC1930748B006D9A6F /* tolua_CCTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_CCTableView.h; sourceTree = "<group>"; };
+		B2CD85CD1930748B006D9A6F /* tolua_CursorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_CursorTextField.h; sourceTree = "<group>"; };
+		B2CD85CE1930748B006D9A6F /* tolua_LuaProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_LuaProxy.h; sourceTree = "<group>"; };
+		B2CD85CF1930748B006D9A6F /* tolua_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tolua_util.h; sourceTree = "<group>"; };
+		B2CD85D11930748B006D9A6F /* CursorTextField.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CursorTextField.cpp; sourceTree = "<group>"; };
+		B2CD85D21930748B006D9A6F /* CursorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CursorTextField.h; sourceTree = "<group>"; };
+		B2CD85D31930748B006D9A6F /* UIUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIUtil.cpp; sourceTree = "<group>"; };
+		B2CD85D41930748B006D9A6F /* UIUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtil.h; sourceTree = "<group>"; };
+		B2CD85D919307512006D9A6F /* CCEventDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCEventDispatcher.cpp; sourceTree = "<group>"; };
+		B2CD85DA19307512006D9A6F /* CCEventDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCEventDispatcher.h; sourceTree = "<group>"; };
 		B2DC798F181BA55A001341D6 /* lsqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsqlite3.c; sourceTree = "<group>"; };
 		B2DC7990181BA55A001341D6 /* lsqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lsqlite3.h; sourceTree = "<group>"; };
 		B2DC7991181BA55A001341D6 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -1291,6 +1317,47 @@
 			path = GameCenter;
 			sourceTree = "<group>";
 		};
+		B2CD85C01930748B006D9A6F /* luaproxy */ = {
+			isa = PBXGroup;
+			children = (
+				B2CD85C11930748B006D9A6F /* LuaEventHandler.cpp */,
+				B2CD85C21930748B006D9A6F /* LuaEventHandler.hpp */,
+				B2CD85C31930748B006D9A6F /* LuaProxy.hpp */,
+				B2CD85C41930748B006D9A6F /* LuaTableView.hpp */,
+				B2CD85C51930748B006D9A6F /* tolua */,
+				B2CD85D01930748B006D9A6F /* ui */,
+			);
+			path = luaproxy;
+			sourceTree = "<group>";
+		};
+		B2CD85C51930748B006D9A6F /* tolua */ = {
+			isa = PBXGroup;
+			children = (
+				B2CD85C61930748B006D9A6F /* luaopen_LuaProxy.cpp */,
+				B2CD85C71930748B006D9A6F /* luaopen_LuaProxy.h */,
+				B2CD85C81930748B006D9A6F /* tolua_CCBAnimationManager.h */,
+				B2CD85C91930748B006D9A6F /* tolua_CCControl.h */,
+				B2CD85CA1930748B006D9A6F /* tolua_CCGLProgram.h */,
+				B2CD85CB1930748B006D9A6F /* tolua_CCScrollView.h */,
+				B2CD85CC1930748B006D9A6F /* tolua_CCTableView.h */,
+				B2CD85CD1930748B006D9A6F /* tolua_CursorTextField.h */,
+				B2CD85CE1930748B006D9A6F /* tolua_LuaProxy.h */,
+				B2CD85CF1930748B006D9A6F /* tolua_util.h */,
+			);
+			path = tolua;
+			sourceTree = "<group>";
+		};
+		B2CD85D01930748B006D9A6F /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				B2CD85D11930748B006D9A6F /* CursorTextField.cpp */,
+				B2CD85D21930748B006D9A6F /* CursorTextField.h */,
+				B2CD85D31930748B006D9A6F /* UIUtil.cpp */,
+				B2CD85D41930748B006D9A6F /* UIUtil.h */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		B2DC798E181BA55A001341D6 /* lsqlite3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1953,6 +2020,9 @@
 		F45A2DA1166B16B100760194 /* cocos2dx_support */ = {
 			isa = PBXGroup;
 			children = (
+				B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */,
+				B2CD85BD19307446006D9A6F /* LuaCocos2d-mini.h */,
+				B2CD85BE19307446006D9A6F /* xxdefaultkey.h */,
 				F40118BB180C9E57002A74D5 /* CCBProxy.cpp */,
 				F40118BC180C9E57002A74D5 /* CCBProxy.h */,
 				F40AFDCC16BD152900565A5E /* CCLuaBridge.cpp */,
@@ -2015,6 +2085,7 @@
 		F4A8F6B417F0B18000110198 /* external */ = {
 			isa = PBXGroup;
 			children = (
+				B2CD85C01930748B006D9A6F /* luaproxy */,
 				F459EA8E180D04E1006CBDF1 /* chipmunk */,
 				F459E9F6180D04D8006CBDF1 /* extra */,
 				F4A8F6B517F0B19000110198 /* libwebsockets */,
@@ -2266,8 +2337,8 @@
 		F4E881A5177015C400577406 /* cocoa */ = {
 			isa = PBXGroup;
 			children = (
-				B25A24AD192F549A00BBAF11 /* CCScriptEventDispatcher.cpp */,
-				B25A24AE192F549A00BBAF11 /* CCScriptEventDispatcher.h */,
+				B2CD85D919307512006D9A6F /* CCEventDispatcher.cpp */,
+				B2CD85DA19307512006D9A6F /* CCEventDispatcher.h */,
 				F4E881A6177015C400577406 /* CCAffineTransform.cpp */,
 				F4E881A7177015C400577406 /* CCAffineTransform.h */,
 				F4E881A8177015C400577406 /* CCArray.cpp */,
@@ -2952,6 +3023,7 @@
 				F459EB89180D0513006CBDF1 /* socket_scripts.c in Sources */,
 				F42824FA17575D88001479DC /* CCCamera.cpp in Sources */,
 				F42824FB17575D88001479DC /* CCConfiguration.cpp in Sources */,
+				B2CD85D81930748B006D9A6F /* UIUtil.cpp in Sources */,
 				F459EAFD180D04E1006CBDF1 /* cpDampedRotarySpring.c in Sources */,
 				F42824FC17575D88001479DC /* CCDirector.cpp in Sources */,
 				F4CB4B631810F24100EC1D9B /* CCSpriteFrameCacheHelper.cpp in Sources */,
@@ -2977,6 +3049,7 @@
 				F4E882A6177015C400577406 /* CCAction.cpp in Sources */,
 				F459EB90180D0513006CBDF1 /* lua_zlib.c in Sources */,
 				F4E882A7177015C400577406 /* CCActionCamera.cpp in Sources */,
+				B2CD85DB19307512006D9A6F /* CCEventDispatcher.cpp in Sources */,
 				F4E882A8177015C400577406 /* CCActionCatmullRom.cpp in Sources */,
 				F4E882A9177015C400577406 /* CCActionEase.cpp in Sources */,
 				F4E882AA177015C400577406 /* CCActionGrid.cpp in Sources */,
@@ -2989,7 +3062,6 @@
 				F4CB4B511810F24100EC1D9B /* CCProcessBase.cpp in Sources */,
 				F4E882AE177015C400577406 /* CCActionManager.cpp in Sources */,
 				F4E882AF177015C400577406 /* CCActionPageTurn3D.cpp in Sources */,
-				B25A24AF192F549A00BBAF11 /* CCScriptEventDispatcher.cpp in Sources */,
 				2EBAD9301918BBDC00FF9BD6 /* CCExposureFilter.cpp in Sources */,
 				F459EB83180D0513006CBDF1 /* luasocket_buffer.c in Sources */,
 				F4E882B0177015C400577406 /* CCActionProgressTimer.cpp in Sources */,
@@ -3050,6 +3122,7 @@
 				F4E882D1177015C400577406 /* vec2.c in Sources */,
 				7F67276E18D6A04400CCEAEB /* GameCenter.mm in Sources */,
 				F459EA7C180D04D8006CBDF1 /* CCStoreReceiptVerifyRequestIOS.mm in Sources */,
+				B2CD85D61930748B006D9A6F /* luaopen_LuaProxy.cpp in Sources */,
 				F4CB4B551810F24100EC1D9B /* CCDatas.cpp in Sources */,
 				F4E882D2177015C400577406 /* vec3.c in Sources */,
 				F459EA70180D04D8006CBDF1 /* cocos2dx_extra_luabinding.cpp in Sources */,
@@ -3174,6 +3247,7 @@
 				F459EB8E180D0513006CBDF1 /* usocket.c in Sources */,
 				F4CB4B591810F24100EC1D9B /* CCDisplayManager.cpp in Sources */,
 				F459EB7B180D0513006CBDF1 /* strbuf.c in Sources */,
+				B2CD85BF19307446006D9A6F /* LuaCocos2d-mini.cpp in Sources */,
 				F4A8F6C217F0B21200110198 /* Lua_web_socket.cpp in Sources */,
 				F4E8833F177015FF00577406 /* CCImage.mm in Sources */,
 				F459EB85180D0513006CBDF1 /* mime.c in Sources */,
@@ -3211,6 +3285,7 @@
 				F459EA71180D04D8006CBDF1 /* CCHTTPRequest.cpp in Sources */,
 				F4E8838F1770162500577406 /* CCLayerGradientLoader.cpp in Sources */,
 				F4E883901770162500577406 /* CCLayerLoader.cpp in Sources */,
+				B2CD85D71930748B006D9A6F /* CursorTextField.cpp in Sources */,
 				2EBAD9341918BBDC00FF9BD6 /* CCHazeFilter.cpp in Sources */,
 				F459EB7A180D0513006CBDF1 /* lua_cjson.c in Sources */,
 				F4E883911770162500577406 /* CCMenuItemImageLoader.cpp in Sources */,
@@ -3245,6 +3320,7 @@
 				F4E883CA1770163800577406 /* CCControlSwitch.cpp in Sources */,
 				F4A3A8F2182E7B810000EDD1 /* xxtea.c in Sources */,
 				F4E883CB1770163800577406 /* CCControlUtils.cpp in Sources */,
+				B2CD85D51930748B006D9A6F /* LuaEventHandler.cpp in Sources */,
 				F459EB8A180D0513006CBDF1 /* tcp.c in Sources */,
 				F4E883CC1770163800577406 /* CCInvocation.cpp in Sources */,
 				F4E883CD1770163800577406 /* CCScale9Sprite.cpp in Sources */,
