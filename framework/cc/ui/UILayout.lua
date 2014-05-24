@@ -6,7 +6,7 @@ local UILayout = class("UILayout")
 local nameIndex_ = 1
 
 function UILayout:ctor(name)
-    cc(self):addComponent("components.ui.LayoutProtocol"):exportMethods()
+    cc.GameObject.extend(self):addComponent("components.ui.LayoutProtocol"):exportMethods()
     self:setLayoutSizePolicy(display.AUTO_SIZE, display.AUTO_SIZE)
     if not name then
         name = string.format("layout-%d", nameIndex_)

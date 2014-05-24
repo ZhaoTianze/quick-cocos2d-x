@@ -175,16 +175,16 @@ function MainScene:checkUpdate()
         if request:getResponseStatusCode() == 200 then
             local version = request:getResponseString():gsub("^%s*(.-)%s*$", "%1")
             if version ~= self.VERSION then
-                printInfo("Found new version " .. version .. ", please update!")
+                echoInfo("Found new version " .. version .. ", please update!")
                 self.VERSION = self.VERSION .. "(" .. version .. ")"
             else
-                printInfo("No new version, no need to update!")
+                echoInfo("No new version, no need to update!")
             end
         else
-            printInfo("Check version fail(HttpStatusCode=" .. request:getResponseStatusCode() .. ")!")
+            echoInfo("Check version fail(HttpStatusCode=" .. request:getResponseStatusCode() .. ")!")
         end
     end, url)
-    printInfo("Check version from " .. url .. " ...")
+    echoInfo("Check version from " .. url .. " ...")
     request:start()
 end
 
@@ -202,12 +202,12 @@ function MainScene:onEnter()
         self:genInitObjects()
         self:genObjects(91)
         -- 注册touch事件处理函数
-        self.touchLayer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-            return self:onTouch(event.name, event.x, event.y)
+        self.touchLayer:addTouchEventListener(function(event, x, y)
+            return self:onTouch(event, x, y)
         end)
         self.touchLayer:setTouchEnabled(true)
         -- 注册帧事件处理函数
-        self:addNodeEventListener(cc.NODE_ENTER_FRAME_EVENT, function(dt) self:updateFrame(dt) end)
+        self:scheduleUpdate(function(dt) self:updateFrame(dt) end)
         -- 检查更新
         self:checkUpdate()
     end)

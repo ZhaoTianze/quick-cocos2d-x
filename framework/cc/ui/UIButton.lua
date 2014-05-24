@@ -13,7 +13,7 @@ UIButton.LABEL_ZORDER = 0
 
 function UIButton:ctor(events, initialState, options)
     self.fsm_ = {}
-    cc(self.fsm_)
+    cc.GameObject.extend(self.fsm_)
         :addComponent("components.behavior.StateMachine")
         :exportMethods()
     self.fsm_:setupState({
@@ -27,7 +27,7 @@ function UIButton:ctor(events, initialState, options)
     makeUIControl_(self)
     self:setLayoutSizePolicy(display.FIXED_SIZE, display.FIXED_SIZE)
     self:setButtonEnabled(true)
-    self:addNodeEventListener(cc.NODE_TOUCH_EVENT, handler(self, self.onTouch_))
+    self:addTouchEventListener(handler(self, self.onTouch_))
 
     self.touchInSpriteOnly_ = options and options.touchInSprite
     self.currentImage_ = nil
@@ -42,10 +42,8 @@ function UIButton:ctor(events, initialState, options)
 
     display.align(self, display.CENTER)
 
-    self:addNodeEventListener(cc.NODE_EVENT, function(event)
-        if event.name == "enter" then
-            self:updateButtonImage_()
-        end
+    self:addScriptEventListener(cc.Event.ENTER_SCENE, function()
+        self:updateButtonImage_()
     end)
 end
 
@@ -198,7 +196,7 @@ function UIButton:onChangeState_(event)
 end
 
 function UIButton:onTouch_(event, x, y)
-    printError("UIButton:onTouch_() - must override in inherited class")
+    echoError("UIButton:onTouch_() - must override in inherited class")
 end
 
 function UIButton:updateButtonImage_()
@@ -236,7 +234,7 @@ function UIButton:updateButtonImage_()
         self.sprite_:setAnchorPoint(self:getAnchorPoint())
         self.sprite_:setPosition(0, 0)
     else
-        printError("UIButton:updateButtonImage_() - not set image for state %s", state)
+        echoError("UIButton:updateButtonImage_() - not set image for state %s", state)
     end
 end
 
@@ -272,9 +270,9 @@ end
 
 function UIButton:checkTouchInSprite_(x, y)
     if self.touchInSpriteOnly_ then
-        return self.sprite_ and self.sprite_:getCascadeBoundingBox():containsPoint(cc.p(x, y))
+        return self.sprite_ and self.sprite_:getCascadeBoundingBox():containsPoint(CCPoint(x, y))
     else
-        return self:getCascadeBoundingBox():containsPoint(cc.p(x, y))
+        return self:getCascadeBoundingBox():containsPoint(CCPoint(x, y))
     end
 end
 

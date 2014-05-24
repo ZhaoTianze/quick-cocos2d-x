@@ -1,8 +1,6 @@
 
 local scheduler = require(cc.PACKAGE_NAME .. ".scheduler")
 
-PRINT_DEPRECATED("module api.Timer is deprecated, please use cc.utils.Timer")
-
 --[[--
 
 Timer 实现了一个计时器容器，用于跟踪应用中所有需要计时的事件。
@@ -107,8 +105,8 @@ function Timer.new()
             interval = 30
         else
             interval = math.floor(interval)
-            if interval < 2 then
-                interval = 2
+            if interval < 1 then
+                interval = 1
             elseif interval > 120 then
                 interval = 120
             end

@@ -12,7 +12,7 @@ class CCBReader;
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBFileLoader : public CCNodeLoader {
+class CCBFileLoader : public CCNodeLoader {
     public:
         virtual ~CCBFileLoader() {};
         CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(CCBFileLoader, loader);

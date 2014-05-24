@@ -204,7 +204,7 @@ CCPoint CCControlSlider::locationFromTouch(CCTouch* touch)
 }
 
 
-bool CCControlSlider::ccTouchBegan(CCTouch* touch, CCEvent* pEvent)
+int CCControlSlider::ccTouchBegan(CCTouch* touch, CCEvent* pEvent)
 {
     if (!isTouchInside(touch) || !isEnabled() || !isVisible())
     {
@@ -216,10 +216,11 @@ bool CCControlSlider::ccTouchBegan(CCTouch* touch, CCEvent* pEvent)
     return true;
 }
 
-void CCControlSlider::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+int CCControlSlider::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
     CCPoint location = locationFromTouch(pTouch);
     sliderMoved(location);
+    return kCCTouchMoved;
 }
 
 void CCControlSlider::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)

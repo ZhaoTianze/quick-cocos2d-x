@@ -15,8 +15,8 @@ local WALL_ELASTICITY = 0.5
 function MainScene:ctor()
     -- create touch layer
     self.layer = display.newLayer()
-    self.layer:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-        return self:onTouch(event.name, event.x, event.y)
+    self.layer:addTouchEventListener(function(event, x, y)
+        return self:onTouch(event, x, y)
     end)
     self:addChild(self.layer)
 

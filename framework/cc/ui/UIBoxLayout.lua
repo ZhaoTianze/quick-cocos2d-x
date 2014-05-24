@@ -24,7 +24,7 @@ function UIBoxLayout:apply(container)
 
     if DEBUG > 1 then
         local prefix = string.rep("  ", depth_)
-        printInfo("%sAPPLY LAYOUT %s", prefix, self:getName())
+        echoInfo("%sAPPLY LAYOUT %s", prefix, self:getName())
     end
 
     -- step 1
@@ -105,7 +105,7 @@ function UIBoxLayout:apply(container)
         y = bottom
         negativeX, negativeY = 0, 1
     else
-        printError("UIBoxLayout:apply() - invalid direction %s", tostring(self.direction_))
+        echoError("UIBoxLayout:apply() - invalid direction %s", tostring(self.direction_))
         return
     end
 

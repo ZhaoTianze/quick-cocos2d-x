@@ -43,36 +43,26 @@ extern "C"
     // java vm helper function
     //////////////////////////////////////////////////////////////////////////
 
-    static pthread_key_t s_threadKey;
-
-    static void detach_current_thread (void *env) {
-        JAVAVM->DetachCurrentThread();
-    }
-    
     static bool getEnv(JNIEnv **env)
     {
         bool bRet = false;
 
-        switch(JAVAVM->GetEnv((void**)env, JNI_VERSION_1_4))
+        do 
         {
-        case JNI_OK:
-            bRet = true;
+            if (JAVAVM->GetEnv((void**)env, JNI_VERSION_1_4) != JNI_OK)
+            {
+                LOGD("%s", "Failed to get the environment using GetEnv()");
                 break;
-        case JNI_EDETACHED:
-            pthread_key_create (&s_threadKey, detach_current_thread);
+            }
+
             if (JAVAVM->AttachCurrentThread(env, 0) < 0)
             {
                 LOGD("%s", "Failed to get the environment using AttachCurrentThread()");
                 break;
             }
-            if (pthread_getspecific(s_threadKey) == NULL)
-                pthread_setspecific(s_threadKey, env); 
+
             bRet = true;
-            break;
-        default:
-            LOGD("%s", "Failed to get the environment using GetEnv()");
-            break;
-        }      
+        } while (0);        
 
         return bRet;
     }

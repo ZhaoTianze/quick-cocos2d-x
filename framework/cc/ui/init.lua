@@ -1,18 +1,16 @@
 
-local c = cc
+-- init ui library
 local ui = {}
 
 function makeUIControl_(control)
-    cc(control)
+    cc.GameObject.extend(control)
     control:addComponent("components.ui.LayoutProtocol"):exportMethods()
     control:addComponent("components.behavior.EventProtocol"):exportMethods()
 
     control:setCascadeOpacityEnabled(true)
     control:setCascadeColorEnabled(true)
-    control:addNodeEventListener(c.NODE_EVENT, function(event)
-        if event.name == "cleanup" then
-            control:removeAllEventListeners()
-        end
+    control:addScriptEventListener(cc.Event.CLEANUP, function()
+        control:removeAllEventListeners()
     end)
 end
 

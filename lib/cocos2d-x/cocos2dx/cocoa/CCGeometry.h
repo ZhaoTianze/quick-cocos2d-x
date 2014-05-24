@@ -323,7 +323,6 @@ public:
     bool equals(const CCRect& rect) const;   
     bool containsPoint(const CCPoint& point) const;
     bool intersectsRect(const CCRect& rect) const;
-    void merge(const CCRect& rect);
 };
 
 

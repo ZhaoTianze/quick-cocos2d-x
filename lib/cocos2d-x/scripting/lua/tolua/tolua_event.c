@@ -292,11 +292,7 @@ static int class_newindex_event (lua_State* L)
     }
     else if (t== LUA_TTABLE)
     {
-//        module_newindex_event(L);
-        lua_pushstring(L,".set");
-		lua_rawget(L,-4);
-		lua_settop(L,3);
-		lua_rawset(L,-3);
+        module_newindex_event(L);
     }
     return 0;
 }

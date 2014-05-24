@@ -4,7 +4,7 @@
 
 #include "cocoa/CCObject.h"
 #include "CCApplication.h"
-#include "ProjectConfig/SimulatorConfig.h"
+#include "SimulatorConfig.h"
 
 class StartupCall;
 
@@ -16,11 +16,7 @@ class StartupCall;
 class  AppDelegate : public cocos2d::CCApplication
 {
 public:
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-    AppDelegate(int argc, char *argv[]);
-#else
     AppDelegate();
-#endif
     virtual ~AppDelegate();
 
     /**

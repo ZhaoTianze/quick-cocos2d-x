@@ -10,7 +10,7 @@ function CocoPush.getInstance(interface)
 	if device.platform == "android" then
         providerClass = import(".cocopush.ProviderAndroid", CURRENT_MODULE_NAME)
     else
-        printError("push.CocoPush.getInstance() - not supported platform %s", device.platform)
+        echoError("ad.CocoPush.getInstance() - not supported platform %s", device.platform)
         return nil
     end
 

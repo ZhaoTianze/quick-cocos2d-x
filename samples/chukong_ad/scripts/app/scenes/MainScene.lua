@@ -54,9 +54,9 @@ function MainScene:initAd()
         :onButtonClicked(function()
             if not bannerAdVisible then
                 if checkBoxButton:isButtonSelected() then
-                    cc.ad:doCommand{command = "banner", args = {id = PUNCHBOX_AD_SDK_BANNER_ID, position = "top"}}
+                    cc.ad:show("banner", {id = PUNCHBOX_AD_SDK_BANNER_ID, position = "top"})
                 else
-                    cc.ad:doCommand{command = "banner", args = {id = PUNCHBOX_AD_SDK_BANNER_ID, position = "bottom"}}
+                    cc.ad:show("banner", {id = PUNCHBOX_AD_SDK_BANNER_ID, position = "bottom"})
                 end
                 bannerAdButton:setButtonLabelString("Remove Banner Ad")
                 bannerAdVisible = true
@@ -92,7 +92,7 @@ function MainScene:initAd()
         :setButtonLabel(cc.ui.UILabel.new({text = "Show Interstitial Ad", size = 22, color = display.COLOR_BLACK}))
         :setButtonSize(240, 80)
         :onButtonClicked(function()
-            cc.ad:doCommand{command = "interstitial", args = {id = PUNCHBOX_AD_SDK_INTERSTITIAL_ID}}
+            cc.ad:show("interstitial", {id = PUNCHBOX_AD_SDK_INTERSTITIAL_ID})
         end)
         :pos(display.cx, display.cy)
         :addTo(self)
@@ -102,7 +102,7 @@ function MainScene:initAd()
         :setButtonLabel(cc.ui.UILabel.new({text = "Show More Game Ad", size = 22, color = display.COLOR_BLACK}))
         :setButtonSize(240, 80)
         :onButtonClicked(function()
-            cc.ad:doCommand{command = "moregame"}
+            cc.ad:show("moregame")
         end)
         :pos(display.cx, display.cy - 160)
         :addTo(self)
@@ -118,6 +118,19 @@ function MainScene:initNoAd()
 end
 
 function MainScene:onEnter()
+    if device.platform == "android" then
+        -- avoid unmeant back
+        self:performWithDelay(function()
+            -- keypad layer, for android
+            local layer = display.newLayer()
+            layer:addKeypadEventListener(function(event)
+                if event == "back" then app.exit() end
+            end)
+            self:addChild(layer)
+
+            layer:setKeypadEnabled(true)
+        end, 0.5)
+    end
 end
 
 function MainScene:onExit()

@@ -38,9 +38,8 @@ function UIPushButton:setButtonImage(state, image, ignoreEmpty)
     return self
 end
 
-function UIPushButton:onTouch_(event)
-    local name, x, y = event.name, event.x, event.y
-    if name == "began" then
+function UIPushButton:onTouch_(event, x, y)
+    if event == "began" then
         if not self:checkTouchInSprite_(x, y) then return false end
         self.fsm_:doEvent("press")
         self:dispatchEvent({name = UIButton.PRESSED_EVENT, x = x, y = y, touchInTarget = true})
@@ -48,7 +47,7 @@ function UIPushButton:onTouch_(event)
     end
 
     local touchInTarget = self:checkTouchInSprite_(x, y)
-    if name == "moved" then
+    if event == "moved" then
         if touchInTarget and self.fsm_:canDoEvent("press") then
             self.fsm_:doEvent("press")
             self:dispatchEvent({name = UIButton.PRESSED_EVENT, x = x, y = y, touchInTarget = true})
@@ -61,7 +60,7 @@ function UIPushButton:onTouch_(event)
             self.fsm_:doEvent("release")
             self:dispatchEvent({name = UIButton.RELEASE_EVENT, x = x, y = y, touchInTarget = touchInTarget})
         end
-        if name == "ended" and touchInTarget then
+        if event == "ended" and touchInTarget then
             self:dispatchEvent({name = UIButton.CLICKED_EVENT, x = x, y = y, touchInTarget = true})
         end
     end

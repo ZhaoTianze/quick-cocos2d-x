@@ -7,7 +7,7 @@ local SDK_CLASS_NAME = "PunchBoxAdSDK"
 function ProviderIOS:start()
     local ok, ret = luaoc.callStaticMethod(SDK_CLASS_NAME, "start", {appId = tostring(self.options_.appId)})
     if not ok then
-        printError("cc.ad.ProviderIOS:ctor() - init SDK failed.")
+        echoError("cc.ad.ProviderIOS:ctor() - init SDK failed.")
         return false
     end
 

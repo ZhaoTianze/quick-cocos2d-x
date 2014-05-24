@@ -2,7 +2,6 @@ local CURRENT_MODULE_NAME = ...
 
 local providers = {
     "CocoPush",
-    "UmengPush"
 }
 
 for _, packageName in ipairs(providers) do
@@ -17,9 +16,8 @@ local push = class("cc.push")
 local DEFAULT_PROVIDER_OBJECT_NAME = "push.default"
 
 function push:ctor()
-    cc(self):addComponent("components.behavior.EventProtocol"):exportMethods()
+    cc.GameObject.extend(self):addComponent("components.behavior.EventProtocol"):exportMethods()
     self.events = import(".events", CURRENT_MODULE_NAME)
-    self.umengAliasType = import(".UmengAliasType", CURRENT_MODULE_NAME)
     self.providers_ = {}
 end
 
@@ -28,7 +26,7 @@ function push:start(name)
         local providerFactoryClass = cc.Registry.newObject(name)
         local provider = providerFactoryClass.getInstance(self)
         if not provider then
-            printError("cc.push:start() - create push provider failed")
+            echoError("cc.push:start() - create push provider failed")
             return
         end
 
@@ -47,26 +45,65 @@ function push:stop(name)
     end
 end
 
---[[
-args {
-    command = "要执行的命令",
-    providerName = "模块名字",
-    args = "执行命令的参数"
-}
-]]
-function push:doCommand(args)
+function push:startPush(name)
     local provider = self:getProvider(name)
     if provider then
-        provider:doCommand(args)
+        provider:startPush()
     end
 end
 
+function push:stopPush(name)
+    local provider = self:getProvider(name)
+    if provider then
+        provider:stopPush()
+    end
+end
+
+function push:setAlias(alias, name)
+    local provider = self:getProvider(name)
+    if provider then
+        provider:setAlias(alias)
+    end
+end
+
+function push:delAlias()
+    local provider = self:getProvider(name)
+    if provider then
+        provider:delAlias()
+    end
+end
+
+function push:setTags(tags, name)
+    if type(tags) ~= "table" then
+        echoError("cc.push:setTags() - args must be table")
+        return 
+    end
+
+    local provider = self:getProvider(name)
+    if provider then
+        provider:setTags(tags)
+    end
+end
+
+function push:delTags(tags, name)
+    if type(tags) ~= "table" then
+        echoError("cc.push:delTags() - args must be table")
+        return 
+    end
+
+    local provider = self:getProvider(name)
+    if provider then
+        provider:delTags(tags)
+    end
+end
+
+-- private
 function push:getProvider(name)
     name = name or DEFAULT_PROVIDER_OBJECT_NAME
     if self.providers_[name] then
         return self.providers_[name]
     end
-    printError("cc.push:getProvider() - provider %s not exists", name)
+    echoError("cc.push:getProvider() - provider %s not exists", name)
 end
 
 return push

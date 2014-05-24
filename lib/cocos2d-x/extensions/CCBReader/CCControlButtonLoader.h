@@ -9,7 +9,7 @@ NS_CC_EXT_BEGIN
 /* Forward declaration. */
 class CCBReader;
 
-class CC_EX_DLL CCControlButtonLoader : public CCControlLoader {
+class CCControlButtonLoader : public CCControlLoader {
     public:
         virtual ~CCControlButtonLoader() {};
         CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(CCControlButtonLoader, loader);

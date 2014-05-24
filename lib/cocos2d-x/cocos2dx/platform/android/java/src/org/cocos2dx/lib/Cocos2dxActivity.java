@@ -24,6 +24,7 @@ THE SOFTWARE.
 package org.cocos2dx.lib;
 
 import org.cocos2dx.lib.Cocos2dxHelper.Cocos2dxHelperListener;
+import org.cocos2dx.utils.*;
 
 import android.app.Activity;
 import android.content.Context;
@@ -34,7 +35,8 @@ import android.view.ViewGroup;
 import android.util.Log;
 import android.widget.FrameLayout;
 
-public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelperListener {
+public abstract class Cocos2dxActivity extends Activity implements
+		Cocos2dxHelperListener {
 	// ===========================================================
 	// Constants
 	// ===========================================================
@@ -47,6 +49,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	
 	private Cocos2dxGLSurfaceView mGLSurfaceView;
 	private Cocos2dxHandler mHandler;
+
 	private static Context sContext = null;
 	
 	public static Context getContext() {
@@ -60,7 +63,12 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.d("Cocos2dxActivity", "Cocos2dxActivity ON CREATE");
 		sContext = this;
+		
+		PSNative.init(this);
+		PSNetwork.init(this);
+		
     	this.mHandler = new Cocos2dxHandler(this);
 
     	this.init();
@@ -76,20 +84,47 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
+	private void resumeGame() {
+		mIsRunning = true;
+		Cocos2dxHelper.onResume();
+		this.mGLSurfaceView.onResume();
+		Log.d(TAG, "RESUME COCOS2D");
+	}
+	
+	private void pauseGame() {
+		mIsRunning = false;
+		Cocos2dxHelper.onPause();
+		this.mGLSurfaceView.onPause();
+		Log.d(TAG, "PAUSE COCOS2D");
+	}
+
+	private boolean mIsRunning = false;
+	private boolean mIsOnPause = false;
+
 	@Override
 	protected void onResume() {
 		super.onResume();
-
-		Cocos2dxHelper.onResume();
-		this.mGLSurfaceView.onResume();
+		Log.d(TAG, "ACTIVITY ON RESUME");
+		mIsOnPause = false;
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
+		Log.d(TAG, "ACTIVITY ON PAUSE");
+		mIsOnPause = true;
+		if (mIsRunning) {
+			pauseGame();
+		}
+	}
 
-		Cocos2dxHelper.onPause();
-		this.mGLSurfaceView.onPause();
+	@Override
+	public void onWindowFocusChanged(final boolean hasWindowFocus) {
+		super.onWindowFocusChanged(hasWindowFocus);
+		Log.d(TAG, "ACTIVITY ON WINDOW FOCUS CHANGED " + (hasWindowFocus ? "true" : "false"));
+		if (hasWindowFocus && !mIsOnPause) {
+			resumeGame();
+	}
 	}
 
 	@Override
@@ -101,10 +136,13 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	}
 
 	@Override
-	public void showEditTextDialog(final String pTitle, final String pContent, final int pInputMode, final int pInputFlag, final int pReturnType, final int pMaxLength) { 
+	public void showEditTextDialog(final String pTitle, final String pContent,
+			final int pInputMode, final int pInputFlag, final int pReturnType,
+			final int pMaxLength) {
 		Message msg = new Message();
 		msg.what = Cocos2dxHandler.HANDLER_SHOW_EDITBOX_DIALOG;
-		msg.obj = new Cocos2dxHandler.EditBoxMessage(pTitle, pContent, pInputMode, pInputFlag, pReturnType, pMaxLength);
+		msg.obj = new Cocos2dxHandler.EditBoxMessage(pTitle, pContent,
+				pInputMode, pInputFlag, pReturnType, pMaxLength);
 		this.mHandler.sendMessage(msg);
 	}
 	
@@ -119,15 +157,15 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	public void init() {
 		
     	// FrameLayout
-        ViewGroup.LayoutParams framelayout_params =
-            new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
+		ViewGroup.LayoutParams framelayout_params = new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.FILL_PARENT,
                                        ViewGroup.LayoutParams.FILL_PARENT);
         FrameLayout framelayout = new FrameLayout(this);
         framelayout.setLayoutParams(framelayout_params);
 
         // Cocos2dxEditText layout
-        ViewGroup.LayoutParams edittext_layout_params =
-            new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
+		ViewGroup.LayoutParams edittext_layout_params = new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.FILL_PARENT,
                                        ViewGroup.LayoutParams.WRAP_CONTENT);
         Cocos2dxEditText edittext = new Cocos2dxEditText(this);
         edittext.setLayoutParams(edittext_layout_params);
@@ -163,7 +201,8 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
       Log.d(TAG, "product=" + product);
       boolean isEmulator = false;
       if (product != null) {
-         isEmulator = product.equals("sdk") || product.contains("_sdk") || product.contains("sdk_");
+			isEmulator = product.equals("sdk") || product.contains("_sdk")
+					|| product.contains("sdk_");
       }
       Log.d(TAG, "isEmulator=" + isEmulator);
       return isEmulator;

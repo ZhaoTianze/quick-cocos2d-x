@@ -9,7 +9,7 @@ end
 function LayoutProtocol:setLayoutSize(width, height)
     LayoutProtocol.super.setLayoutSize(self, width, height)
     self:setLayout(self.layout_)
-    return self.target_
+    return self
 end
 
 function LayoutProtocol:setLayout(layout)
@@ -17,7 +17,7 @@ function LayoutProtocol:setLayout(layout)
     if layout then
         layout:apply(self.target_)
     end
-    return self.target_
+    return self
 end
 
 function LayoutProtocol:getLayout()
@@ -30,7 +30,7 @@ function LayoutProtocol:exportMethods()
         "setLayout",
         "getLayout",
     })
-    return self.target_
+    return self
 end
 
 return LayoutProtocol

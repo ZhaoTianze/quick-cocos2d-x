@@ -149,9 +149,6 @@ void CCParticleBatchNode::visit()
 
     draw();
 
-    // reset for next frame
-    m_uOrderOfArrival = 0;
-
     if ( m_pGrid && m_pGrid->isActive())
     {
         m_pGrid->afterDraw(this);

@@ -37,12 +37,11 @@ int CCApplication::run()
     // Main message loop:
     MSG msg;
     LARGE_INTEGER nFreq;
-    LARGE_INTEGER nStart;
-    LARGE_INTEGER nEnd;
-    LONGLONG deltaQuadPart;
-    DOUBLE sleepTime = 0;
+    LARGE_INTEGER nLast;
+    LARGE_INTEGER nNow;
 
     QueryPerformanceFrequency(&nFreq);
+    QueryPerformanceCounter(&nLast);
 
     // Initialize instance and cocos2d.
     if (!applicationDidFinishLaunching())
@@ -57,16 +56,18 @@ int CCApplication::run()
     {
         if (! PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
         {
-            QueryPerformanceCounter(&nStart);
-            CCDirector::sharedDirector()->mainLoop();
-            QueryPerformanceCounter(&nEnd);
+            // Get current time tick.
+            QueryPerformanceCounter(&nNow);
 
-            deltaQuadPart = m_nAnimationInterval.QuadPart - (nEnd.QuadPart - nStart.QuadPart);
-            if (deltaQuadPart > 0)
+            // If it's the time to draw next frame, draw it, else sleep a while.
+            if (nNow.QuadPart - nLast.QuadPart > m_nAnimationInterval.QuadPart)
             {
-                sleepTime += 1000.0 * deltaQuadPart / nFreq.QuadPart;
-                Sleep((int)sleepTime);
-                sleepTime -= (int)sleepTime;
+                nLast.QuadPart = nNow.QuadPart;
+                CCDirector::sharedDirector()->mainLoop();
+            }
+            else
+            {
+                Sleep(0);
             }
             continue;
         }
@@ -130,9 +131,6 @@ ccLanguageType CCApplication::getCurrentLanguage()
             break;
         case LANG_SPANISH:
             ret = kLanguageSpanish;
-            break;
-        case LANG_DUTCH:
-            ret = kLanguageDutch;
             break;
         case LANG_RUSSIAN:
             ret = kLanguageRussian;

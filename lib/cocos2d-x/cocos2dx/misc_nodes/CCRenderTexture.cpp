@@ -541,15 +541,14 @@ void CCRenderTexture::visit()
     m_pSprite->visit();
     draw();
 	
-    // reset for next frame
-    m_uOrderOfArrival = 0;
-
     if (m_pGrid && m_pGrid->isActive())
     {
         m_pGrid->afterDraw(this);
     }
 	
 	kmGLPopMatrix();
+
+    m_uOrderOfArrival = 0;
 }
 
 void CCRenderTexture::draw()
@@ -626,16 +625,16 @@ bool CCRenderTexture::saveToFile(const char *szFilePath)
     CCImage *pImage = newCCImage(true);
     if (pImage)
     {
-        bRet = pImage->saveToFile(szFilePath, kFmtJpg);
+        bRet = pImage->saveToFile(szFilePath, kCCImageFormatJPEG);
     }
 
     CC_SAFE_DELETE(pImage);
     return bRet;
 }
-bool CCRenderTexture::saveToFile(const char *fileName, EImageFormat format)
+bool CCRenderTexture::saveToFile(const char *fileName, tCCImageFormat format)
 {
     bool bRet = false;
-    CCAssert(format == kFmtJpg || format == kFmtPng,
+    CCAssert(format == kCCImageFormatJPEG || format == kCCImageFormatPNG,
              "the image can only be saved as JPG or PNG format");
 
     CCImage *pImage = newCCImage(true);
@@ -700,11 +699,11 @@ CCImage* CCRenderTexture::newCCImage(bool flipImage)
                        nSavedBufferWidth * 4);
             }
 
-            pImage->initWithImageData(pBuffer, nSavedBufferWidth * nSavedBufferHeight * 4, kFmtRawData, nSavedBufferWidth, nSavedBufferHeight, 8);
+            pImage->initWithImageData(pBuffer, nSavedBufferWidth * nSavedBufferHeight * 4, CCImage::kFmtRawData, nSavedBufferWidth, nSavedBufferHeight, 8);
         }
         else
         {
-            pImage->initWithImageData(pTempData, nSavedBufferWidth * nSavedBufferHeight * 4, kFmtRawData, nSavedBufferWidth, nSavedBufferHeight, 8);
+            pImage->initWithImageData(pTempData, nSavedBufferWidth * nSavedBufferHeight * 4, CCImage::kFmtRawData, nSavedBufferWidth, nSavedBufferHeight, 8);
         }
         
     } while (0);

@@ -5,7 +5,7 @@ local PunchBox = class("PunchBox")
 
 function PunchBox.getInstance(interface, options)
     if type(options) ~= "table" or type(options.appId) ~= "string" then
-        printError("ad.PunchBox.getInstance() - invalid options, miss appId")
+        echoError("ad.PunchBox.getInstance() - invalid options, miss appId")
         return nil
     end
 
@@ -15,7 +15,7 @@ function PunchBox.getInstance(interface, options)
     elseif device.platform == "android" then
         providerClass = import(".punchbox.ProviderAndroid", CURRENT_MODULE_NAME)
     else
-        printError("ad.PunchBox.getInstance() - not supported platform %s", device.platform)
+        echoError("ad.PunchBox.getInstance() - not supported platform %s", device.platform)
         return nil
     end
 

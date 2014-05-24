@@ -1,11 +1,9 @@
 
 local Store = {}
 
-PRINT_DEPRECATED("module api.Store is deprecated, please use cc.sdk.pay")
-
 local function checkCCStore()
     if not CCStore then
-        printError("framework.api.Store - CCStore not exists.")
+        echoError("framework.api.Store - CCStore not exists.")
         return false
     end
     return true
@@ -15,12 +13,12 @@ function Store.init(listener)
     if not checkCCStore() then return false end
 
     if cc.storeProvider then
-        printError("Store.init() - store already init")
+        echoError("Store.init() - store already init")
         return false
     end
 
     if type(listener) ~= "function" then
-        printError("Store.init() - invalid listener")
+        echoError("Store.init() - invalid listener")
         return false
     end
 
@@ -40,7 +38,7 @@ function Store.setReceiptVerifyMode(mode, isSandbox)
         or (mode ~= CCStoreReceiptVerifyModeNone
             and mode ~= CCStoreReceiptVerifyModeDevice
             and mode ~= CCStoreReceiptVerifyModeServer) then
-        printError("Store.setReceiptVerifyMode() - invalid mode")
+        echoError("Store.setReceiptVerifyMode() - invalid mode")
         return false
     end
 
@@ -57,7 +55,7 @@ function Store.setReceiptVerifyServerUrl(url)
     if not checkCCStore() then return false end
 
     if type(url) ~= "string" then
-        printError("Store.setReceiptVerifyServerUrl() - invalid url")
+        echoError("Store.setReceiptVerifyServerUrl() - invalid url")
         return false
     end
     cc.storeProvider:setReceiptVerifyServerUrl(url)
@@ -72,18 +70,18 @@ function Store.loadProducts(productsId, listener)
     if not checkCCStore() then return false end
 
     if type(listener) ~= "function" then
-        printError("Store.loadProducts() - invalid listener")
+        echoError("Store.loadProducts() - invalid listener")
         return false
     end
 
     if type(productsId) ~= "table" then
-        printError("Store.loadProducts() - invalid productsId")
+        echoError("Store.loadProducts() - invalid productsId")
         return false
     end
 
     for i = 1, #productsId do
         if type(productsId[i]) ~= "string" then
-            printError("Store.loadProducts() - invalid id[#%d] in productsId", i)
+            echoError("Store.loadProducts() - invalid id[#%d] in productsId", i)
             return false
         end
     end
@@ -106,12 +104,12 @@ function Store.purchase(productId)
     if not checkCCStore() then return false end
 
     if not cc.storeProvider then
-        printError("Store.purchase() - store not init")
+        echoError("Store.purchase() - store not init")
         return false
     end
 
     if type(productId) ~= "string" then
-        printError("Store.purchase() - invalid productId")
+        echoError("Store.purchase() - invalid productId")
         return false
     end
 
@@ -127,12 +125,12 @@ function Store.finishTransaction(transaction)
     if not checkCCStore() then return false end
 
     if not cc.storeProvider then
-        printError("Store.finishTransaction() - store not init")
+        echoError("Store.finishTransaction() - store not init")
         return false
     end
 
     if type(transaction) ~= "table" or type(transaction.transactionIdentifier) ~= "string" then
-        printError("Store.finishTransaction() - invalid transaction")
+        echoError("Store.finishTransaction() - invalid transaction")
         return false
     end
 

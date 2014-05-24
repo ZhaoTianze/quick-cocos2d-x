@@ -182,7 +182,7 @@ bool CCControlSaturationBrightnessPicker::checkSliderPosition(CCPoint location)
 }
 
 
-bool CCControlSaturationBrightnessPicker::ccTouchBegan(CCTouch* touch, CCEvent* event)
+int CCControlSaturationBrightnessPicker::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
     if (!isEnabled() || !isVisible())
     {
@@ -197,7 +197,7 @@ bool CCControlSaturationBrightnessPicker::ccTouchBegan(CCTouch* touch, CCEvent* 
 }
 
 
-void CCControlSaturationBrightnessPicker::ccTouchMoved(CCTouch* touch, CCEvent* event)
+int CCControlSaturationBrightnessPicker::ccTouchMoved(CCTouch* touch, CCEvent* event)
 {
     // Get the touch location
     CCPoint touchLocation=getTouchLocation(touch);
@@ -207,6 +207,8 @@ void CCControlSaturationBrightnessPicker::ccTouchMoved(CCTouch* touch, CCEvent* 
 //     sendActionsForControlEvents(CCControlEventValueChanged);
     // Check the touch position on the slider
     checkSliderPosition(touchLocation);
+
+    return kCCTouchMoved;
 }
 
 NS_CC_EXT_END

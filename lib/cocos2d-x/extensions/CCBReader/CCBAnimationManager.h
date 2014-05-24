@@ -13,13 +13,13 @@ NS_CC_EXT_BEGIN
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBAnimationManagerDelegate
+class CCBAnimationManagerDelegate
 {
 public:
     virtual void completedAnimationSequenceNamed(const char *name) = 0;
 };
 
-class CC_EX_DLL CCBAnimationManager : public CCObject
+class CCBAnimationManager : public CCObject
 {
 private:
     CCArray *mSequences;
@@ -147,7 +147,7 @@ private:
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBSetSpriteFrame : public CCActionInstant
+class CCBSetSpriteFrame : public CCActionInstant
 {
 private:
     CCSpriteFrame *mSpriteFrame;
@@ -167,7 +167,7 @@ public:
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBSoundEffect : public CCActionInstant
+class CCBSoundEffect : public CCActionInstant
 {
 private:
   std::string mSoundFile;
@@ -186,7 +186,7 @@ public:
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBRotateTo : public CCActionInterval
+class CCBRotateTo : public CCActionInterval
 {
 private:
     float mStartAngle;
@@ -205,7 +205,7 @@ public:
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBRotateXTo: public CCActionInterval {
+class CCBRotateXTo: public CCActionInterval {
 private:
     float mStartAngle;
     float mDstAngle;
@@ -222,7 +222,7 @@ public:
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCBRotateYTo: public CCActionInterval {
+class CCBRotateYTo: public CCActionInterval {
 private:
     float mStartAngle;
     float mDstAngle;
@@ -237,7 +237,7 @@ public:
 };
 
 
-class CC_EX_DLL CCBEaseInstant : public CCActionEase
+class CCBEaseInstant : public CCActionEase
 {
 public:
     static CCBEaseInstant* create(CCActionInterval *pAction);

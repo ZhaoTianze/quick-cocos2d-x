@@ -11,7 +11,7 @@ class CCBReader;
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCMenuItemImageLoader : public CCMenuItemLoader {
+class CCMenuItemImageLoader : public CCMenuItemLoader {
     public:
         virtual ~CCMenuItemImageLoader() {};
         CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(CCMenuItemImageLoader, loader);

@@ -8,7 +8,3 @@ echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo ""
 $MAKE_LUABINDING -d "$OUTPUT_DIR" cocos2dx_extra_ios_iap_luabinding.tolua
-echo ""
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-echo ""
-$MAKE_LUABINDING -d "$OUTPUT_DIR" CZHelperFunc_luabinding.tolua

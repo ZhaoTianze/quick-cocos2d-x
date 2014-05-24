@@ -3,11 +3,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 LIPO="xcrun -sdk iphoneos lipo"
 STRIP="xcrun -sdk iphoneos strip"
 
-SRCDIR=$DIR/LuaJit-2.0.3
+SRCDIR=$DIR/LuaJit-2.0.2
 DESTDIR=$DIR/ios
 IXCODE=`xcode-select -print-path`
 ISDK=$IXCODE/Platforms/iPhoneOS.platform/Developer
-ISDKVER=iPhoneOS7.1.sdk
+ISDKVER=iPhoneOS7.0.sdk
 # ISDKP=$ISDK/usr/bin/
 ISDKP=$IXCODE/usr/bin/
 

@@ -11,7 +11,7 @@ class CCBReader;
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCLayerColorLoader : public CCLayerLoader {
+class CCLayerColorLoader : public CCLayerLoader {
     public:
         virtual ~CCLayerColorLoader() {};
         CCB_STATIC_NEW_AUTORELEASE_OBJECT_METHOD(CCLayerColorLoader, loader);

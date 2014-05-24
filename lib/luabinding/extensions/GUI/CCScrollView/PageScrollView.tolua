@@ -1,0 +1,12 @@
+class PageScrollView:public CCScrollView
+{
+	PageScrollView();
+	static PageScrollView* create(CCSize size, CCNode* container = NULL);
+    static PageScrollView* create();
+    virtual int ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+    
+    bool isPaged();
+    void setPaged(bool value);
+};

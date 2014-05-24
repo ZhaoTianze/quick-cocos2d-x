@@ -26,9 +26,9 @@ THE SOFTWARE.
 #ifndef __TOUCH_DISPATCHER_CCTOUCH_DISPATCHER_H__
 #define __TOUCH_DISPATCHER_CCTOUCH_DISPATCHER_H__
 
+#include "CCTouchDelegateProtocol.h"
 #include "cocoa/CCObject.h"
 #include "cocoa/CCArray.h"
-#include "CCTouchDelegateProtocol.h"
 
 NS_CC_BEGIN
 
@@ -47,12 +47,14 @@ typedef enum
 } ccTouchSelectorFlag;
 
 
-
-#define CCTOUCHBEGAN        0
-#define CCTOUCHMOVED        1
-#define CCTOUCHENDED        2
-#define CCTOUCHCANCELLED    3
-#define ccTouchMax          4
+enum {
+    CCTOUCHBEGAN,
+    CCTOUCHMOVED,
+    CCTOUCHENDED,
+    CCTOUCHCANCELLED,
+    
+    ccTouchMax,
+};
 
 class CCSet;
 class CCEvent;

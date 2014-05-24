@@ -12,7 +12,7 @@ class CCBReader;
  *  @js NA
  *  @lua NA
  */
-class CC_EX_DLL CCControlLoader : public CCNodeLoader {
+class CCControlLoader : public CCNodeLoader {
     public:
         virtual ~CCControlLoader() {};
 

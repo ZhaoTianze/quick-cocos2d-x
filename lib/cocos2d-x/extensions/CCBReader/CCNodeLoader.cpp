@@ -28,8 +28,6 @@ CCNode * CCNodeLoader::loadCCNode(CCNode * pParent, CCBReader * pCCBReader) {
     CCNode * ccNode = this->createCCNode(pParent, pCCBReader);
 
     //this->parseProperties(ccNode, pParent, pCCBReader);
-    if(m_pCustomProperties)
-        m_pCustomProperties->removeAllObjects();
 
     return ccNode;
 }

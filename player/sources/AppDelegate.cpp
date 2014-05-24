@@ -5,20 +5,12 @@
 #include "support/CCNotificationCenter.h"
 #include "CCLuaEngine.h"
 #include <string>
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-#include "player.h"
-#endif
 
 using namespace std;
 using namespace cocos2d;
 using namespace CocosDenshion;
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-AppDelegate::AppDelegate(int argc, char *argv[])
-    : CCApplication(argc, argv)
-#else
 AppDelegate::AppDelegate()
-#endif
 {
     // fixed me
     //_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF|_CRTDBG_LEAK_CHECK_DF);
@@ -42,10 +34,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // register lua engine
     CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_QT)
-    // regist my own lua
-    Player::registerAllCpp();
-#endif
 
     StartupCall *call = StartupCall::create(this);
     if (m_projectConfig.getDebuggerType() != kCCLuaDebuggerNone)
@@ -62,6 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     {
         call->startup();
     }
+
     return true;
 }
 
@@ -109,6 +98,7 @@ void StartupCall::startup()
 {
     CCLuaEngine *pEngine = CCLuaEngine::defaultEngine();
     CCLuaStack *pStack = pEngine->getLuaStack();
+	pStack->setXXTEAKeyAndSign();
 
     ProjectConfig &projectConfig = m_app->m_projectConfig;
 
@@ -168,11 +158,6 @@ void StartupCall::startup()
         ++i;
     }
     lua_setglobal(L, "__G__OPEN_RECENTS__");
-
-    // set quick-cocos2d-x root path
-    std::string quickPath = SimulatorConfig::sharedDefaults()->getQuickCocos2dxRootPath();
-    lua_pushstring(L, quickPath.c_str());
-    lua_setglobal(L, "__G__QUICK_PATH__");
     
     CCLOG("------------------------------------------------");
     CCLOG("LOAD LUA FILE: %s", path.c_str());

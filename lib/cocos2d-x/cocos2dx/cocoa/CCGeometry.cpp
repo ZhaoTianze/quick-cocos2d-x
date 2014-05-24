@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-#include <algorithm>
 #include "CCGeometry.h"
 #include "ccMacros.h"
 
@@ -270,30 +269,6 @@ bool CCRect::intersectsRect(const CCRect& rect) const
              rect.getMaxX() <      getMinX() ||
                   getMaxY() < rect.getMinY() ||
              rect.getMaxY() <      getMinY());
-}
-
-void CCRect::merge(const CCRect& rect)
-{
-    float top1    = getMaxY();
-    float left1   = getMinX();
-    float right1  = getMaxX();
-    float bottom1 = getMinY();
-
-    float top2    = rect.getMaxY();
-    float left2   = rect.getMinX();
-    float right2  = rect.getMaxX();
-    float bottom2 = rect.getMinY();
-#ifdef WIN32
-    origin.x    = min(left1, left2);
-    origin.y    = min(bottom1, bottom2);
-    size.width  = max(right1, right2) - origin.x;
-    size.height = max(top1, top2) - origin.y;
-#else
-    origin.x = std::min(left1, left2);
-    origin.y = std::min(bottom1, bottom2);
-    size.width = std::max(right1, right2) - origin.x;
-    size.height = std::max(top1, top2) - origin.y;
-#endif
 }
 
 NS_CC_END

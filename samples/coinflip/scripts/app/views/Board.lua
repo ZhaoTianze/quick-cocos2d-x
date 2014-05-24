@@ -47,9 +47,7 @@ function Board:ctor(levelData)
         end
     end
 
-    self:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-        return self:onTouch(event.name, event.x, event.y)
-    end)
+    self:addTouchEventListener(handler(self, self.onTouch))
     self:setNodeEventEnabled(true)
 end
 
@@ -83,7 +81,7 @@ function Board:flipCoin(coin, includeNeighbour)
         end
     end)
     if includeNeighbour then
-        audio.playSound(GAME_SFX.flipCoin)
+        audio.playEffect(GAME_SFX.flipCoin)
         self.batch:reorderChild(coin, COIN_ZORDER + 1)
         self:performWithDelay(function()
             self:flipCoin(self:getCoin(coin.row - 1, coin.col))

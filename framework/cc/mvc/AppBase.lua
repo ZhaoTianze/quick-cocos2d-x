@@ -5,7 +5,8 @@ AppBase.APP_ENTER_BACKGROUND_EVENT = "APP_ENTER_BACKGROUND_EVENT"
 AppBase.APP_ENTER_FOREGROUND_EVENT = "APP_ENTER_FOREGROUND_EVENT"
 
 function AppBase:ctor(appName, packageRoot)
-    cc(self):addComponent("components.behavior.EventProtocol"):exportMethods()
+    cc.GameObject.extend(self)
+    self:addComponent("components.behavior.EventProtocol"):exportMethods()
 
     self.name = appName
     self.packageRoot = packageRoot or "app"
@@ -33,7 +34,7 @@ end
 function AppBase:enterScene(sceneName, args, transitionType, time, more)
     local scenePackageName = self. packageRoot .. ".scenes." .. sceneName
     local sceneClass = require(scenePackageName)
-    local scene = sceneClass.new(unpack(checktable(args)))
+    local scene = sceneClass.new(unpack(totable(args)))
     display.replaceScene(scene, transitionType, time, more)
 end
 

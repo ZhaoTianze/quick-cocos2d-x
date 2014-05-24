@@ -177,7 +177,7 @@ bool CCControlPotentiometer::isTouchInside(CCTouch * touch)
     return distance < MIN(getContentSize().width / 2, getContentSize().height / 2);
 }
 
-bool CCControlPotentiometer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+int CCControlPotentiometer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     if (!this->isTouchInside(pTouch) || !this->isEnabled() || !isVisible())
     {
@@ -191,11 +191,13 @@ bool CCControlPotentiometer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     return true;
 }
 
-void CCControlPotentiometer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+int CCControlPotentiometer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
     CCPoint location    = this->getTouchLocation(pTouch);
 
     this->potentiometerMoved(location);
+
+    return kCCTouchMoved;
 }
 
 void CCControlPotentiometer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)

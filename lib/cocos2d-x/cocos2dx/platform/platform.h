@@ -27,8 +27,6 @@ THE SOFTWARE.
 
 #include "CCThread.h"
 #include "CCPlatformMacros.h"
-#include <typeinfo>
-#include <ctype.h>
 
 NS_CC_BEGIN
 
@@ -36,10 +34,6 @@ NS_CC_BEGIN
  * @addtogroup platform
  * @{
  */
-
-unsigned int class_hash_code(const std::type_info& info);
-
-#define CLASS_HASH_CODE class_hash_code
 
 struct CC_DLL cc_timeval
 {

@@ -108,7 +108,6 @@ static void extendCCScrollView(lua_State* tolua_S)
         tolua_function(tolua_S, "setDelegate", tolua_Cocos2dx_CCScrollView_setDelegate);
         tolua_function(tolua_S, "registerScriptHandler", tolua_Cocos2dx_CCScrollView_registerScriptHandler);
     }
-    lua_pop(tolua_S, 1);
 }
 
 #define KEY_TABLEVIEW_DATA_SOURCE  "TableViewDataSource"
@@ -481,7 +480,6 @@ static void extendCCTableView(lua_State* tolua_S)
         tolua_function(tolua_S, "create", tolua_Cocos2dx_CCTableView_create01);
         tolua_function(tolua_S, "registerScriptHandler", tolua_Cocos2dx_CCTableView_registerScriptHandler);
     }
-    lua_pop(tolua_S, 1);
 }
 
 static int tolua_Cocos2d_CCTableViewCell_new(lua_State* tolua_S)
@@ -521,7 +519,6 @@ static void extendCCTableViewCell(lua_State* tolua_S)
     {
         tolua_function(tolua_S, "new", tolua_Cocos2d_CCTableViewCell_new);
     }
-    lua_pop(tolua_S, 1);
 }
 
 int register_all_cocos2dx_extension_manual(lua_State* tolua_S)

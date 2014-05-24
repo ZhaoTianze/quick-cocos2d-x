@@ -76,6 +76,8 @@ public:
     virtual ~CCScrollView();
 
     bool init();
+    virtual void registerWithTouchDispatcher();
+    virtual void unregisterWithTouchDispatcher();
 
     /**
      * Returns an autoreleased scroll view object.
@@ -191,8 +193,8 @@ public:
 
     /** override functions */
     // optional
-    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    virtual int ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual int ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 
@@ -213,7 +215,7 @@ public:
     virtual void addChild(CCNode * child, int zOrder);
     virtual void addChild(CCNode * child);
     void setTouchEnabled(bool e);
-private:
+protected:
     /**
      * Relocates the container at the proper offset, in bounds of max/min offsets.
      *
