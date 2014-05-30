@@ -64,6 +64,7 @@ class CCControlButton : public CCControl
     bool getZoomOnTouchDown();
 
     CCPoint getLabelAnchorPoint();
+    void setLabelAnchorPoint(CCPoint labelAnchorPoint);
 
     bool isPushed();
 

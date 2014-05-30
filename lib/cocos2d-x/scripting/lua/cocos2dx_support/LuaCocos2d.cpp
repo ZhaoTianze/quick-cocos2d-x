@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Sat May 17 17:25:06 2014.
+** Generated automatically by tolua++-1.0.92 on Thu May 29 17:17:48 2014.
 */
 
 /****************************************************************************
@@ -51519,6 +51519,39 @@ static int tolua_Cocos2d_CCControlButton_getLabelAnchorPoint00(lua_State* tolua_
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setLabelAnchorPoint of class  CCControlButton */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCControlButton_setLabelAnchorPoint00
+static int tolua_Cocos2d_CCControlButton_setLabelAnchorPoint00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCControlButton",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"CCPoint",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCControlButton* self = (CCControlButton*)  tolua_tousertype(tolua_S,1,0);
+  CCPoint labelAnchorPoint = *((CCPoint*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setLabelAnchorPoint'", NULL);
+#endif
+  {
+   self->setLabelAnchorPoint(labelAnchorPoint);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setLabelAnchorPoint'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: isPushed of class  CCControlButton */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_CCControlButton_isPushed00
 static int tolua_Cocos2d_CCControlButton_isPushed00(lua_State* tolua_S)
@@ -68218,6 +68251,7 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setPreferredSize",tolua_Cocos2d_CCControlButton_setPreferredSize00);
    tolua_function(tolua_S,"getZoomOnTouchDown",tolua_Cocos2d_CCControlButton_getZoomOnTouchDown00);
    tolua_function(tolua_S,"getLabelAnchorPoint",tolua_Cocos2d_CCControlButton_getLabelAnchorPoint00);
+   tolua_function(tolua_S,"setLabelAnchorPoint",tolua_Cocos2d_CCControlButton_setLabelAnchorPoint00);
    tolua_function(tolua_S,"isPushed",tolua_Cocos2d_CCControlButton_isPushed00);
    tolua_function(tolua_S,"getVerticalMargin",tolua_Cocos2d_CCControlButton_getVerticalMargin00);
    tolua_function(tolua_S,"getHorizontalOrigin",tolua_Cocos2d_CCControlButton_getHorizontalOrigin00);
