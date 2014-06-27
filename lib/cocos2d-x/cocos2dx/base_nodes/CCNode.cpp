@@ -629,13 +629,13 @@ void CCNode::cleanup()
     this->stopAllActions();
     this->unscheduleAllSelectors();
 
+    // timers
+    arrayMakeObjectsPerformSelector(m_pChildren, cleanup, CCNode*);
+
     if (hasScriptEventListener(NODE_EVENT))
     {
         CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnCleanup);
     }
-
-    // timers
-    arrayMakeObjectsPerformSelector(m_pChildren, cleanup, CCNode*);
 }
 
 const char* CCNode::description()
@@ -1028,22 +1028,22 @@ void CCNode::onEnter()
 
 void CCNode::onEnterTransitionDidFinish()
 {
+    arrayMakeObjectsPerformSelector(m_pChildren, onEnterTransitionDidFinish, CCNode*);
+
     if (hasScriptEventListener(NODE_EVENT))
     {
         CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnterTransitionDidFinish);
     }
-
-    arrayMakeObjectsPerformSelector(m_pChildren, onEnterTransitionDidFinish, CCNode*);
 }
 
 void CCNode::onExitTransitionDidStart()
 {
-    arrayMakeObjectsPerformSelector(m_pChildren, onExitTransitionDidStart, CCNode*);
-
     if (hasScriptEventListener(NODE_EVENT))
     {
         CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExitTransitionDidStart);
     }
+
+    arrayMakeObjectsPerformSelector(m_pChildren, onExitTransitionDidStart, CCNode*);
 }
 
 void CCNode::onExit()
@@ -1584,13 +1584,17 @@ bool CCNode::ccTouchCaptureBegan(CCTouch *pTouch, CCNode *pTarget)
     }
 }
 
-void CCNode::ccTouchCaptureMoved(CCTouch *pTouch, CCNode *pTarget)
+bool CCNode::ccTouchCaptureMoved(CCTouch *pTouch, CCNode *pTarget)
 {
     CC_UNUSED_PARAM(pTouch);
     CC_UNUSED_PARAM(pTarget);
     if (hasScriptEventListener(NODE_TOUCH_CAPTURE_EVENT))
     {
-        executeScriptTouchHandler(CCTOUCHMOVED, pTouch, NODE_TOUCH_CAPTURING_PHASE);
+        return executeScriptTouchHandler(CCTOUCHMOVED, pTouch, NODE_TOUCH_CAPTURING_PHASE);
+    }
+    else
+    {
+        return true;
     }
 }
 

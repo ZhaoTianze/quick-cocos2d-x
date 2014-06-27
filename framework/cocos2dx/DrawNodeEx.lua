@@ -34,6 +34,7 @@ function DrawNode:drawPol(points, params)
 	return self:drawPolygon(points, params)
 end
 
+local drawPolygon = DrawNode.drawPolygon
 function DrawNode:drawPolygon(points, params)
 	local segments = #points
 	fillColor = cc.c4f(1,1,1,1)
@@ -48,7 +49,7 @@ function DrawNode:drawPolygon(points, params)
 	for i=1,segments do
 		pa:add(cc.p(points[i][1], points[i][2]))
 	end
-	self:drawPolygon(pa:fetchPoints(), pa:count(), fillColor, borderWidth, borderColor)
+	drawPolygon(self, pa:fetchPoints(), pa:count(), fillColor, borderWidth, borderColor)
 	return self
 end
 
@@ -88,8 +89,10 @@ function DrawNode:drawCircle(radius, params)
 	return self
 end
 
+local drawDot = DrawNode.drawDot
 function DrawNode:drawDot(point, radius, color)
-	getmetatable(self).drawDot(self, point, radius, color)
+	drawDot(self, point, radius, color)
+	-- getmetatable(self).drawDot(self, point, radius, color)
 	return self
 end
 
