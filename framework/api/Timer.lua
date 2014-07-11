@@ -39,11 +39,9 @@ function Timer.new()
             cd.nextstep  = cd.nextstep - dt
 
             if cd.countdown <= 0 then
-                print(string.format("[finish] %s", eventName))
                 timer:dispatchEvent({name = eventName, countdown = 0})
                 timer:removeCountdown(eventName)
             elseif cd.nextstep <= 0 then
-                print(string.format("[step] %s", eventName))
                 cd.nextstep = cd.nextstep + cd.interval
                 timer:dispatchEvent({name = eventName, countdown = cd.countdown})
             end
