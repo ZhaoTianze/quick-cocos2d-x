@@ -146,7 +146,7 @@ function StateMachine:doEvent(name, ...)
         to = to,
         args = args,
     }
-
+    
     if self.inTransition_ then
         self:onError_(event,
                       StateMachine.PENDING_TRANSITION_ERROR,
@@ -181,6 +181,7 @@ function StateMachine:doEvent(name, ...)
 
     event.cancel = function()
         -- provide a way for caller to cancel async transition if desired
+        self.inTransition_ = false
         event.transition = nil
         self:afterEvent_(event)
     end
