@@ -95,6 +95,10 @@ class  CCArmature : public CCNode
 
     CCBone *getParentBone();
     
+    void setBlendFunc(ccBlendFunc blendFunc);
+
+    ccBlendFunc getBlendFunc(void);
+
     //zrong 2013-11-07 for lua
     void connectMovementEventSignal(LUA_FUNCTION nHandler);
     void disconnectMovementEventSignal();
