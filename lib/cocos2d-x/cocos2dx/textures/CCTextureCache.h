@@ -131,6 +131,12 @@ public:
     */
     CCTexture2D* addUIImage(CCImage *image, const char *key);
 
+    /** Get a key for a texture in cache.
+     * @author zrong(zengrong.net)
+     * Creation 2014-07-19
+     */
+    const char*  keyForTexture(CCTexture2D* texture);
+    
     /** Returns an already created texture. Returns nil if the texture doesn't exist.
     @since v0.99.5
     */
@@ -175,8 +181,6 @@ public:
     */
     void dumpCachedTextureInfo();
     
-#ifndef QUICK_MINI_TARGET
-
     /** Returns a Texture2D object given an PVR filename
     * If the file image was not previously loaded, it will create a new CCTexture2D
     *  object and it will return it. Otherwise it will return a reference of a previously loaded image
@@ -189,8 +193,6 @@ public:
      *  @lua NA
      */
     CCTexture2D* addETCImage(const char* filename);
-
-#endif
 
     /** Reload all textures
     It's only useful when the value of CC_ENABLE_CACHE_TEXTURE_DATA is 1
