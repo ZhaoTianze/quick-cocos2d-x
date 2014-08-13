@@ -191,7 +191,7 @@ void CCArmatureDataManager::removeAll()
     {
         m_pTextureDatas->removeAllObjects();
     }
-
+    CCSpriteFrameCacheHelper::purgeSpriteFrameCacheHelper();
     CCDataReaderHelper::clear();
 }
 
