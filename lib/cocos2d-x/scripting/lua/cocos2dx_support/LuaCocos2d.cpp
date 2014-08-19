@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Thu Jul 24 18:58:26 2014.
+** Generated automatically by tolua++-1.0.92 on Mon Aug 18 21:31:51 2014.
 */
 
 /****************************************************************************
@@ -74,13 +74,6 @@ static int tolua_collect_CCAtlasNode (lua_State* tolua_S)
     return 0;
 }
 
-static int tolua_collect_CCTweenType (lua_State* tolua_S)
-{
- CCTweenType* self = (CCTweenType*) tolua_tousertype(tolua_S,1,0);
-    Mtolua_delete(self);
-    return 0;
-}
-
 static int tolua_collect_CCParticleSystemQuad (lua_State* tolua_S)
 {
  CCParticleSystemQuad* self = (CCParticleSystemQuad*) tolua_tousertype(tolua_S,1,0);
@@ -88,16 +81,16 @@ static int tolua_collect_CCParticleSystemQuad (lua_State* tolua_S)
     return 0;
 }
 
-static int tolua_collect_CCTableView (lua_State* tolua_S)
+static int tolua_collect_CCTweenType (lua_State* tolua_S)
 {
- CCTableView* self = (CCTableView*) tolua_tousertype(tolua_S,1,0);
+ CCTweenType* self = (CCTweenType*) tolua_tousertype(tolua_S,1,0);
     Mtolua_delete(self);
     return 0;
 }
 
-static int tolua_collect_PageScrollView (lua_State* tolua_S)
+static int tolua_collect_CCTableView (lua_State* tolua_S)
 {
- PageScrollView* self = (PageScrollView*) tolua_tousertype(tolua_S,1,0);
+ CCTableView* self = (CCTableView*) tolua_tousertype(tolua_S,1,0);
     Mtolua_delete(self);
     return 0;
 }
@@ -607,94 +600,92 @@ static void tolua_reg_types (lua_State* tolua_S)
  toluafix_add_type_mapping(typeid(CCParticleSnow).hash_code(), "CCParticleSnow");
  tolua_usertype(tolua_S,"CCMenuItemImage");
  toluafix_add_type_mapping(typeid(CCMenuItemImage).hash_code(), "CCMenuItemImage");
- tolua_usertype(tolua_S,"CCControlButton");
- toluafix_add_type_mapping(typeid(CCControlButton).hash_code(), "CCControlButton");
  tolua_usertype(tolua_S,"ccTexParams");
  toluafix_add_type_mapping(typeid(ccTexParams).hash_code(), "ccTexParams");
  tolua_usertype(tolua_S,"CCEaseSineOut");
  toluafix_add_type_mapping(typeid(CCEaseSineOut).hash_code(), "CCEaseSineOut");
- tolua_usertype(tolua_S,"CCSaturationFilter");
- toluafix_add_type_mapping(typeid(CCSaturationFilter).hash_code(), "CCSaturationFilter");
+ tolua_usertype(tolua_S,"CCControlButton");
+ toluafix_add_type_mapping(typeid(CCControlButton).hash_code(), "CCControlButton");
  tolua_usertype(tolua_S,"CCCallFuncN");
  toluafix_add_type_mapping(typeid(CCCallFuncN).hash_code(), "CCCallFuncN");
- tolua_usertype(tolua_S,"CCRGBFilter");
- toluafix_add_type_mapping(typeid(CCRGBFilter).hash_code(), "CCRGBFilter");
+ tolua_usertype(tolua_S,"CCSaturationFilter");
+ toluafix_add_type_mapping(typeid(CCSaturationFilter).hash_code(), "CCSaturationFilter");
  tolua_usertype(tolua_S,"CCTransitionPageTurn");
  toluafix_add_type_mapping(typeid(CCTransitionPageTurn).hash_code(), "CCTransitionPageTurn");
- tolua_usertype(tolua_S,"CCMaskFilter");
- toluafix_add_type_mapping(typeid(CCMaskFilter).hash_code(), "CCMaskFilter");
+ tolua_usertype(tolua_S,"CCRGBFilter");
+ toluafix_add_type_mapping(typeid(CCRGBFilter).hash_code(), "CCRGBFilter");
  tolua_usertype(tolua_S,"ccFontDefinition");
  toluafix_add_type_mapping(typeid(ccFontDefinition).hash_code(), "ccFontDefinition");
+ tolua_usertype(tolua_S,"CCMaskFilter");
+ toluafix_add_type_mapping(typeid(CCMaskFilter).hash_code(), "CCMaskFilter");
  tolua_usertype(tolua_S,"CCHazeFilter");
  toluafix_add_type_mapping(typeid(CCHazeFilter).hash_code(), "CCHazeFilter");
  tolua_usertype(tolua_S,"CCGammaFilter");
  toluafix_add_type_mapping(typeid(CCGammaFilter).hash_code(), "CCGammaFilter");
  tolua_usertype(tolua_S,"CCDisplayLinkDirector");
  toluafix_add_type_mapping(typeid(CCDisplayLinkDirector).hash_code(), "CCDisplayLinkDirector");
- tolua_usertype(tolua_S,"CCBrightnessFilter");
- toluafix_add_type_mapping(typeid(CCBrightnessFilter).hash_code(), "CCBrightnessFilter");
  tolua_usertype(tolua_S,"ccFontStroke");
  toluafix_add_type_mapping(typeid(ccFontStroke).hash_code(), "ccFontStroke");
+ tolua_usertype(tolua_S,"CCBrightnessFilter");
+ toluafix_add_type_mapping(typeid(CCBrightnessFilter).hash_code(), "CCBrightnessFilter");
  tolua_usertype(tolua_S,"CCZoomBlurFilter");
  toluafix_add_type_mapping(typeid(CCZoomBlurFilter).hash_code(), "CCZoomBlurFilter");
- tolua_usertype(tolua_S,"CCGaussianVBlurFilter");
- toluafix_add_type_mapping(typeid(CCGaussianVBlurFilter).hash_code(), "CCGaussianVBlurFilter");
  tolua_usertype(tolua_S,"CCTintTo");
  toluafix_add_type_mapping(typeid(CCTintTo).hash_code(), "CCTintTo");
+ tolua_usertype(tolua_S,"CCGaussianVBlurFilter");
+ toluafix_add_type_mapping(typeid(CCGaussianVBlurFilter).hash_code(), "CCGaussianVBlurFilter");
  tolua_usertype(tolua_S,"CCVBlurFilter");
  toluafix_add_type_mapping(typeid(CCVBlurFilter).hash_code(), "CCVBlurFilter");
  tolua_usertype(tolua_S,"CCHBlurFilter");
  toluafix_add_type_mapping(typeid(CCHBlurFilter).hash_code(), "CCHBlurFilter");
  tolua_usertype(tolua_S,"CCFilteredSpriteWithMulti");
  toluafix_add_type_mapping(typeid(CCFilteredSpriteWithMulti).hash_code(), "CCFilteredSpriteWithMulti");
- tolua_usertype(tolua_S,"CCFilteredSpriteWithOne");
- toluafix_add_type_mapping(typeid(CCFilteredSpriteWithOne).hash_code(), "CCFilteredSpriteWithOne");
  tolua_usertype(tolua_S,"CCTransitionCrossFade");
  toluafix_add_type_mapping(typeid(CCTransitionCrossFade).hash_code(), "CCTransitionCrossFade");
+ tolua_usertype(tolua_S,"CCFilteredSpriteWithOne");
+ toluafix_add_type_mapping(typeid(CCFilteredSpriteWithOne).hash_code(), "CCFilteredSpriteWithOne");
  tolua_usertype(tolua_S,"CCFilteredSprite");
  toluafix_add_type_mapping(typeid(CCFilteredSprite).hash_code(), "CCFilteredSprite");
- tolua_usertype(tolua_S,"CCBone");
- toluafix_add_type_mapping(typeid(CCBone).hash_code(), "CCBone");
  tolua_usertype(tolua_S,"CCClippingRegionNode");
  toluafix_add_type_mapping(typeid(CCClippingRegionNode).hash_code(), "CCClippingRegionNode");
- tolua_usertype(tolua_S,"CCArmature");
- toluafix_add_type_mapping(typeid(CCArmature).hash_code(), "CCArmature");
+ tolua_usertype(tolua_S,"CCBone");
+ toluafix_add_type_mapping(typeid(CCBone).hash_code(), "CCBone");
  tolua_usertype(tolua_S,"CCActionEase");
  toluafix_add_type_mapping(typeid(CCActionEase).hash_code(), "CCActionEase");
- tolua_usertype(tolua_S,"CCBatchNode");
- toluafix_add_type_mapping(typeid(CCBatchNode).hash_code(), "CCBatchNode");
+ tolua_usertype(tolua_S,"CCArmature");
+ toluafix_add_type_mapping(typeid(CCArmature).hash_code(), "CCArmature");
  tolua_usertype(tolua_S,"CCParallaxNode");
  toluafix_add_type_mapping(typeid(CCParallaxNode).hash_code(), "CCParallaxNode");
  tolua_usertype(tolua_S,"CCRotateTo");
  toluafix_add_type_mapping(typeid(CCRotateTo).hash_code(), "CCRotateTo");
+ tolua_usertype(tolua_S,"CCBatchNode");
+ toluafix_add_type_mapping(typeid(CCBatchNode).hash_code(), "CCBatchNode");
  tolua_usertype(tolua_S,"CCMovementBoneData");
  toluafix_add_type_mapping(typeid(CCMovementBoneData).hash_code(), "CCMovementBoneData");
  tolua_usertype(tolua_S,"CCArmatureData");
  toluafix_add_type_mapping(typeid(CCArmatureData).hash_code(), "CCArmatureData");
- tolua_usertype(tolua_S,"CCTableViewCell");
- toluafix_add_type_mapping(typeid(CCTableViewCell).hash_code(), "CCTableViewCell");
  tolua_usertype(tolua_S,"CCShakyTiles3D");
  toluafix_add_type_mapping(typeid(CCShakyTiles3D).hash_code(), "CCShakyTiles3D");
  tolua_usertype(tolua_S,"CCArmatureDisplayData");
  toluafix_add_type_mapping(typeid(CCArmatureDisplayData).hash_code(), "CCArmatureDisplayData");
  tolua_usertype(tolua_S,"CCNode");
  toluafix_add_type_mapping(typeid(CCNode).hash_code(), "CCNode");
+ tolua_usertype(tolua_S,"CCTableView");
+ toluafix_add_type_mapping(typeid(CCTableView).hash_code(), "CCTableView");
  tolua_usertype(tolua_S,"CCSpriteDisplayData");
  toluafix_add_type_mapping(typeid(CCSpriteDisplayData).hash_code(), "CCSpriteDisplayData");
  tolua_usertype(tolua_S,"CCTweenType");
  toluafix_add_type_mapping(typeid(CCTweenType).hash_code(), "CCTweenType");
- tolua_usertype(tolua_S,"CCArmatureAnimation");
- toluafix_add_type_mapping(typeid(CCArmatureAnimation).hash_code(), "CCArmatureAnimation");
  tolua_usertype(tolua_S,"CCBezierTo");
  toluafix_add_type_mapping(typeid(CCBezierTo).hash_code(), "CCBezierTo");
  tolua_usertype(tolua_S,"CCDeccelAmplitude");
  toluafix_add_type_mapping(typeid(CCDeccelAmplitude).hash_code(), "CCDeccelAmplitude");
- tolua_usertype(tolua_S,"CCTableView");
- toluafix_add_type_mapping(typeid(CCTableView).hash_code(), "CCTableView");
+ tolua_usertype(tolua_S,"CCArmatureAnimation");
+ toluafix_add_type_mapping(typeid(CCArmatureAnimation).hash_code(), "CCArmatureAnimation");
  tolua_usertype(tolua_S,"CCBoneData");
  toluafix_add_type_mapping(typeid(CCBoneData).hash_code(), "CCBoneData");
- tolua_usertype(tolua_S,"PageScrollView");
- toluafix_add_type_mapping(typeid(PageScrollView).hash_code(), "PageScrollView");
+ tolua_usertype(tolua_S,"CCTableViewCell");
+ toluafix_add_type_mapping(typeid(CCTableViewCell).hash_code(), "CCTableViewCell");
  tolua_usertype(tolua_S,"CCTransitionProgress");
  toluafix_add_type_mapping(typeid(CCTransitionProgress).hash_code(), "CCTransitionProgress");
  tolua_usertype(tolua_S,"CCEditBox");
@@ -57557,297 +57548,6 @@ static int tolua_Cocos2d_CCScrollView_getScriptHandler00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* method: new of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_new00
-static int tolua_Cocos2d_PageScrollView_new00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  {
-   PageScrollView* tolua_ret = (PageScrollView*)  Mtolua_new((PageScrollView)());
-    int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
-    int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
-    toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"PageScrollView");
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'new'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: new_local of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_new00_local
-static int tolua_Cocos2d_PageScrollView_new00_local(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  {
-   PageScrollView* tolua_ret = (PageScrollView*)  Mtolua_new((PageScrollView)());
-    int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
-    int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
-    toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"PageScrollView");
-    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'new'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: create of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_create00
-static int tolua_Cocos2d_PageScrollView_create00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"CCSize",0,&tolua_err)) ||
-     !tolua_isusertype(tolua_S,3,"CCNode",1,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  CCSize size = *((CCSize*)  tolua_tousertype(tolua_S,2,0));
-  CCNode* container = ((CCNode*)  tolua_tousertype(tolua_S,3,NULL));
-  {
-   PageScrollView* tolua_ret = (PageScrollView*)  PageScrollView::create(size,container);
-    int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
-    int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
-    toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"PageScrollView");
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'create'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: create of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_create01
-static int tolua_Cocos2d_PageScrollView_create01(lua_State* tolua_S)
-{
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
- {
-  {
-   PageScrollView* tolua_ret = (PageScrollView*)  PageScrollView::create();
-    int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
-    int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
-    toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"PageScrollView");
-  }
- }
- return 1;
-tolua_lerror:
- return tolua_Cocos2d_PageScrollView_create00(tolua_S);
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: ccTouchBegan of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_ccTouchBegan00
-static int tolua_Cocos2d_PageScrollView_ccTouchBegan00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,2,"CCTouch",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,3,"CCEvent",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  PageScrollView* self = (PageScrollView*)  tolua_tousertype(tolua_S,1,0);
-  CCTouch* pTouch = ((CCTouch*)  tolua_tousertype(tolua_S,2,0));
-  CCEvent* pEvent = ((CCEvent*)  tolua_tousertype(tolua_S,3,0));
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'ccTouchBegan'", NULL);
-#endif
-  {
-   int tolua_ret = (int)  self->ccTouchBegan(pTouch,pEvent);
-   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'ccTouchBegan'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: ccTouchEnded of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_ccTouchEnded00
-static int tolua_Cocos2d_PageScrollView_ccTouchEnded00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,2,"CCTouch",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,3,"CCEvent",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  PageScrollView* self = (PageScrollView*)  tolua_tousertype(tolua_S,1,0);
-  CCTouch* pTouch = ((CCTouch*)  tolua_tousertype(tolua_S,2,0));
-  CCEvent* pEvent = ((CCEvent*)  tolua_tousertype(tolua_S,3,0));
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'ccTouchEnded'", NULL);
-#endif
-  {
-   self->ccTouchEnded(pTouch,pEvent);
-  }
- }
- return 0;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'ccTouchEnded'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: ccTouchCancelled of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_ccTouchCancelled00
-static int tolua_Cocos2d_PageScrollView_ccTouchCancelled00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,2,"CCTouch",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,3,"CCEvent",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  PageScrollView* self = (PageScrollView*)  tolua_tousertype(tolua_S,1,0);
-  CCTouch* pTouch = ((CCTouch*)  tolua_tousertype(tolua_S,2,0));
-  CCEvent* pEvent = ((CCEvent*)  tolua_tousertype(tolua_S,3,0));
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'ccTouchCancelled'", NULL);
-#endif
-  {
-   self->ccTouchCancelled(pTouch,pEvent);
-  }
- }
- return 0;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'ccTouchCancelled'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: isPaged of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_isPaged00
-static int tolua_Cocos2d_PageScrollView_isPaged00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  PageScrollView* self = (PageScrollView*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'isPaged'", NULL);
-#endif
-  {
-   bool tolua_ret = (bool)  self->isPaged();
-   tolua_pushboolean(tolua_S,(bool)tolua_ret);
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'isPaged'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: setPaged of class  PageScrollView */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_PageScrollView_setPaged00
-static int tolua_Cocos2d_PageScrollView_setPaged00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"PageScrollView",0,&tolua_err) ||
-     !tolua_isboolean(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  PageScrollView* self = (PageScrollView*)  tolua_tousertype(tolua_S,1,0);
-  bool value = ((bool)  tolua_toboolean(tolua_S,2,0));
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setPaged'", NULL);
-#endif
-  {
-   self->setPaged(value);
-  }
- }
- return 0;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'setPaged'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* method: getIdx of class  CCTableViewCell */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_CCTableViewCell_getIdx00
 static int tolua_Cocos2d_CCTableViewCell_getIdx00(lua_State* tolua_S)
@@ -68650,23 +68350,6 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_constant(tolua_S,"kScrollViewZoom",CCScrollView::kScrollViewZoom);
    tolua_function(tolua_S,"unregisterScriptHandler",tolua_Cocos2d_CCScrollView_unregisterScriptHandler00);
    tolua_function(tolua_S,"getScriptHandler",tolua_Cocos2d_CCScrollView_getScriptHandler00);
-  tolua_endmodule(tolua_S);
-  #ifdef __cplusplus
-  tolua_cclass(tolua_S,"PageScrollView","PageScrollView","CCScrollView",tolua_collect_PageScrollView);
-  #else
-  tolua_cclass(tolua_S,"PageScrollView","PageScrollView","CCScrollView",NULL);
-  #endif
-  tolua_beginmodule(tolua_S,"PageScrollView");
-   tolua_function(tolua_S,"new",tolua_Cocos2d_PageScrollView_new00);
-   tolua_function(tolua_S,"new_local",tolua_Cocos2d_PageScrollView_new00_local);
-   tolua_function(tolua_S,".call",tolua_Cocos2d_PageScrollView_new00_local);
-   tolua_function(tolua_S,"create",tolua_Cocos2d_PageScrollView_create00);
-   tolua_function(tolua_S,"create",tolua_Cocos2d_PageScrollView_create01);
-   tolua_function(tolua_S,"ccTouchBegan",tolua_Cocos2d_PageScrollView_ccTouchBegan00);
-   tolua_function(tolua_S,"ccTouchEnded",tolua_Cocos2d_PageScrollView_ccTouchEnded00);
-   tolua_function(tolua_S,"ccTouchCancelled",tolua_Cocos2d_PageScrollView_ccTouchCancelled00);
-   tolua_function(tolua_S,"isPaged",tolua_Cocos2d_PageScrollView_isPaged00);
-   tolua_function(tolua_S,"setPaged",tolua_Cocos2d_PageScrollView_setPaged00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"CCTableViewCell","CCTableViewCell","CCNode",NULL);
   tolua_beginmodule(tolua_S,"CCTableViewCell");

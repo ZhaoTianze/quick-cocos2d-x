@@ -28,7 +28,6 @@
 		49832215187FE2C000733BFB /* CZHelperFunc_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832213187FE2C000733BFB /* CZHelperFunc_luabinding.cpp */; };
 		49832219187FE2DF00733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832217187FE2DF00733BFB /* HelperFunc.cpp */; };
 		7F67276E18D6A04400CCEAEB /* GameCenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F67276C18D6A04400CCEAEB /* GameCenter.mm */; };
-		B214823219271AE600AF41C6 /* PageScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B214823019271AE600AF41C6 /* PageScrollView.cpp */; };
 		B2CD85BF19307446006D9A6F /* LuaCocos2d-mini.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */; };
 		B2CD85D51930748B006D9A6F /* LuaEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85C11930748B006D9A6F /* LuaEventHandler.cpp */; };
 		B2CD85D61930748B006D9A6F /* luaopen_LuaProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85C61930748B006D9A6F /* luaopen_LuaProxy.cpp */; };
@@ -434,8 +433,6 @@
 		7F67276B18D6A04400CCEAEB /* GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenter.h; sourceTree = "<group>"; };
 		7F67276C18D6A04400CCEAEB /* GameCenter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameCenter.mm; sourceTree = "<group>"; };
 		7F67276D18D6A04400CCEAEB /* GameCenterIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterIos.h; sourceTree = "<group>"; };
-		B214823019271AE600AF41C6 /* PageScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PageScrollView.cpp; sourceTree = "<group>"; };
-		B214823119271AE600AF41C6 /* PageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageScrollView.h; sourceTree = "<group>"; };
 		B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "LuaCocos2d-mini.cpp"; sourceTree = "<group>"; };
 		B2CD85BD19307446006D9A6F /* LuaCocos2d-mini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LuaCocos2d-mini.h"; sourceTree = "<group>"; };
 		B2CD85BE19307446006D9A6F /* xxdefaultkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxdefaultkey.h; sourceTree = "<group>"; };
@@ -2936,8 +2933,6 @@
 				F4E883BF1770163800577406 /* CCTableView.h */,
 				F4E883C01770163800577406 /* CCTableViewCell.cpp */,
 				F4E883C11770163800577406 /* CCTableViewCell.h */,
-				B214823019271AE600AF41C6 /* PageScrollView.cpp */,
-				B214823119271AE600AF41C6 /* PageScrollView.h */,
 			);
 			path = CCScrollView;
 			sourceTree = "<group>";
@@ -3335,7 +3330,6 @@
 				F4255C97178EBC4200E1C3C1 /* CCLinkPosition.cpp in Sources */,
 				F42F313C17A272FA00A20E45 /* CCGraySprite.cpp in Sources */,
 				F459EB04180D04E1006CBDF1 /* cpRotaryLimitJoint.c in Sources */,
-				B214823219271AE600AF41C6 /* PageScrollView.cpp in Sources */,
 				F459EB88180D0513006CBDF1 /* serial.c in Sources */,
 				F459EA72180D04D8006CBDF1 /* CCNetwork.cpp in Sources */,
 			);

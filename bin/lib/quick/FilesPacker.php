@@ -209,6 +209,7 @@ class FilesPacker
             {
                 #$moduleName = substr(substr($path, $this->config['srcpathLength']), 0, -4);
                 $moduleName = substr($path, $this->config['srcpathLength']);
+				$oldName = $moduleName;
                 $moduleName = str_replace('.', SPLIT_CHAR, $moduleName);
                 $tempFilePath = $this->config['srcpath'] . DS . $moduleName . '.tmp';
                 $moduleName = str_replace(DS, '.', $moduleName);
@@ -222,13 +223,24 @@ class FilesPacker
                         $skip = true;
                         break;
                     }
+					
+					if($skip == false)
+					{	
+						if (substr($oldName, strlen($oldName) - strlen($exclude)) == $exclude)
+						{
+							unset($files[$key]);
+							$skip = true;
+							break;
+						}
+					}
                 }
 
-                if ($skip) continue;
+                //if ($skip) continue;
 
                 $bytesName = 'lua_m_' . strtolower(str_replace(array('.', '-'), '_', $moduleName));
 
                 $modules[$path] = array(
+					'skip' => $skip,
                     'moduleName' => $moduleName,
                     'tempFilePath' => $tempFilePath,
                     'bytesName' => $bytesName,
@@ -261,7 +273,7 @@ class FilesPacker
         foreach ($modules as $path => $module)
         {
             $bytes = file_get_contents($path);
-            if (!empty($key))
+            if (!$module['skip'] && !empty($key))
             {
                 $bytes = $sign . $xxtea->encrypt($bytes);
             }
@@ -296,8 +308,17 @@ class FilesPacker
         }
         foreach ($modules as $path => $module)
         {
-            #$zip->addFromString($this->config['prefix'] . str_replace(SPLIT_CHAR, '.', $module['moduleName']) , $bytes[$path]);
-            $zip->addFromString($this->config['prefix'] . str_replace(SPLIT_CHAR, '.', str_replace('.', DS, $module['moduleName'])) , $bytes[$path]);
+			$moduleName = $this->config['prefix'] . str_replace(SPLIT_CHAR, '.', str_replace('.', DS, $module['moduleName']));
+			if(!$module['skip'])
+			{
+				#$zip->addFromString($this->config['prefix'] . str_replace(SPLIT_CHAR, '.', $module['moduleName']) , $bytes[$path]);
+				$zip->addFromString($moduleName, $bytes[$path]);
+			}
+			else
+			{
+				$fileName = $this->config['output'] . DS . $moduleName;
+				file_put_contents($fileName, $bytes[$path]);
+			}
         }
         $zip->close();
 

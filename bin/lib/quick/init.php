@@ -1,6 +1,7 @@
 <?php
 
 define('DS', DIRECTORY_SEPARATOR);
+define('SPLIT_CHAR', '-');
 define('BIN_DIR', rtrim(dirname(dirname(__DIR__)), '/\\'));
 
 if (DS == '/')
