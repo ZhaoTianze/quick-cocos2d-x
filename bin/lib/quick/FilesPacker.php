@@ -217,6 +217,7 @@ class FilesPacker
 
                 foreach ($this->config['excludes'] as $key => $exclude)
                 {
+
                     if (substr($moduleName, 0, strlen($exclude)) == $exclude)
                     {
                         unset($files[$key]);
@@ -224,8 +225,10 @@ class FilesPacker
                         break;
                     }
 					
+
 					if($skip == false)
 					{	
+                        // printf("%s---->%s----->%s\n", $oldName, $exclude, substr($oldName, strlen($oldName) - strlen($exclude)));
 						if (substr($oldName, strlen($oldName) - strlen($exclude)) == $exclude)
 						{
 							unset($files[$key]);
@@ -272,6 +275,7 @@ class FilesPacker
         $modulesBytes = array();
         foreach ($modules as $path => $module)
         {
+            printf("  > get file %s\n",  $module['moduleName']);
             $bytes = file_get_contents($path);
             if (!$module['skip'] && !empty($key))
             {
@@ -308,6 +312,7 @@ class FilesPacker
         }
         foreach ($modules as $path => $module)
         {
+            printf(" createOutputZIP -> %s\n", $module['moduleName']);
 			$moduleName = $this->config['prefix'] . str_replace(SPLIT_CHAR, '.', str_replace('.', DS, $module['moduleName']));
 			if(!$module['skip'])
 			{
