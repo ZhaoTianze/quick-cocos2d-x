@@ -28,6 +28,7 @@
 		B28465C71918D532008CB968 /* CCTestFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B28465931918D532008CB968 /* CCTestFilter.cpp */; };
 		B28465C81918D532008CB968 /* CCFilteredSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B28465961918D532008CB968 /* CCFilteredSprite.cpp */; };
 		B28465C91918D532008CB968 /* ccFilterShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B28465B61918D532008CB968 /* ccFilterShaders.cpp */; };
+		B2A8366919E4ECB50063500A /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2A8366319E4ECB50063500A /* CCWebView.mm */; };
 		F411F3E1175CEAFC00EF549A /* libluajit2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F411F3E0175CEAFC00EF549A /* libluajit2.a */; };
 		F41D98F417F08B85007171D8 /* WebSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F41D98F217F08B85007171D8 /* WebSocket.cpp */; };
 		F41D98FC17F08B9E007171D8 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F41D98FB17F08B9E007171D8 /* libwebsockets.a */; };
@@ -419,6 +420,8 @@
 		B28465B51918D532008CB968 /* ccFilterShader_zoom_blur_frag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccFilterShader_zoom_blur_frag.h; sourceTree = "<group>"; };
 		B28465B61918D532008CB968 /* ccFilterShaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccFilterShaders.cpp; sourceTree = "<group>"; };
 		B28465B71918D532008CB968 /* ccFilterShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccFilterShaders.h; sourceTree = "<group>"; };
+		B2A8365D19E4ECB50063500A /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
+		B2A8366319E4ECB50063500A /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
 		F411F3DB175CEAFC00EF549A /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
 		F411F3DC175CEAFC00EF549A /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
 		F411F3DD175CEAFC00EF549A /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
@@ -1248,6 +1251,23 @@
 			path = shaders;
 			sourceTree = "<group>";
 		};
+		B2A8365A19E4ECB50063500A /* webview */ = {
+			isa = PBXGroup;
+			children = (
+				B2A8365D19E4ECB50063500A /* CCWebView.h */,
+				B2A8366219E4ECB50063500A /* mac */,
+			);
+			path = webview;
+			sourceTree = "<group>";
+		};
+		B2A8366219E4ECB50063500A /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				B2A8366319E4ECB50063500A /* CCWebView.mm */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
 		F411F3D9175CEAEA00EF549A /* luajit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1939,6 +1959,7 @@
 		F4DCACDF168C0F5900679DBE /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B2A8365A19E4ECB50063500A /* webview */,
 				B28465721918D532008CB968 /* filters */,
 				F477B8F3175740BF00260C19 /* AssetsManager */,
 				F490FB0D180D64B6000A9B1C /* CCArmature */,
@@ -2911,6 +2932,7 @@
 				F477B84B1757404200260C19 /* CCDirector.cpp in Sources */,
 				F477B84C1757404200260C19 /* ccFPSImages.c in Sources */,
 				F477B84D1757404200260C19 /* CCScheduler.cpp in Sources */,
+				B2A8366919E4ECB50063500A /* CCWebView.mm in Sources */,
 				F477B8581757404200260C19 /* cocos2d.cpp in Sources */,
 				F477B95D175740BF00260C19 /* AssetsManager.cpp in Sources */,
 				F477B982175740BF00260C19 /* CCEditBox.cpp in Sources */,

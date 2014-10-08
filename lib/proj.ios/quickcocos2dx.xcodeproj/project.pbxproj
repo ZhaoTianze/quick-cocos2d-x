@@ -28,6 +28,8 @@
 		49832215187FE2C000733BFB /* CZHelperFunc_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832213187FE2C000733BFB /* CZHelperFunc_luabinding.cpp */; };
 		49832219187FE2DF00733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832217187FE2DF00733BFB /* HelperFunc.cpp */; };
 		7F67276E18D6A04400CCEAEB /* GameCenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7F67276C18D6A04400CCEAEB /* GameCenter.mm */; };
+		B2A8367919E4ED860063500A /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2A8367119E4ED860063500A /* CCWebView.mm */; };
+		B2A8367A19E4ED860063500A /* CCWebView_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2A8367319E4ED860063500A /* CCWebView_iOS.mm */; };
 		B2CD85BF19307446006D9A6F /* LuaCocos2d-mini.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */; };
 		B2CD85D51930748B006D9A6F /* LuaEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85C11930748B006D9A6F /* LuaEventHandler.cpp */; };
 		B2CD85D61930748B006D9A6F /* luaopen_LuaProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CD85C61930748B006D9A6F /* luaopen_LuaProxy.cpp */; };
@@ -433,6 +435,10 @@
 		7F67276B18D6A04400CCEAEB /* GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenter.h; sourceTree = "<group>"; };
 		7F67276C18D6A04400CCEAEB /* GameCenter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameCenter.mm; sourceTree = "<group>"; };
 		7F67276D18D6A04400CCEAEB /* GameCenterIos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterIos.h; sourceTree = "<group>"; };
+		B2A8366F19E4ED860063500A /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
+		B2A8367119E4ED860063500A /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
+		B2A8367219E4ED860063500A /* CCWebView_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView_iOS.h; sourceTree = "<group>"; };
+		B2A8367319E4ED860063500A /* CCWebView_iOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView_iOS.mm; sourceTree = "<group>"; };
 		B2CD85BC19307446006D9A6F /* LuaCocos2d-mini.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "LuaCocos2d-mini.cpp"; sourceTree = "<group>"; };
 		B2CD85BD19307446006D9A6F /* LuaCocos2d-mini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LuaCocos2d-mini.h"; sourceTree = "<group>"; };
 		B2CD85BE19307446006D9A6F /* xxdefaultkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxdefaultkey.h; sourceTree = "<group>"; };
@@ -1314,6 +1320,25 @@
 			path = GameCenter;
 			sourceTree = "<group>";
 		};
+		B2A8366C19E4ED860063500A /* webview */ = {
+			isa = PBXGroup;
+			children = (
+				B2A8366F19E4ED860063500A /* CCWebView.h */,
+				B2A8367019E4ED860063500A /* ios */,
+			);
+			path = webview;
+			sourceTree = "<group>";
+		};
+		B2A8367019E4ED860063500A /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				B2A8367119E4ED860063500A /* CCWebView.mm */,
+				B2A8367219E4ED860063500A /* CCWebView_iOS.h */,
+				B2A8367319E4ED860063500A /* CCWebView_iOS.mm */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		B2CD85C01930748B006D9A6F /* luaproxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -2066,6 +2091,7 @@
 		F45A2E11166B16DC00760194 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B2A8366C19E4ED860063500A /* webview */,
 				2EBAD8E61918BBDC00FF9BD6 /* filters */,
 				7F67276A18D6A04400CCEAEB /* GameCenter */,
 				F42825BB17575DD7001479DC /* AssetsManager */,
@@ -3024,6 +3050,7 @@
 				F4CB4B631810F24100EC1D9B /* CCSpriteFrameCacheHelper.cpp in Sources */,
 				F42824FD17575D88001479DC /* ccFPSImages.c in Sources */,
 				F42824FE17575D88001479DC /* CCScheduler.cpp in Sources */,
+				B2A8367A19E4ED860063500A /* CCWebView_iOS.mm in Sources */,
 				F428250917575D88001479DC /* cocos2d.cpp in Sources */,
 				F428259117575DA8001479DC /* CCEGLViewProtocol.cpp in Sources */,
 				F459EB10180D04E1006CBDF1 /* cpSpace.c in Sources */,
@@ -3122,6 +3149,7 @@
 				F4E882D2177015C400577406 /* vec3.c in Sources */,
 				F459EA70180D04D8006CBDF1 /* cocos2dx_extra_luabinding.cpp in Sources */,
 				F4CB4B5E1810F24100EC1D9B /* json_reader.cpp in Sources */,
+				B2A8367919E4ED860063500A /* CCWebView.mm in Sources */,
 				F459EB0F180D04E1006CBDF1 /* cpShape.c in Sources */,
 				F4E882D3177015C400577406 /* vec4.c in Sources */,
 				F4E882D4177015C400577406 /* CCKeypadDelegate.cpp in Sources */,

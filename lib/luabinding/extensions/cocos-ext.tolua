@@ -4,6 +4,7 @@ $#include "AssetsManager/AssetsManager.h"
 $#include "CCArmature/CCArmature.h"
 $#include "CCArmature/utils/CCArmatureDataManager.h"
 $#include "filters/cocos2dFilters.h"
+$#include "webview/CCWebView.h"
 
 $using namespace cocos2d::extension;
 
@@ -47,5 +48,7 @@ $pfile "extensions/filters/filters/CCMaskFilter.tolua"
 $pfile "extensions/filters/filters/CCRGBFilter.tolua"
 $pfile "extensions/filters/filters/CCSaturationFilter.tolua"
 $pfile "extensions/filters/filters/CCSharpenFilter.tolua"
+
+$pfile "extensions/webview/CCWebView.tolua"
 
 // $pfile "extensions/GameCenter/GameCenter.tolua"

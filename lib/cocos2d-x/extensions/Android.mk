@@ -94,8 +94,8 @@ ifndef $(QUICK_MINI_TARGET)
 		filters/filters/CCTestFilter.cpp \
 		filters/nodes/CCFilteredSprite.cpp \
 		filters/shaders/ccFilterShaders.cpp \
-        network/WebSocket.cpp
-
+        network/WebSocket.cpp \
+        webview/android/CCWebView.cpp 
 endif
 
 
@@ -132,7 +132,8 @@ ifndef $(QUICK_MINI_TARGET)
                                $(LOCAL_PATH)/CCArmature/external_tool/Json \
                                $(LOCAL_PATH)/CCArmature/external_tool/Json/lib_json \
                                $(LOCAL_PATH)/CCArmature/utils \
-                               $(LOCAL_PATH)/filters
+                               $(LOCAL_PATH)/filters \
+                               $(LOCAL_PATH)/webview
 
 endif
 
