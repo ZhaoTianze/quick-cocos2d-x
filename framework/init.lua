@@ -37,6 +37,7 @@ audio      = require(cc.PACKAGE_NAME .. ".audio")
 network    = require(cc.PACKAGE_NAME .. ".network")
 ui         = require(cc.PACKAGE_NAME .. ".ui")
 crypto     = require(cc.PACKAGE_NAME .. ".crypto")
+webview    = require(cc.PACKAGE_NAME .. ".webview")
 json       = require(cc.PACKAGE_NAME .. ".json")
 
 if device.platform == "android" then
