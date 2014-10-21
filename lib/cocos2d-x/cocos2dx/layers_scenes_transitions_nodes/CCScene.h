@@ -65,6 +65,9 @@ public:
     void addTouchableNode(CCNode *node);
     void removeTouchableNode(CCNode *node);
 
+    void setTouchDelay(float _duration);
+    void setTouchLock();
+    void setTouchUnlock();    
     // default implements are used to call script callback if exist
     virtual int ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     virtual int ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
@@ -77,6 +80,8 @@ public:
 protected:
     CCArray *m_touchableNodes;
     CCArray *m_touchTargets;
+    float m_delayTime = 0;
+    bool m_touchDelayLock = false;
 
     void sortAllTouchableNodes(CCArray *nodes);
 };
