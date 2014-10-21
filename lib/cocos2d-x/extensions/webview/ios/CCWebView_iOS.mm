@@ -24,26 +24,29 @@
         
         m_webview.backgroundColor = [UIColor clearColor];
         m_webview.opaque = NO;
-        
-        for (UIView *aView in [m_webview subviews])  
-        { 
-            if ([aView isKindOfClass:[UIScrollView class]])  
-            { 
-                UIScrollView* scView = (UIScrollView *)aView;
-                
-                //[(UIScrollView *)aView setShowsVerticalScrollIndicator:YES]; //右侧的滚动条 （水平的类似）
-                [scView setShowsHorizontalScrollIndicator:YES];
-                //scView.bounces = NO;
-                
-                for (UIView *shadowView in aView.subviews)  
-                {
-                    if ([shadowView isKindOfClass:[UIImageView class]]) 
-                    { 
-                        shadowView.hidden = NO;  //上下滚动出边界时的黑色的图片 也就是拖拽后的上下阴影
-                    } 
-                } 
-            } 
-        }  
+        [m_webview.scrollView setShowsVerticalScrollIndicator:YES];
+        [m_webview.scrollView setShowsHorizontalScrollIndicator:YES];
+        m_webview.scrollView.alwaysBounceVertical = NO;
+//        for (UIView *aView in [m_webview subviews])  
+//        { 
+//            if ([aView isKindOfClass:[UIScrollView class]])  
+//            { 
+//                UIScrollView* scView = (UIScrollView *)aView;
+//                
+//                [scView setShowsVerticalScrollIndicator:YES]; //右侧的滚动条 （水平的类似）
+//                [scView setShowsHorizontalScrollIndicator:YES];
+//                //scView.bounces = NO;
+//                scView.alwaysBounceVertical = NO;
+//                
+//                for (UIView *shadowView in aView.subviews)  
+//                {
+//                    if ([shadowView isKindOfClass:[UIImageView class]]) 
+//                    { 
+//                        shadowView.hidden = NO;  //上下滚动出边界时的黑色的图片 也就是拖拽后的上下阴影
+//                    } 
+//                } 
+//            }
+//        }  
     }
 }
 
