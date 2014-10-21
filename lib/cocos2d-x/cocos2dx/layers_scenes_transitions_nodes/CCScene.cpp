@@ -106,8 +106,27 @@ void CCScene::registerWithTouchDispatcher() {
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, getTouchPriority(), false);
 }
 
+void CCScene::setTouchDelay(float _duration) {
+    m_delayTime = _duration;
+}
+
+void CCScene::setTouchLock() {
+    if (m_delayTime <= 0) {
+        return;
+    }
+    m_touchDelayLock = true;
+    this->scheduleOnce(schedule_selector(CCScene::setTouchUnlock), m_delayTime);
+}
+
+void CCScene::setTouchUnlock() {
+    m_touchDelayLock = false;
+}
+
 int CCScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
+    if (m_touchDelayLock) {
+        return false;
+    }
     // remove all touch targets
     m_touchTargets->removeAllObjects();
 
@@ -201,6 +220,7 @@ void CCScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
         }
     }
     m_touchTargets->removeAllObjects();
+    this->setTouchLock();
 }
 
 void CCScene::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
