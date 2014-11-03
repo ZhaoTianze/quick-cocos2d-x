@@ -35,6 +35,8 @@ NS_CC_BEGIN
 CCScene::CCScene()
 : m_touchableNodes(NULL)
 , m_touchTargets(NULL)
+, m_delayTime(0)
+, m_touchDelayLock(false)
 {
     m_touchableNodes = CCArray::createWithCapacity(100);
     m_touchableNodes->retain();
