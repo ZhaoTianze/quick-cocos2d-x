@@ -80,8 +80,8 @@ public:
 protected:
     CCArray *m_touchableNodes;
     CCArray *m_touchTargets;
-    float m_delayTime = 0;
-    bool m_touchDelayLock = false;
+    float m_delayTime;
+    bool m_touchDelayLock;
 
     void sortAllTouchableNodes(CCArray *nodes);
 };
