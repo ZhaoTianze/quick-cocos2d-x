@@ -29,7 +29,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * SBJSONErrorDomain;
+extern NSString * XBJsonErrorDomain;
 
 
 enum {
@@ -52,7 +52,7 @@ enum {
 
  This class contains the common error-handling code.
  */
-@interface SBJsonBase : NSObject {
+@interface XBJsonBase : NSObject {
     NSMutableArray *errorTrace;
 }
 

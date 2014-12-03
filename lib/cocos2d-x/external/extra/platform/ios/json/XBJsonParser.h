@@ -28,14 +28,14 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SBJsonBase.h"
+#import "XBJsonBase.h"
 
 /**
   @brief Options for the parser class.
  
- This exists so the SBJSON facade can implement the options in the parser without having to re-declare them.
+ This exists so the XBJson facade can implement the options in the parser without having to re-declare them.
  */
-@protocol SBJsonParserOptions
+@protocol XBJsonParserOptions
 
 /**
  @brief The maximum recursing depth of the parser.
@@ -70,7 +70,7 @@
  as we can thus avoid any loss of precision. (JSON allows ridiculously large numbers.)
  
  */
-@interface SBJsonParser : SBJsonBase <SBJsonParserOptions> {
+@interface XBJsonParser : XBJsonBase <XBJsonParserOptions> {
     
 @private
     const char *c;
