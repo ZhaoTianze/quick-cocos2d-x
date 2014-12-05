@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 
-USING_NS_CC;
+NS_CC_BEGIN;
 
 class CCWebView : public CCObject
 {
@@ -46,5 +46,5 @@ private:
 	CCString* _activityName;
 
 };
-
+NS_CC_END
 #endif /* CCWEBVIEW_H */

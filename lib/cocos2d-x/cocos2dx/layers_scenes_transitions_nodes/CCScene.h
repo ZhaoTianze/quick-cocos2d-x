@@ -67,7 +67,7 @@ public:
 
     void setTouchDelay(float _duration);
     void setTouchLock();
-    void setTouchUnlock();    
+    void setTouchUnlock(float);    
     // default implements are used to call script callback if exist
     virtual int ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     virtual int ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
