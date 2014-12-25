@@ -170,6 +170,12 @@ CCTextureAtlas *CCSpriteFrameCacheHelper::getTextureAtlas(const char *displayNam
     return atlas;
 }
 
+void  CCSpriteFrameCacheHelper::removeTextureAtlasByName(const char *textureName)
+{
+    m_pDisplay2TextureAtlas->removeObjectForKey(textureName);
+    CCTextureCache::sharedTextureCache()->removeTextureForKey(textureName);
+}
+
 CCSpriteFrameCacheHelper::CCSpriteFrameCacheHelper()
 {
     m_pDisplay2TextureAtlas = new CCDictionary();

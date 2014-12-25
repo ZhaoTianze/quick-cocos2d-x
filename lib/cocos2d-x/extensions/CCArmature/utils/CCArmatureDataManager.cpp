@@ -195,4 +195,9 @@ void CCArmatureDataManager::removeAll()
     CCDataReaderHelper::clear();
 }
 
+void CCArmatureDataManager::removeArmatureTextureByName(const char *name)
+{
+    CCSpriteFrameCacheHelper::sharedSpriteFrameCacheHelper()->removeTextureAtlasByName(name);
+}
+
 NS_CC_EXT_END

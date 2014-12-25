@@ -10,7 +10,7 @@
 #import "CCWebView_iOS.h"
 
 static CCWebView_iOS* m_webViewiOS;
-
+NS_CC_BEGIN
 CCWebView* CCWebView::create()
 {
 	CCWebView* webview = new CCWebView();
@@ -76,3 +76,5 @@ const char* CCWebView::getActivityName()
 {
     return "";
 }
+
+NS_CC_END

@@ -52,7 +52,7 @@ public:
      */
     const char *getDisplayImagePath(const char *displayName);
     CCTextureAtlas *getTextureAtlas(const char *displayName);
-
+    void removeTextureAtlasByName(const char *textureName);
 private:
     CCSpriteFrameCacheHelper();
     ~CCSpriteFrameCacheHelper();

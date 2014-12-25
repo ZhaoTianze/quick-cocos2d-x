@@ -10,7 +10,7 @@
 #include <jni.h>
 #include "platform/android/jni/JniHelper.h"
 #include <android/log.h>
-
+NS_CC_BEGIN
 CCWebView* CCWebView::create()
 {
 	CCWebView* webview = new CCWebView();
@@ -181,3 +181,4 @@ const char* CCWebView::getActivityName()
 	return "";
 }
 
+NS_CC_END

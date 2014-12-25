@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Mon Oct 20 14:27:26 2014.
+** Generated automatically by tolua++-1.0.92 on Tue Dec 16 14:08:12 2014.
 */
 
 /****************************************************************************
@@ -61991,6 +61991,39 @@ static int tolua_Cocos2d_CCArmatureDataManager_removeAll00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: removeArmatureTextureByName of class  CCArmatureDataManager */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCArmatureDataManager_removeArmatureTextureByName00
+static int tolua_Cocos2d_CCArmatureDataManager_removeArmatureTextureByName00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmatureDataManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmatureDataManager* self = (CCArmatureDataManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* name = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'removeArmatureTextureByName'", NULL);
+#endif
+  {
+   self->removeArmatureTextureByName(name);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'removeArmatureTextureByName'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: create of class  CCArmature */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_CCArmature_create00
 static int tolua_Cocos2d_CCArmature_create00(lua_State* tolua_S)
@@ -68971,6 +69004,7 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_function(tolua_S,"addArmatureFileInfo",tolua_Cocos2d_CCArmatureDataManager_addArmatureFileInfo00);
    tolua_function(tolua_S,"addSpriteFrameFromFile",tolua_Cocos2d_CCArmatureDataManager_addSpriteFrameFromFile00);
    tolua_function(tolua_S,"removeAll",tolua_Cocos2d_CCArmatureDataManager_removeAll00);
+   tolua_function(tolua_S,"removeArmatureTextureByName",tolua_Cocos2d_CCArmatureDataManager_removeArmatureTextureByName00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"CCArmature","CCArmature","CCNode",NULL);
   tolua_beginmodule(tolua_S,"CCArmature");

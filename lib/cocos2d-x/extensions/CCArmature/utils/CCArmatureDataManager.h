@@ -121,8 +121,10 @@ public:
 	 *	@brief	Clear the data in the m_pArmarureDatas and m_pAnimationDatas, and set m_pArmarureDatas and m_pAnimationDatas to NULL
      */
     void removeAll();
-
-   
+    /**
+     *   @brief  清除对应的图片资源文件
+     */
+    void removeArmatureTextureByName(const char *name);
 private:
     /**
 	 *	@brief	save amature datas
