@@ -63,5 +63,12 @@ function webview.remove()
 end
 webview.removeWebView = webview.remove
 
+function webview.isShowing()
+	if _browser then
+		return true
+	end
+	return false
+end
+
 return webview
 

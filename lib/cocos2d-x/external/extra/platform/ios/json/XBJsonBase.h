@@ -27,44 +27,48 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "SBJsonBase.h"
-NSString * SBJSONErrorDomain = @"org.brautaset.JSON.ErrorDomain";
+#import <Foundation/Foundation.h>
+
+extern NSString * XBJSONErrorDomain;
 
 
-@implementation SBJsonBase
+enum {
+    EUNSUPPORTED = 1,
+    EPARSENUM,
+    EPARSE,
+    EFRAGMENT,
+    ECTRL,
+    EUNICODE,
+    EDEPTH,
+    EESCAPE,
+    ETRAILCOMMA,
+    ETRAILGARBAGE,
+    EEOF,
+    EINPUT
+};
 
-@synthesize errorTrace;
+/**
+ @brief common base class for parsing & writing
 
-- (void)dealloc {
-    [errorTrace release];
-    [super dealloc];
+ This class contains the common error-handling code.
+ */
+@interface XBJsonBase : NSObject {
+    NSMutableArray *errorTrace;
 }
 
-- (void)addErrorWithCode:(NSUInteger)code description:(NSString*)str {
-    NSDictionary *userInfo;
-    if (!errorTrace) {
-        errorTrace = [NSMutableArray new];
-        userInfo = [NSDictionary dictionaryWithObject:str forKey:NSLocalizedDescriptionKey];
-        
-    } else {
-        userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                    str, NSLocalizedDescriptionKey,
-                    [errorTrace lastObject], NSUnderlyingErrorKey,
-                    nil];
-    }
-    
-    NSError *error = [NSError errorWithDomain:SBJSONErrorDomain code:code userInfo:userInfo];
+/**
+ @brief Return an error trace, or nil if there was no errors.
+ 
+ Note that this method returns the trace of the last method that failed.
+ You need to check the return value of the call you're making to figure out
+ if the call actually failed, before you know call this method.
+ */
+ @property(copy,readonly) NSArray* errorTrace;
 
-    [self willChangeValueForKey:@"errorTrace"];
-    [errorTrace addObject:error];
-    [self didChangeValueForKey:@"errorTrace"];
-}
+/// @internal for use in subclasses to add errors to the stack trace
+- (void)addErrorWithCode:(NSUInteger)code description:(NSString*)str;
 
-- (void)clearErrorTrace {
-    [self willChangeValueForKey:@"errorTrace"];
-    [errorTrace release];
-    errorTrace = nil;
-    [self didChangeValueForKey:@"errorTrace"];
-}
+/// @internal for use in subclasess to clear the error before a new parsing attempt
+- (void)clearErrorTrace;
 
 @end

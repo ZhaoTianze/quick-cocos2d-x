@@ -1,7 +1,7 @@
 
 #import "platform/ios/CCStoreIOS.h"
 #import "platform/ios/CCStoreReceiptVerifyRequestIOS.h"
-#import "platform/ios/json/SBJSON.h"
+#import "platform/ios/json/XBJSON.h"
 
 #include "crypto/CCCrypto.h"
 #include <string>
@@ -309,7 +309,7 @@ static const char* const SANDBOX_RECEIPT_VERIFY_URL = "https://sandbox.itunes.ap
         [verifyData setObject:isSandbox_ ? @"true" : @"false" forKey:@"receipt-issandbox"];
     }
 
-    SBJsonWriter *writer = [[SBJsonWriter alloc] init];
+    XBJsonWriter *writer = [[XBJsonWriter alloc] init];
     NSString *postData = [writer stringWithObject:verifyData];
     [writer release];
 
@@ -341,7 +341,7 @@ static const char* const SANDBOX_RECEIPT_VERIFY_URL = "https://sandbox.itunes.ap
 
     // parser JSON string
     NSString* nsresponseString = [NSString stringWithCString:responseString.c_str() encoding:NSUTF8StringEncoding];
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    XBJsonParser *parser = [[XBJsonParser alloc] init];
     NSDictionary *jsonData = [parser objectWithString:nsresponseString];
     [parser release];
 

@@ -29,6 +29,10 @@
 		49832219187FE2DF00733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832217187FE2DF00733BFB /* HelperFunc.cpp */; };
 		B255BE541A4D784D00A01E5F /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE4C1A4D784D00A01E5F /* CCWebView.mm */; };
 		B255BE551A4D784D00A01E5F /* CCWebView_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE4E1A4D784D00A01E5F /* CCWebView_iOS.mm */; };
+		B255BE711A4D84B100A01E5F /* XBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6A1A4D84B100A01E5F /* XBJSON.m */; };
+		B255BE721A4D84B100A01E5F /* XBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6C1A4D84B100A01E5F /* XBJsonBase.m */; };
+		B255BE731A4D84B100A01E5F /* XBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */; };
+		B255BE741A4D84B100A01E5F /* XBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE701A4D84B100A01E5F /* XBJsonWriter.m */; };
 		B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC798F181BA55A001341D6 /* lsqlite3.c */; };
 		B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7991181BA55A001341D6 /* sqlite3.c */; };
 		DA56D2FE1A3819B3007350D6 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F42825B317575DBE001479DC /* libcurl.a */; };
@@ -556,6 +560,14 @@
 		B255BE4C1A4D784D00A01E5F /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
 		B255BE4D1A4D784D00A01E5F /* CCWebView_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView_iOS.h; sourceTree = "<group>"; };
 		B255BE4E1A4D784D00A01E5F /* CCWebView_iOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView_iOS.mm; sourceTree = "<group>"; };
+		B255BE691A4D84B100A01E5F /* XBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBJSON.h; sourceTree = "<group>"; };
+		B255BE6A1A4D84B100A01E5F /* XBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJSON.m; sourceTree = "<group>"; };
+		B255BE6B1A4D84B100A01E5F /* XBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBJsonBase.h; sourceTree = "<group>"; };
+		B255BE6C1A4D84B100A01E5F /* XBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonBase.m; sourceTree = "<group>"; };
+		B255BE6D1A4D84B100A01E5F /* XBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBJsonParser.h; sourceTree = "<group>"; };
+		B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonParser.m; sourceTree = "<group>"; };
+		B255BE6F1A4D84B100A01E5F /* XBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBJsonWriter.h; sourceTree = "<group>"; };
+		B255BE701A4D84B100A01E5F /* XBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonWriter.m; sourceTree = "<group>"; };
 		B2DC798F181BA55A001341D6 /* lsqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsqlite3.c; sourceTree = "<group>"; };
 		B2DC7990181BA55A001341D6 /* lsqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lsqlite3.h; sourceTree = "<group>"; };
 		B2DC7991181BA55A001341D6 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -2094,6 +2106,14 @@
 		F459EA26180D04D8006CBDF1 /* json */ = {
 			isa = PBXGroup;
 			children = (
+				B255BE691A4D84B100A01E5F /* XBJSON.h */,
+				B255BE6A1A4D84B100A01E5F /* XBJSON.m */,
+				B255BE6B1A4D84B100A01E5F /* XBJsonBase.h */,
+				B255BE6C1A4D84B100A01E5F /* XBJsonBase.m */,
+				B255BE6D1A4D84B100A01E5F /* XBJsonParser.h */,
+				B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */,
+				B255BE6F1A4D84B100A01E5F /* XBJsonWriter.h */,
+				B255BE701A4D84B100A01E5F /* XBJsonWriter.m */,
 				F459EA27180D04D8006CBDF1 /* SBJSON.h */,
 				F459EA28180D04D8006CBDF1 /* SBJSON.m */,
 				F459EA29180D04D8006CBDF1 /* SBJsonBase.h */,
@@ -3949,6 +3969,7 @@
 				F4FDD0831A1DF75200DD4C0B /* liolib.c in Sources */,
 				F42824FA17575D88001479DC /* CCCamera.cpp in Sources */,
 				E5C463521987A250001192EA /* dbtinyxml2.cpp in Sources */,
+				B255BE731A4D84B100A01E5F /* XBJsonParser.m in Sources */,
 				F42824FB17575D88001479DC /* CCConfiguration.cpp in Sources */,
 				F459EAFD180D04E1006CBDF1 /* cpDampedRotarySpring.c in Sources */,
 				F42824FC17575D88001479DC /* CCDirector.cpp in Sources */,
@@ -4173,6 +4194,7 @@
 				F4D26E8C196321AE0087295D /* CCArmatureAnimation.cpp in Sources */,
 				B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */,
 				F4D26EB1196321AE0087295D /* UILabel.cpp in Sources */,
+				B255BE741A4D84B100A01E5F /* XBJsonWriter.m in Sources */,
 				F459EB79180D0513006CBDF1 /* fpconv.c in Sources */,
 				F4E882FE177015C400577406 /* TGAlib.cpp in Sources */,
 				F412728E19F75A59005E6CD0 /* LuaCocos2dDragonBones.cpp in Sources */,
@@ -4296,6 +4318,7 @@
 				2EBAD9321918BBDC00FF9BD6 /* CCGammaFilter.cpp in Sources */,
 				F4E8838C1770162500577406 /* CCLabelBMFontLoader.cpp in Sources */,
 				F4D26E88196321AE0087295D /* CCActionTimelineCache.cpp in Sources */,
+				B255BE721A4D84B100A01E5F /* XBJsonBase.m in Sources */,
 				F4E8838D1770162500577406 /* CCLabelTTFLoader.cpp in Sources */,
 				F459EB02180D04E1006CBDF1 /* cpPivotJoint.c in Sources */,
 				F4E8838E1770162500577406 /* CCLayerColorLoader.cpp in Sources */,
@@ -4310,6 +4333,7 @@
 				F4FDD0911A1DF75200DD4C0B /* ltm.c in Sources */,
 				F4117FDC1963320B006CF7F5 /* ActionManager.cpp in Sources */,
 				F4E883911770162500577406 /* CCMenuItemImageLoader.cpp in Sources */,
+				B255BE711A4D84B100A01E5F /* XBJSON.m in Sources */,
 				F4E883921770162500577406 /* CCMenuItemLoader.cpp in Sources */,
 				F459EA80180D04D8006CBDF1 /* SBJsonWriter.m in Sources */,
 				F4E883931770162500577406 /* CCNode+CCBRelativePositioning.cpp in Sources */,
