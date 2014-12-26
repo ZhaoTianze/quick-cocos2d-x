@@ -60,6 +60,22 @@ class FilesPacker
             $this->config['excludes'] = array();
         }
 
+        if (!empty($this->config['ignores']))
+        {
+            $ignores = explode(',', $this->config['ignores']);
+            array_walk($ignores, function($value) {
+                return trim($value);
+            });
+            $this->config['ignores'] = array_filter($ignores, function($value) {
+                return !empty($value);
+            });
+        }
+        else
+        {
+            $this->config['ignores'] = array();
+        }
+
+
         if ($this->config['pack'] != self::COMPILE_ZIP
             && $this->config['pack'] != self::COMPILE_FILES
             && $this->config['pack'] != self::COMPILE_C
@@ -176,11 +192,11 @@ class FilesPacker
 
         if (!$this->createOutput($modules, $bytes))
         {
-            $this->cleanupTempFiles($modules);
+            // $this->cleanupTempFiles($modules);
             return false;
         }
 
-        $this->cleanupTempFiles($modules);
+        // $this->cleanupTempFiles($modules);
         return true;
     }
 
@@ -195,6 +211,34 @@ class FilesPacker
         return $files;
     }
 
+    protected function skipCheck($path, array $skips)
+    {
+        $tokens = explode(DS, $path);
+        
+        $name = $tokens[count($tokens) - 1];
+        
+        foreach ($skips as $key => $skip)
+        {
+            if (strlen($name) > strlen($skip) && substr($name, strlen($name) - strlen($skip)) == $skip)
+            {
+                return true;
+            }
+            
+            foreach ($tokens as $key => $token)
+            {
+                if($skip == $token)
+                {
+                    return true;
+                }
+            }
+            
+        }
+        
+        return false;
+        
+    }
+
+
     protected function prepareForPack(array $files)
     {
         $modules = array();
@@ -206,34 +250,54 @@ class FilesPacker
             #    unset($files[$key]);
             #}
            # else
-            {
+            // {
                 #$moduleName = substr(substr($path, $this->config['srcpathLength']), 0, -4);
                 $moduleName = substr($path, $this->config['srcpathLength']);
-                $moduleName = str_replace('.', SPLIT_CHAR, $moduleName);
+                // $oldName = $moduleName;
+                // $moduleName = str_replace('.', SPLIT_CHAR, $moduleName);
                 $tempFilePath = $this->config['srcpath'] . DS . $moduleName . '.tmp';
-                $moduleName = str_replace(DS, '.', $moduleName);
-                $skip = false;
+                // $moduleName = str_replace(DS, '.', $moduleName);
+                // $skip = false;
 
-                foreach ($this->config['excludes'] as $key => $exclude)
+                // foreach ($this->config['excludes'] as $key => $exclude)
+                // {
+                //     if (substr($moduleName, 0, strlen($exclude)) == $exclude)
+                //     {
+                //         unset($files[$key]);
+                //         $skip = true;
+                //         break;
+                //     }
+                // }
+
+                // if ($skip == false) {
+                //     if (substr($oldName, strlen($oldName) - strlen($exclude)) == $exclude) {
+                //         unset($files[$key]);
+                //         $skip = true;
+                //         break;
+                //     }
+                // }
+                // if ($skip) continue;
+
+                $ignore = $this->skipCheck($path, $this->config['ignores']);
+                
+                if($ignore)
                 {
-                    if (substr($moduleName, 0, strlen($exclude)) == $exclude)
-                    {
-                        unset($files[$key]);
-                        $skip = true;
-                        break;
-                    }
+                    printf("%s => ignore\n", $moduleName);
                 }
+                
+                if ($ignore) continue;
+                
+                $skip = $this->skipCheck($path, $this->config['excludes']);
 
-                if ($skip) continue;
 
                 $bytesName = 'lua_m_' . strtolower(str_replace(array('.', '-'), '_', $moduleName));
 
                 $modules[$path] = array(
+                    'skip' => $skip,
                     'moduleName' => $moduleName,
                     'tempFilePath' => $tempFilePath,
                     'bytesName' => $bytesName,
                 );
-            }
         }
         return $modules;
     }
@@ -261,7 +325,8 @@ class FilesPacker
         foreach ($modules as $path => $module)
         {
             $bytes = file_get_contents($path);
-            if (!empty($key))
+            // if (!empty($key))
+            if (!$module['skip'] && !empty($key))
             {
                 $bytes = $sign . $xxtea->encrypt($bytes);
             }
@@ -271,10 +336,19 @@ class FilesPacker
                 print("\n");
                 return false;
             }
-            $modulesBytes[$path] = $bytes;
+            // $modulesBytes[$path] = $bytes;
             if (!$this->config['quiet'])
             {
-                printf("  > get bytes [% 3d KB] %s\n", ceil(strlen($bytes) / 1024), $module['moduleName']);
+                // printf("  > get bytes [% 3d KB] %s\n", ceil(strlen($bytes) / 1024), $module['moduleName']);
+                if(! $module['skip'])
+                {
+                    printf("%s => % 3d KB(yes)\n", $module['moduleName'], ceil(strlen($bytes) / 1024));
+                }
+                else
+                {
+                    printf("%s => % 3d KB(not)\n", $module['moduleName'], ceil(strlen($bytes) / 1024));
+                }
+
             }
         }
         return $modulesBytes;
@@ -297,7 +371,17 @@ class FilesPacker
         foreach ($modules as $path => $module)
         {
             #$zip->addFromString($this->config['prefix'] . str_replace(SPLIT_CHAR, '.', $module['moduleName']) , $bytes[$path]);
-            $zip->addFromString($this->config['prefix'] . str_replace(SPLIT_CHAR, '.', str_replace('.', DS, $module['moduleName'])) , $bytes[$path]);
+            $moduleName = $this->config['prefix'] . $module['moduleName'];
+            if(!$module['skip'])
+            {
+                #$zip->addFromString($this->config['prefix'] . str_replace(SPLIT_CHAR, '.', $module['moduleName']) , $bytes[$path]);
+                $zip->addFromString($moduleName, $bytes[$path]);
+            }
+            else
+            {
+                $fileName = $this->config['output'] . DS . $moduleName;
+                file_put_contents($fileName, $bytes[$path]);
+            }
         }
         $zip->close();
 
@@ -466,8 +550,9 @@ EOT;
     {
         foreach ($modules as $module)
         {
-            $destPath = $this->config['output'] . DS . str_replace(SPLIT_CHAR, '.', str_replace('.', DS, $this->config['prefix'] . $module['moduleName']));
-            @mkdir(pathinfo($destPath, PATHINFO_DIRNAME), 0777, true);
+            $destPath = $this->config['output'] . DS . $module['moduleName'];
+            $dir = substr($destPath, 0, strrpos($destPath, DS));
+            @mkdir($dir, 0777, true);
             rename($module['tempFilePath'], $destPath);
         }
 
