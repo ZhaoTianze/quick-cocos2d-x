@@ -27,6 +27,8 @@
 		2EBAD93D1918BBDC00FF9BD6 /* ccFilterShaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EBAD92A1918BBDC00FF9BD6 /* ccFilterShaders.cpp */; };
 		49832215187FE2C000733BFB /* CZHelperFunc_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832213187FE2C000733BFB /* CZHelperFunc_luabinding.cpp */; };
 		49832219187FE2DF00733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49832217187FE2DF00733BFB /* HelperFunc.cpp */; };
+		B255BE541A4D784D00A01E5F /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE4C1A4D784D00A01E5F /* CCWebView.mm */; };
+		B255BE551A4D784D00A01E5F /* CCWebView_iOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE4E1A4D784D00A01E5F /* CCWebView_iOS.mm */; };
 		B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC798F181BA55A001341D6 /* lsqlite3.c */; };
 		B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7991181BA55A001341D6 /* sqlite3.c */; };
 		DA56D2FE1A3819B3007350D6 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F42825B317575DBE001479DC /* libcurl.a */; };
@@ -550,6 +552,10 @@
 		49832214187FE2C000733BFB /* CZHelperFunc_luabinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHelperFunc_luabinding.h; sourceTree = "<group>"; };
 		49832217187FE2DF00733BFB /* HelperFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelperFunc.cpp; sourceTree = "<group>"; };
 		49832218187FE2DF00733BFB /* HelperFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunc.h; sourceTree = "<group>"; };
+		B255BE4A1A4D784D00A01E5F /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
+		B255BE4C1A4D784D00A01E5F /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
+		B255BE4D1A4D784D00A01E5F /* CCWebView_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView_iOS.h; sourceTree = "<group>"; };
+		B255BE4E1A4D784D00A01E5F /* CCWebView_iOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView_iOS.mm; sourceTree = "<group>"; };
 		B2DC798F181BA55A001341D6 /* lsqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsqlite3.c; sourceTree = "<group>"; };
 		B2DC7990181BA55A001341D6 /* lsqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lsqlite3.h; sourceTree = "<group>"; };
 		B2DC7991181BA55A001341D6 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -1659,6 +1665,25 @@
 			path = apptools;
 			sourceTree = "<group>";
 		};
+		B255BE471A4D784D00A01E5F /* webview */ = {
+			isa = PBXGroup;
+			children = (
+				B255BE4A1A4D784D00A01E5F /* CCWebView.h */,
+				B255BE4B1A4D784D00A01E5F /* ios */,
+			);
+			path = webview;
+			sourceTree = "<group>";
+		};
+		B255BE4B1A4D784D00A01E5F /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				B255BE4C1A4D784D00A01E5F /* CCWebView.mm */,
+				B255BE4D1A4D784D00A01E5F /* CCWebView_iOS.h */,
+				B255BE4E1A4D784D00A01E5F /* CCWebView_iOS.mm */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		B2DC798E181BA55A001341D6 /* lsqlite3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2538,6 +2563,7 @@
 		F45A2E11166B16DC00760194 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B255BE471A4D784D00A01E5F /* webview */,
 				E5C462EC1987A24F001192EA /* DragonBones */,
 				F42825BB17575DD7001479DC /* AssetsManager */,
 				F4E883441770162500577406 /* CCBReader */,
@@ -3977,6 +4003,7 @@
 				F459EB7F180D0513006CBDF1 /* auxiliar.c in Sources */,
 				F4E882AD177015C400577406 /* CCActionInterval.cpp in Sources */,
 				F4D26EC5196321AE0087295D /* PageViewReader.cpp in Sources */,
+				B255BE551A4D784D00A01E5F /* CCWebView_iOS.mm in Sources */,
 				E5C463471987A250001192EA /* Armature.cpp in Sources */,
 				F4E882AE177015C400577406 /* CCActionManager.cpp in Sources */,
 				F4E882AF177015C400577406 /* CCActionPageTurn3D.cpp in Sources */,
@@ -4249,6 +4276,7 @@
 				F4D26EAC196321AE0087295D /* UIPageView.cpp in Sources */,
 				B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */,
 				F4FDD07E1A1DF75200DD4C0B /* ldo.c in Sources */,
+				B255BE541A4D784D00A01E5F /* CCWebView.mm in Sources */,
 				F4E883851770162500577406 /* CCBReader.cpp in Sources */,
 				F4E883861770162500577406 /* CCBSequence.cpp in Sources */,
 				F4FDD0961A1DF75200DD4C0B /* lzio.c in Sources */,

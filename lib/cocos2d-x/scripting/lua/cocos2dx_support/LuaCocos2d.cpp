@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Fri Dec 26 18:26:08 2014.
+** Generated automatically by tolua++-1.0.92 on Fri Dec 26 19:07:17 2014.
 */
 
 /****************************************************************************
@@ -44,6 +44,7 @@ using namespace CocosDenshion;
 
 #include "LuaCocos2d.h"
 #include "cocos-ext.h"
+#include "webView/CCWebView.h"
 using namespace cocos2d::extension;
 using namespace std;
 
@@ -74,6 +75,13 @@ static int tolua_collect_CCAtlasNode (lua_State* tolua_S)
 static int tolua_collect_CCParticleSystemQuad (lua_State* tolua_S)
 {
  CCParticleSystemQuad* self = (CCParticleSystemQuad*) tolua_tousertype(tolua_S,1,0);
+    Mtolua_delete(self);
+    return 0;
+}
+
+static int tolua_collect_CCWebView (lua_State* tolua_S)
+{
+ CCWebView* self = (CCWebView*) tolua_tousertype(tolua_S,1,0);
     Mtolua_delete(self);
     return 0;
 }
@@ -586,6 +594,8 @@ static void tolua_reg_types (lua_State* tolua_S)
  toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCBezierTo)), "CCBezierTo");
  tolua_usertype(tolua_S,"CCDeccelAmplitude");
  toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCDeccelAmplitude)), "CCDeccelAmplitude");
+ tolua_usertype(tolua_S,"CCEaseInOut");
+ toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCEaseInOut)), "CCEaseInOut");
  tolua_usertype(tolua_S,"CCTableView");
  toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCTableView)), "CCTableView");
  tolua_usertype(tolua_S,"CCTableViewCell");
@@ -790,8 +800,8 @@ static void tolua_reg_types (lua_State* tolua_S)
  toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCShatteredTiles3D)), "CCShatteredTiles3D");
  tolua_usertype(tolua_S,"CCEaseElasticInOut");
  toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCEaseElasticInOut)), "CCEaseElasticInOut");
- tolua_usertype(tolua_S,"CCEaseInOut");
- toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCEaseInOut)), "CCEaseInOut");
+ tolua_usertype(tolua_S,"CCWebView");
+ toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCWebView)), "CCWebView");
  tolua_usertype(tolua_S,"CCEaseBounceOut");
  toluafix_add_type_mapping(CLASS_HASH_CODE(typeid(CCEaseBounceOut)), "CCEaseBounceOut");
  tolua_usertype(tolua_S,"CCAnimationFrame");
@@ -56940,6 +56950,365 @@ static int tolua_Cocos2d_CCTableView_unregisterAllScriptHandler00(lua_State* tol
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: create of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_create00
+static int tolua_Cocos2d_CCWebView_create00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   CCWebView* tolua_ret = (CCWebView*)  CCWebView::create();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCWebView");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'create'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: create of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_create01
+static int tolua_Cocos2d_CCWebView_create01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  const char* activityName = ((const char*)  tolua_tostring(tolua_S,2,0));
+  {
+   CCWebView* tolua_ret = (CCWebView*)  CCWebView::create(activityName);
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCWebView");
+  }
+ }
+ return 1;
+tolua_lerror:
+ return tolua_Cocos2d_CCWebView_create00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: new of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_new00
+static int tolua_Cocos2d_CCWebView_new00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   CCWebView* tolua_ret = (CCWebView*)  Mtolua_new((CCWebView)());
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCWebView");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'new'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: new_local of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_new00_local
+static int tolua_Cocos2d_CCWebView_new00_local(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   CCWebView* tolua_ret = (CCWebView*)  Mtolua_new((CCWebView)());
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCWebView");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'new'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: new of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_new01
+static int tolua_Cocos2d_CCWebView_new01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  const char* activityName = ((const char*)  tolua_tostring(tolua_S,2,0));
+  {
+   CCWebView* tolua_ret = (CCWebView*)  Mtolua_new((CCWebView)(activityName));
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCWebView");
+  }
+ }
+ return 1;
+tolua_lerror:
+ return tolua_Cocos2d_CCWebView_new00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: new_local of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_new01_local
+static int tolua_Cocos2d_CCWebView_new01_local(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  const char* activityName = ((const char*)  tolua_tostring(tolua_S,2,0));
+  {
+   CCWebView* tolua_ret = (CCWebView*)  Mtolua_new((CCWebView)(activityName));
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCWebView");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+  }
+ }
+ return 1;
+tolua_lerror:
+ return tolua_Cocos2d_CCWebView_new00_local(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: delete of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_delete00
+static int tolua_Cocos2d_CCWebView_delete00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCWebView* self = (CCWebView*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'delete'", NULL);
+#endif
+  Mtolua_delete(self);
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'delete'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: init of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_init00
+static int tolua_Cocos2d_CCWebView_init00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCWebView* self = (CCWebView*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'init'", NULL);
+#endif
+  {
+   bool tolua_ret = (bool)  self->init();
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'init'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: showWebView of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_showWebView00
+static int tolua_Cocos2d_CCWebView_showWebView00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,4,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,5,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,6,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,7,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCWebView* self = (CCWebView*)  tolua_tousertype(tolua_S,1,0);
+  const char* url = ((const char*)  tolua_tostring(tolua_S,2,0));
+  float x = ((float)  tolua_tonumber(tolua_S,3,0));
+  float y = ((float)  tolua_tonumber(tolua_S,4,0));
+  float width = ((float)  tolua_tonumber(tolua_S,5,0));
+  float height = ((float)  tolua_tonumber(tolua_S,6,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'showWebView'", NULL);
+#endif
+  {
+   self->showWebView(url,x,y,width,height);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'showWebView'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: updateURL of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_updateURL00
+static int tolua_Cocos2d_CCWebView_updateURL00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCWebView* self = (CCWebView*)  tolua_tousertype(tolua_S,1,0);
+  const char* url = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'updateURL'", NULL);
+#endif
+  {
+   self->updateURL(url);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'updateURL'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: removeWebView of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_removeWebView00
+static int tolua_Cocos2d_CCWebView_removeWebView00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCWebView* self = (CCWebView*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'removeWebView'", NULL);
+#endif
+  {
+   self->removeWebView();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'removeWebView'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getActivityName of class  CCWebView */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCWebView_getActivityName00
+static int tolua_Cocos2d_CCWebView_getActivityName00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCWebView",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCWebView* self = (CCWebView*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getActivityName'", NULL);
+#endif
+  {
+   const char* tolua_ret = (const char*)  self->getActivityName();
+   tolua_pushstring(tolua_S,(const char*)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getActivityName'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
 {
@@ -59724,6 +60093,27 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_constant(tolua_S,"kTableCellSizeAtIndex",CCTableView::kTableCellSizeAtIndex);
    tolua_constant(tolua_S,"kNumberOfCellsInTableView",CCTableView::kNumberOfCellsInTableView);
    tolua_function(tolua_S,"unregisterAllScriptHandler",tolua_Cocos2d_CCTableView_unregisterAllScriptHandler00);
+  tolua_endmodule(tolua_S);
+  #ifdef __cplusplus
+  tolua_cclass(tolua_S,"CCWebView","CCWebView","CCObject",tolua_collect_CCWebView);
+  #else
+  tolua_cclass(tolua_S,"CCWebView","CCWebView","CCObject",NULL);
+  #endif
+  tolua_beginmodule(tolua_S,"CCWebView");
+   tolua_function(tolua_S,"create",tolua_Cocos2d_CCWebView_create00);
+   tolua_function(tolua_S,"create",tolua_Cocos2d_CCWebView_create01);
+   tolua_function(tolua_S,"new",tolua_Cocos2d_CCWebView_new00);
+   tolua_function(tolua_S,"new_local",tolua_Cocos2d_CCWebView_new00_local);
+   tolua_function(tolua_S,".call",tolua_Cocos2d_CCWebView_new00_local);
+   tolua_function(tolua_S,"new",tolua_Cocos2d_CCWebView_new01);
+   tolua_function(tolua_S,"new_local",tolua_Cocos2d_CCWebView_new01_local);
+   tolua_function(tolua_S,".call",tolua_Cocos2d_CCWebView_new01_local);
+   tolua_function(tolua_S,"delete",tolua_Cocos2d_CCWebView_delete00);
+   tolua_function(tolua_S,"init",tolua_Cocos2d_CCWebView_init00);
+   tolua_function(tolua_S,"showWebView",tolua_Cocos2d_CCWebView_showWebView00);
+   tolua_function(tolua_S,"updateURL",tolua_Cocos2d_CCWebView_updateURL00);
+   tolua_function(tolua_S,"removeWebView",tolua_Cocos2d_CCWebView_removeWebView00);
+   tolua_function(tolua_S,"getActivityName",tolua_Cocos2d_CCWebView_getActivityName00);
   tolua_endmodule(tolua_S);
 
   { /* begin embedded lua code */

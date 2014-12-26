@@ -32,6 +32,7 @@
 		2EBA8474191B6AC500256D60 /* LuaCocoStudio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EBA8470191B6AC500256D60 /* LuaCocoStudio.cpp */; };
 		4983220E187FE0A900733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4983220C187FE0A900733BFB /* HelperFunc.cpp */; };
 		49832211187FE0BE00733BFB /* CZHelperFunc_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4983220F187FE0BE00733BFB /* CZHelperFunc_luabinding.cpp */; };
+		B255BE671A4D787200A01E5F /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE611A4D787200A01E5F /* CCWebView.mm */; };
 		E540B383198754880054B7F7 /* AnimationEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B32F198754870054B7F7 /* AnimationEvent.cpp */; };
 		E540B384198754880054B7F7 /* ArmatureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B331198754870054B7F7 /* ArmatureEvent.cpp */; };
 		E540B385198754880054B7F7 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B333198754870054B7F7 /* Event.cpp */; };
@@ -550,6 +551,8 @@
 		4983220D187FE0A900733BFB /* HelperFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelperFunc.h; sourceTree = "<group>"; };
 		4983220F187FE0BE00733BFB /* CZHelperFunc_luabinding.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CZHelperFunc_luabinding.cpp; sourceTree = "<group>"; };
 		49832210187FE0BE00733BFB /* CZHelperFunc_luabinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHelperFunc_luabinding.h; sourceTree = "<group>"; };
+		B255BE5B1A4D787200A01E5F /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
+		B255BE611A4D787200A01E5F /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
 		E540B32D198754870054B7F7 /* IDisplayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDisplayBridge.h; sourceTree = "<group>"; };
 		E540B32F198754870054B7F7 /* AnimationEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationEvent.cpp; sourceTree = "<group>"; };
 		E540B330198754870054B7F7 /* AnimationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEvent.h; sourceTree = "<group>"; };
@@ -1617,6 +1620,23 @@
 				4983220D187FE0A900733BFB /* HelperFunc.h */,
 			);
 			path = apptools;
+			sourceTree = "<group>";
+		};
+		B255BE581A4D787200A01E5F /* webview */ = {
+			isa = PBXGroup;
+			children = (
+				B255BE5B1A4D787200A01E5F /* CCWebView.h */,
+				B255BE601A4D787200A01E5F /* mac */,
+			);
+			path = webview;
+			sourceTree = "<group>";
+		};
+		B255BE601A4D787200A01E5F /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				B255BE611A4D787200A01E5F /* CCWebView.mm */,
+			);
+			path = mac;
 			sourceTree = "<group>";
 		};
 		E540B32B1987545F0054B7F7 /* DragonBones */ = {
@@ -2827,6 +2847,7 @@
 		F4DCACDF168C0F5900679DBE /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B255BE581A4D787200A01E5F /* webview */,
 				F477B8F3175740BF00260C19 /* AssetsManager */,
 				F4E880F517700E5E00577406 /* CCBReader */,
 				F4703CB81777F0D900A8A9E9 /* cocos-ext.h */,
@@ -4219,6 +4240,7 @@
 				F412724D19F75816005E6CD0 /* CCComController.cpp in Sources */,
 				F4E8817F17700E8A00577406 /* CCSorting.cpp in Sources */,
 				F4E8818017700E8A00577406 /* CCTableView.cpp in Sources */,
+				B255BE671A4D787200A01E5F /* CCWebView.mm in Sources */,
 				F4E8818117700E8A00577406 /* CCTableViewCell.cpp in Sources */,
 				F431528F180CF7E30046351C /* cpPivotJoint.c in Sources */,
 				F4CB87C3180D042F00D81CF3 /* OpenUDIDMac.m in Sources */,

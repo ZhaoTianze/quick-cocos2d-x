@@ -26,7 +26,8 @@ LOCAL_SRC_FILES := \
     GUI/CCScrollView/CCTableView.cpp \
     GUI/CCScrollView/CCTableViewCell.cpp \
     CCBReader/CCData.cpp \
-    network/WebSocket.cpp
+    network/WebSocket.cpp \
+    webview/android/CCWebView.cpp
 
 ifeq ($(CC_DRAGONBONES_ENABLED),1)
 LOCAL_SRC_FILES += \
@@ -229,7 +230,8 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH) \
                            $(LOCAL_PATH)/CCArmature/external_tool/Json/lib_json \
                            $(LOCAL_PATH)/CCArmature/utils \
                            $(LOCAL_PATH)/filters \
-                           $(LOCAL_PATH)/DragonBones
+                           $(LOCAL_PATH)/DragonBones \
+                           $(LOCAL_PATH)/webview
 
 
 LOCAL_C_INCLUDES = $(LOCAL_EXPORT_C_INCLUDES)
