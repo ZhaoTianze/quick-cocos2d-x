@@ -1,6 +1,6 @@
 /*
 ** Lua binding: CocoStudio
-** Generated automatically by tolua++-1.0.92 on Wed Oct 22 00:36:42 2014.
+** Generated automatically by tolua++-1.0.92 on Fri Dec 26 18:27:30 2014.
 */
 
 /****************************************************************************
@@ -1711,6 +1711,71 @@ static int tolua_CocoStudio_CCArmature_setParentBone00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setBlendFunc of class  CCArmature */
+#ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmature_setBlendFunc01
+static int tolua_CocoStudio_CCArmature_setBlendFunc01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmature",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"ccBlendFunc",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  CCArmature* self = (CCArmature*)  tolua_tousertype(tolua_S,1,0);
+  ccBlendFunc blendFunc = *((ccBlendFunc*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setBlendFunc'", NULL);
+#endif
+  {
+   self->setBlendFunc(blendFunc);
+  }
+ }
+ return 0;
+tolua_lerror:
+ return tolua_CocoStudio_CCArmature_setBlendFunc00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getBlendFunc of class  CCArmature */
+#ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmature_getBlendFunc01
+static int tolua_CocoStudio_CCArmature_getBlendFunc01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmature",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  CCArmature* self = (CCArmature*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getBlendFunc'", NULL);
+#endif
+  {
+   ccBlendFunc tolua_ret = (ccBlendFunc)  self->getBlendFunc();
+   {
+#ifdef __cplusplus
+    void* tolua_obj = Mtolua_new((ccBlendFunc)(tolua_ret));
+     tolua_pushusertype(tolua_S,tolua_obj,"ccBlendFunc");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#else
+    void* tolua_obj = tolua_copy(tolua_S,(void*)&tolua_ret,sizeof(ccBlendFunc));
+     tolua_pushusertype(tolua_S,tolua_obj,"ccBlendFunc");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#endif
+   }
+  }
+ }
+ return 1;
+tolua_lerror:
+ return tolua_CocoStudio_CCArmature_getBlendFunc00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getVersion of class  CCArmature */
 #ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmature_getVersion00
 static int tolua_CocoStudio_CCArmature_getVersion00(lua_State* tolua_S)
@@ -1803,6 +1868,70 @@ static int tolua_CocoStudio_CCArmature_getArmatureTransformDirty00(lua_State* to
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getArmatureTransformDirty'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: connectMovementEventSignal of class  CCArmature */
+#ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmature_connectMovementEventSignal00
+static int tolua_CocoStudio_CCArmature_connectMovementEventSignal00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmature",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmature* self = (CCArmature*)  tolua_tousertype(tolua_S,1,0);
+  int nHandler = ((int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'connectMovementEventSignal'", NULL);
+#endif
+  {
+   self->connectMovementEventSignal(nHandler);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'connectMovementEventSignal'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: disconnectMovementEventSignal of class  CCArmature */
+#ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmature_disconnectMovementEventSignal00
+static int tolua_CocoStudio_CCArmature_disconnectMovementEventSignal00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmature",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmature* self = (CCArmature*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'disconnectMovementEventSignal'", NULL);
+#endif
+  {
+   self->disconnectMovementEventSignal();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'disconnectMovementEventSignal'.",&tolua_err);
  return 0;
 #endif
 }
@@ -4746,6 +4875,74 @@ static int tolua_CocoStudio_CCArmatureDataManager_isAutoLoadSpriteFile00(lua_Sta
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'isAutoLoadSpriteFile'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getArmatureData of class  CCArmatureDataManager */
+#ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmatureDataManager_getArmatureData00
+static int tolua_CocoStudio_CCArmatureDataManager_getArmatureData00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmatureDataManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmatureDataManager* self = (CCArmatureDataManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* id = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getArmatureData'", NULL);
+#endif
+  {
+   CCArmatureData* tolua_ret = (CCArmatureData*)  self->getArmatureData(id);
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCArmatureData");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getArmatureData'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getAnimationData of class  CCArmatureDataManager */
+#ifndef TOLUA_DISABLE_tolua_CocoStudio_CCArmatureDataManager_getAnimationData00
+static int tolua_CocoStudio_CCArmatureDataManager_getAnimationData00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCArmatureDataManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCArmatureDataManager* self = (CCArmatureDataManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* id = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getAnimationData'", NULL);
+#endif
+  {
+   CCAnimationData* tolua_ret = (CCAnimationData*)  self->getAnimationData(id);
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCAnimationData");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getAnimationData'.",&tolua_err);
  return 0;
 #endif
 }
@@ -28569,9 +28766,13 @@ TOLUA_API int tolua_CocoStudio_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setTextureAtlas",tolua_CocoStudio_CCArmature_setTextureAtlas00);
    tolua_function(tolua_S,"getParentBone",tolua_CocoStudio_CCArmature_getParentBone00);
    tolua_function(tolua_S,"setParentBone",tolua_CocoStudio_CCArmature_setParentBone00);
+   tolua_function(tolua_S,"setBlendFunc",tolua_CocoStudio_CCArmature_setBlendFunc01);
+   tolua_function(tolua_S,"getBlendFunc",tolua_CocoStudio_CCArmature_getBlendFunc01);
    tolua_function(tolua_S,"getVersion",tolua_CocoStudio_CCArmature_getVersion00);
    tolua_function(tolua_S,"setVersion",tolua_CocoStudio_CCArmature_setVersion00);
    tolua_function(tolua_S,"getArmatureTransformDirty",tolua_CocoStudio_CCArmature_getArmatureTransformDirty00);
+   tolua_function(tolua_S,"connectMovementEventSignal",tolua_CocoStudio_CCArmature_connectMovementEventSignal00);
+   tolua_function(tolua_S,"disconnectMovementEventSignal",tolua_CocoStudio_CCArmature_disconnectMovementEventSignal00);
    tolua_variable(tolua_S,"__CCBlendProtocol__",tolua_get_CCArmature___CCBlendProtocol__,NULL);
   tolua_endmodule(tolua_S);
   #ifdef __cplusplus
@@ -28689,6 +28890,8 @@ TOLUA_API int tolua_CocoStudio_open (lua_State* tolua_S)
    tolua_function(tolua_S,"removeArmatureFileInfo",tolua_CocoStudio_CCArmatureDataManager_removeArmatureFileInfo00);
    tolua_function(tolua_S,"addSpriteFrameFromFile",tolua_CocoStudio_CCArmatureDataManager_addSpriteFrameFromFile00);
    tolua_function(tolua_S,"isAutoLoadSpriteFile",tolua_CocoStudio_CCArmatureDataManager_isAutoLoadSpriteFile00);
+   tolua_function(tolua_S,"getArmatureData",tolua_CocoStudio_CCArmatureDataManager_getArmatureData00);
+   tolua_function(tolua_S,"getAnimationData",tolua_CocoStudio_CCArmatureDataManager_getAnimationData00);
   tolua_endmodule(tolua_S);
   #ifdef __cplusplus
   tolua_cclass(tolua_S,"CCBatchNode","CCBatchNode","CCNode",tolua_collect_CCBatchNode);

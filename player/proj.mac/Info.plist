@@ -32,5 +32,10 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Mouser.ttf</string>
+		<string>JSuHun1.ttf</string>
+	</array>
 </dict>
 </plist>

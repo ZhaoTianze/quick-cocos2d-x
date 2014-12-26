@@ -57,8 +57,15 @@ class  CCArmature : public CCNode, public CCBlendProtocol
     virtual CCBone* getParentBone(void);
     virtual void setParentBone(CCBone* var);
 
+    void setBlendFunc(ccBlendFunc blendFunc);
+    ccBlendFunc getBlendFunc(void);
+
+
     virtual float getVersion(void) const;
     virtual void setVersion(float var);
 
     virtual bool getArmatureTransformDirty(void) const;
+
+    void connectMovementEventSignal(int nHandler);
+    void disconnectMovementEventSignal();
 };
