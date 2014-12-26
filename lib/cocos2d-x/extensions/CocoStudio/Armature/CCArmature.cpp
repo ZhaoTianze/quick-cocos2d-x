@@ -89,6 +89,7 @@ CCArmature::CCArmature()
     , m_pTopBoneList(NULL)
     , m_pAnimation(NULL)
     , m_pTextureAtlasDic(NULL)
+    , m_nScriptMovementHandler(0)
 {
 }
 
@@ -492,7 +493,8 @@ void CCArmature::draw()
 
                 CCTextureAtlas *textureAtlas = skin->getTextureAtlas();
                 ccBlendFunc func = bone->getBlendFunc();
-                bool blendDirty = func.src != m_sBlendFunc.src || func.dst != m_sBlendFunc.dst;
+                bool blendDirty = func.src != CC_BLEND_SRC || func.dst != CC_BLEND_DST;
+
                 if(m_pAtlas != textureAtlas || blendDirty)
                 {
                     if (m_pAtlas)

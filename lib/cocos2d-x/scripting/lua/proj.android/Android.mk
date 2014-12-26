@@ -20,12 +20,6 @@ LOCAL_SRC_FILES := ../cocos2dx_support/CCLuaEngine.cpp \
     ../tolua/tolua_to.c \
     ../cocos2dx_support/LuaCocos2d.cpp \
     ../cocos2dx_support/Lua_web_socket.cpp \
-    ../cocos2dx_support/CCBProxy.cpp \
-    ../cocos2dx_support/Lua_extensions_CCB.cpp \
-    ../cocos2dx_support/lua_cocos2dx_extensions_manual.cpp \
-    ../cocos2dx_support/lua_cocos2dx_cocostudio_manual.cpp \
-    ../cocos2dx_support/lua_cocos2dx_manual.cpp \
-    ../cocos2dx_support/LuaCocoStudio.cpp \
     ../lua_extensions/cjson/fpconv.c \
     ../lua_extensions/cjson/lua_cjson.c \
     ../lua_extensions/cjson/strbuf.c \
@@ -48,12 +42,74 @@ LOCAL_SRC_FILES := ../cocos2dx_support/CCLuaEngine.cpp \
     ../lua_extensions/socket/usocket.c \
     ../lua_extensions/filesystem/lfs.c \
     ../lua_extensions/lpack/lpack.c \
+    ../cocos2dx_support/lua_cocos2dx_manual.cpp \
+    ../lua_extensions/lua_extensions.c \
+    ../lua/lua-5.1.5/src/lapi.c \
+    ../lua/lua-5.1.5/src/lauxlib.c \
+    ../lua/lua-5.1.5/src/lbaselib.c \
+    ../lua/lua-5.1.5/src/lcode.c \
+    ../lua/lua-5.1.5/src/ldblib.c \
+    ../lua/lua-5.1.5/src/ldebug.c \
+    ../lua/lua-5.1.5/src/ldo.c \
+    ../lua/lua-5.1.5/src/ldump.c \
+    ../lua/lua-5.1.5/src/lfunc.c \
+    ../lua/lua-5.1.5/src/lgc.c \
+    ../lua/lua-5.1.5/src/linit.c \
+    ../lua/lua-5.1.5/src/liolib.c \
+    ../lua/lua-5.1.5/src/llex.c \
+    ../lua/lua-5.1.5/src/lmathlib.c \
+    ../lua/lua-5.1.5/src/lmem.c \
+    ../lua/lua-5.1.5/src/loadlib.c \
+    ../lua/lua-5.1.5/src/lobject.c \
+    ../lua/lua-5.1.5/src/lopcodes.c \
+    ../lua/lua-5.1.5/src/loslib.c \
+    ../lua/lua-5.1.5/src/lparser.c \
+    ../lua/lua-5.1.5/src/lstate.c \
+    ../lua/lua-5.1.5/src/lstring.c \
+    ../lua/lua-5.1.5/src/lstrlib.c \
+    ../lua/lua-5.1.5/src/ltable.c \
+    ../lua/lua-5.1.5/src/ltablib.c \
+    ../lua/lua-5.1.5/src/ltm.c \
+    ../lua/lua-5.1.5/src/lundump.c \
+    ../lua/lua-5.1.5/src/lvm.c \
+    ../lua/lua-5.1.5/src/lzio.c \
+    ../lua/lua-5.1.5/src/print.c
+
+ifeq ($(CC_CURL_ENABLED),1)
+LOCAL_SRC_FILES += \
+    ../cocos2dx_support/LuaCocos2dAssetsManager.cpp
+endif
+
+ifeq ($(CC_CCB_ENABLED),1)
+LOCAL_SRC_FILES += \
+    ../cocos2dx_support/CCBProxy.cpp \
+    ../cocos2dx_support/Lua_extensions_CCB.cpp
+endif
+
+ifeq ($(CC_CCSTUDIO_ENABLED),1)
+LOCAL_SRC_FILES += \
+    ../cocos2dx_support/lua_cocos2dx_extensions_manual.cpp \
+    ../cocos2dx_support/lua_cocos2dx_cocostudio_manual.cpp \
+    ../cocos2dx_support/LuaCocoStudio.cpp
+endif
+
+ifeq ($(CC_SQLITE_ENABLED),1)
+LOCAL_SRC_FILES += \
     ../lua_extensions/lsqlite3/sqlite3.c \
-    ../lua_extensions/lsqlite3/lsqlite3.c \
-    ../lua_extensions/lua_extensions.c
+    ../lua_extensions/lsqlite3/lsqlite3.c
+endif
 
+ifeq ($(CC_FILTERS_ENABLED),1)
+LOCAL_SRC_FILES += \
+    ../cocos2dx_support/LuaCocos2dFilters.cpp
+endif
 
-LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../luajit/include \
+ifeq ($(CC_DRAGONBONES_ENABLED),1)
+LOCAL_SRC_FILES += \
+    ../cocos2dx_support/LuaCocos2dDragonBones.cpp
+endif
+
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../lua/lua-5.1.5/src \
                            $(LOCAL_PATH)/../tolua \
                            $(LOCAL_PATH)/../cocos2dx_support \
                            $(LOCAL_PATH)/../cocos2dx_support/platform/android \
@@ -66,7 +122,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../luajit/include \
                            $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/lsqlite3
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/ \
-                    $(LOCAL_PATH)/../luajit/include \
+                    $(LOCAL_PATH)/../lua/lua-5.1.5/src \
                     $(LOCAL_PATH)/../tolua \
                     $(LOCAL_PATH)/../cocos2dx_support \
                     $(LOCAL_PATH)/../cocos2dx_support/platform/android \
@@ -86,15 +142,16 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/ \
                     $(LOCAL_PATH)/../../../extensions \
                     $(LOCAL_PATH)/../../../external
 
-LOCAL_WHOLE_STATIC_LIBRARIES := luajit_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_extension_static
-LOCAL_WHOLE_STATIC_LIBRARIES += cocos_curl_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_external_static
+
+ifeq ($(CC_CURL_ENABLED),1)
+LOCAL_WHOLE_STATIC_LIBRARIES += cocos_curl_static
+endif
 
 LOCAL_CFLAGS += -Wno-psabi -DCC_LUA_ENGINE_ENABLED=1 $(ANDROID_COCOS2D_BUILD_FLAGS)
 
 include $(BUILD_STATIC_LIBRARY)
 
-$(call import-module,scripting/lua/luajit)
 $(call import-module,extensions)
 $(call import-module,external)
