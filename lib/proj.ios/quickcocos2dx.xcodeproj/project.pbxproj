@@ -108,10 +108,6 @@
 		F459EA7A180D04D8006CBDF1 /* CCStoreIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = F459EA22180D04D8006CBDF1 /* CCStoreIOS.mm */; };
 		F459EA7B180D04D8006CBDF1 /* CCStorePaymentTransactionWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = F459EA23180D04D8006CBDF1 /* CCStorePaymentTransactionWrapper.mm */; };
 		F459EA7C180D04D8006CBDF1 /* CCStoreReceiptVerifyRequestIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = F459EA25180D04D8006CBDF1 /* CCStoreReceiptVerifyRequestIOS.mm */; };
-		F459EA7D180D04D8006CBDF1 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F459EA28180D04D8006CBDF1 /* SBJSON.m */; };
-		F459EA7E180D04D8006CBDF1 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F459EA2A180D04D8006CBDF1 /* SBJsonBase.m */; };
-		F459EA7F180D04D8006CBDF1 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F459EA2C180D04D8006CBDF1 /* SBJsonParser.m */; };
-		F459EA80180D04D8006CBDF1 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F459EA2E180D04D8006CBDF1 /* SBJsonWriter.m */; };
 		F459EA81180D04D8006CBDF1 /* OpenUDIDIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F459EA31180D04D8006CBDF1 /* OpenUDIDIOS.m */; };
 		F459EA82180D04D8006CBDF1 /* CCNetworkIOSMac.mm in Sources */ = {isa = PBXBuildFile; fileRef = F459EA33180D04D8006CBDF1 /* CCNetworkIOSMac.mm */; };
 		F459EA83180D04D8006CBDF1 /* ReachabilityIOSMac.m in Sources */ = {isa = PBXBuildFile; fileRef = F459EA35180D04D8006CBDF1 /* ReachabilityIOSMac.m */; };
@@ -754,14 +750,6 @@
 		F459EA23180D04D8006CBDF1 /* CCStorePaymentTransactionWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCStorePaymentTransactionWrapper.mm; sourceTree = "<group>"; };
 		F459EA24180D04D8006CBDF1 /* CCStoreReceiptVerifyRequestIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCStoreReceiptVerifyRequestIOS.h; sourceTree = "<group>"; };
 		F459EA25180D04D8006CBDF1 /* CCStoreReceiptVerifyRequestIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCStoreReceiptVerifyRequestIOS.mm; sourceTree = "<group>"; };
-		F459EA27180D04D8006CBDF1 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		F459EA28180D04D8006CBDF1 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		F459EA29180D04D8006CBDF1 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		F459EA2A180D04D8006CBDF1 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		F459EA2B180D04D8006CBDF1 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		F459EA2C180D04D8006CBDF1 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		F459EA2D180D04D8006CBDF1 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		F459EA2E180D04D8006CBDF1 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		F459EA30180D04D8006CBDF1 /* OpenUDIDIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDIDIOS.h; sourceTree = "<group>"; };
 		F459EA31180D04D8006CBDF1 /* OpenUDIDIOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDIDIOS.m; sourceTree = "<group>"; };
 		F459EA33180D04D8006CBDF1 /* CCNetworkIOSMac.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCNetworkIOSMac.mm; sourceTree = "<group>"; };
@@ -2114,14 +2102,6 @@
 				B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */,
 				B255BE6F1A4D84B100A01E5F /* XBJsonWriter.h */,
 				B255BE701A4D84B100A01E5F /* XBJsonWriter.m */,
-				F459EA27180D04D8006CBDF1 /* SBJSON.h */,
-				F459EA28180D04D8006CBDF1 /* SBJSON.m */,
-				F459EA29180D04D8006CBDF1 /* SBJsonBase.h */,
-				F459EA2A180D04D8006CBDF1 /* SBJsonBase.m */,
-				F459EA2B180D04D8006CBDF1 /* SBJsonParser.h */,
-				F459EA2C180D04D8006CBDF1 /* SBJsonParser.m */,
-				F459EA2D180D04D8006CBDF1 /* SBJsonWriter.h */,
-				F459EA2E180D04D8006CBDF1 /* SBJsonWriter.m */,
 			);
 			path = json;
 			sourceTree = "<group>";
@@ -3958,7 +3938,6 @@
 				F45A2E10166B16B100760194 /* tolua_to.c in Sources */,
 				F4D11006169FBED400305E28 /* CCLuaStack.cpp in Sources */,
 				F4D1100A169FBF7C00305E28 /* CCLuaValue.cpp in Sources */,
-				F459EA7D180D04D8006CBDF1 /* SBJSON.m in Sources */,
 				F40AFDCE16BD152900565A5E /* CCLuaBridge.cpp in Sources */,
 				F40AFDD916BD153500565A5E /* CCLuaObjcBridge.mm in Sources */,
 				F4FDD0811A1DF75200DD4C0B /* lgc.c in Sources */,
@@ -4224,7 +4203,6 @@
 				F4FDD08A1A1DF75200DD4C0B /* loslib.c in Sources */,
 				F4E88306177015C400577406 /* ZipUtils.cpp in Sources */,
 				F4E88307177015C400577406 /* CCIMEDispatcher.cpp in Sources */,
-				F459EA7E180D04D8006CBDF1 /* SBJsonBase.m in Sources */,
 				F459EB7C180D0513006CBDF1 /* lfs.c in Sources */,
 				F4E88308177015C400577406 /* CCTextFieldTTF.cpp in Sources */,
 				F4E88309177015C400577406 /* CCTexture2D.cpp in Sources */,
@@ -4335,7 +4313,6 @@
 				F4E883911770162500577406 /* CCMenuItemImageLoader.cpp in Sources */,
 				B255BE711A4D84B100A01E5F /* XBJSON.m in Sources */,
 				F4E883921770162500577406 /* CCMenuItemLoader.cpp in Sources */,
-				F459EA80180D04D8006CBDF1 /* SBJsonWriter.m in Sources */,
 				F4E883931770162500577406 /* CCNode+CCBRelativePositioning.cpp in Sources */,
 				F459EB87180D0513006CBDF1 /* select.c in Sources */,
 				F4E883941770162500577406 /* CCNodeLoader.cpp in Sources */,
@@ -4384,7 +4361,6 @@
 				F4E883D01770163800577406 /* CCTableView.cpp in Sources */,
 				F4E883D11770163800577406 /* CCTableViewCell.cpp in Sources */,
 				2EBAD92E1918BBDC00FF9BD6 /* CCContrastFilter.cpp in Sources */,
-				F459EA7F180D04D8006CBDF1 /* SBJsonParser.m in Sources */,
 				F42F313C17A272FA00A20E45 /* CCGraySprite.cpp in Sources */,
 				F459EB04180D04E1006CBDF1 /* cpRotaryLimitJoint.c in Sources */,
 				F459EB88180D0513006CBDF1 /* serial.c in Sources */,
