@@ -66,6 +66,6 @@ class  CCArmature : public CCNode, public CCBlendProtocol
 
     virtual bool getArmatureTransformDirty(void) const;
 
-    void connectMovementEventSignal(int nHandler);
+    void connectMovementEventSignal(LUA_FUNCTION nHandler);
     void disconnectMovementEventSignal();
 };
