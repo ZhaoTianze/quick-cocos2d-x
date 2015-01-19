@@ -39,9 +39,10 @@ function ModelBase:setProperties(properties)
         local propname = field .. "_"
 
         local val = properties[field]
-        if val ~= nil then
-            if typ == "number" then val = tonumber(val) end
-            assert(type(val) == typ, string.format("%s:setProperties() - type mismatch, %s expected %s, actual is %s", self.class.__cname, field, typ, type(val)))
+        if val ~= nil and typ == "number" then val = tonumber(val) end
+        if val ~= nil and typ == "string" then val = tostring(val) end
+        if val ~= nil then   
+            assert(type(val) == typ, string.format("%s:setProperties() - type mismatch, %s expected %s, actual is %s_%s", self.class.__cname, field, typ, type(val),tostring(val)))
             self[propname] = val
         elseif self[propname] == nil and def ~= nil then
             if type(def) == "table" then
