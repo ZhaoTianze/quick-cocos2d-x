@@ -191,3 +191,10 @@ function Node:setCascadeOpacityEnabledRecursively(enabled)
         end
     end
 end
+
+function Node:removeSelf(cleanup)
+    if not tolua.isnull(self) then
+        if cleanup ~= false then cleanup = true end
+        self:removeFromParentAndCleanup(cleanup)
+    end
+end
