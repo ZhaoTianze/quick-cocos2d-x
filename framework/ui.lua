@@ -511,14 +511,15 @@ end
 function ui.newTTFLabelWithOutline(params)
     assert(type(params) == "table",
            "[framework.ui] newTTFLabelWithShadow() invalid params")
-    local outlineColor = params.outlineColor or display.COLOR_BLACK
-    local x, y         = params.x, params.y
-    local outlineWidth = params.outlineWidth or 1
-    local opacity = params.outlineOpacity or 255
     local g = display.newNode()
-    params.x, params.y = 0, 0
+    g:setCascadeOpacityEnabled(true)
     g.label = ui.newTTFLabel(params)
+    g.label:setPosition(ccp(0, 0))
     g:addChild(g.label,1)
+    local color = params.color or display.COLOR_WHITE
+    local outlineColor = params.outlineColor or ccc3(46, 28, 18)
+    local outlineWidth = params.outlineWidth or 1
+    local opacity = params.opacity or 255
 
     local function createStroke_(o)
         if g.rt then
@@ -533,6 +534,10 @@ function ui.newTTFLabelWithOutline(params)
     function g:setString(text)
         g.label:setString(text)
         createStroke_()
+    end
+
+    function g:getString()
+        return g.label:getString()
     end
 
     function g:getContentSize()
@@ -554,8 +559,13 @@ function ui.newTTFLabelWithOutline(params)
         createStroke_()
     end
 
-    if x and y then
-        g:setPosition(x, y)
+    function g:setVisible(v)
+        g.label:setVisible(v)
+        createStroke_()
+    end
+
+    if params.x or params.y then
+        g:setPosition(params.x or 0, params.y or 0)
     end
 
     return g
@@ -577,13 +587,14 @@ function ui.createOutline(node,outlineWidth,color,opacity,src,dst)
     local w = node:getTexture():getContentSize().width + outlineWidth * 2
     local h = node:getTexture():getContentSize().height + outlineWidth * 2
     local rt = CCRenderTexture:create(w, h)
+    rt:setCascadeOpacityEnabled(true)
     -- 记录原始位置
     local originX, originY = node:getPosition()
     local originColorR = 255
     local originColorG = 255
     local originColorB = 255
-    if node.getColor then
-         -- 记录原始颜色RGB信息
+    if node.getColor and node.__cname~= "CCSpriteExtend" then
+        -- 记录原始颜色RGB信息
         originColorR = node:getColor().r
         originColorG = node:getColor().g
         originColorB = node:getColor().b
@@ -598,12 +609,12 @@ function ui.createOutline(node,outlineWidth,color,opacity,src,dst)
     node:setColor(color)
     node:setOpacity(opacity)
     node:setVisible(true)
-    -- 设置新的混合模式
-    local blendFuc = ccBlendFunc:new()
-    blendFuc.src = src or GL_SRC_ALPHA
-    blendFuc.dst = dst or GL_ONE
-    -- blendFuc.dst = GL_ONE_MINUS_SRC_COLOR
-    node:setBlendFunc(blendFuc)
+    if src and dst then
+        local blendFuc = ccBlendFunc:new()
+        blendFuc.src = src
+        blendFuc.dst = dst
+        node:setBlendFunc(blendFuc)
+    end
     -- 这里考虑到锚点的位置，如果锚点刚好在中心处，代码可能会更好理解点
     local bottomLeftX = node:getTexture():getContentSize().width * node:getAnchorPoint().x + outlineWidth 
     local bottomLeftY = node:getTexture():getContentSize().height * node:getAnchorPoint().y + outlineWidth
@@ -617,17 +628,19 @@ function ui.createOutline(node,outlineWidth,color,opacity,src,dst)
         return angle * 0.01745329252
     end
     rt:begin()
-    for i = 0, 360, 5 do
+    for i = 0, 360, 20 do
         node:setPosition(ccp(bottomLeftX + math.sin(degrees2radians(i)) * outlineWidth, bottomLeftY + math.cos(degrees2radians(i)) * outlineWidth))
         node:visit()
     end
     rt:endToLua()
+
     -- node恢复原状
     node:setPosition(originX, originY)
     node:setColor(ccc3(originColorR, originColorG, originColorB))
     node:setBlendFunc(originBlend)
     node:setVisible(originVisibility)
     node:setOpacity(originOpacity)
+    rt:setVisible(originVisibility)
     rt:setPosition(rtPosition)
     --防锯齿
     rt:getSprite():getTexture():setAntiAliasTexParameters()
