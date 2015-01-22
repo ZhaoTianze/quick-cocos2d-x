@@ -33,6 +33,8 @@
 		4983220E187FE0A900733BFB /* HelperFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4983220C187FE0A900733BFB /* HelperFunc.cpp */; };
 		49832211187FE0BE00733BFB /* CZHelperFunc_luabinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4983220F187FE0BE00733BFB /* CZHelperFunc_luabinding.cpp */; };
 		B255BE671A4D787200A01E5F /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE611A4D787200A01E5F /* CCWebView.mm */; };
+		B25F199A1A70D14500E3C3A3 /* lbc.c in Sources */ = {isa = PBXBuildFile; fileRef = B25F19951A70D14500E3C3A3 /* lbc.c */; };
+		B25F199B1A70D14500E3C3A3 /* number.c in Sources */ = {isa = PBXBuildFile; fileRef = B25F19971A70D14500E3C3A3 /* number.c */; };
 		E540B383198754880054B7F7 /* AnimationEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B32F198754870054B7F7 /* AnimationEvent.cpp */; };
 		E540B384198754880054B7F7 /* ArmatureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B331198754870054B7F7 /* ArmatureEvent.cpp */; };
 		E540B385198754880054B7F7 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B333198754870054B7F7 /* Event.cpp */; };
@@ -553,6 +555,12 @@
 		49832210187FE0BE00733BFB /* CZHelperFunc_luabinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZHelperFunc_luabinding.h; sourceTree = "<group>"; };
 		B255BE5B1A4D787200A01E5F /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
 		B255BE611A4D787200A01E5F /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
+		B25F19941A70D14500E3C3A3 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		B25F19951A70D14500E3C3A3 /* lbc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbc.c; sourceTree = "<group>"; };
+		B25F19961A70D14500E3C3A3 /* lbc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lbc.h; sourceTree = "<group>"; };
+		B25F19971A70D14500E3C3A3 /* number.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = number.c; sourceTree = "<group>"; };
+		B25F19981A70D14500E3C3A3 /* number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = number.h; sourceTree = "<group>"; };
+		B25F19991A70D14500E3C3A3 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		E540B32D198754870054B7F7 /* IDisplayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDisplayBridge.h; sourceTree = "<group>"; };
 		E540B32F198754870054B7F7 /* AnimationEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationEvent.cpp; sourceTree = "<group>"; };
 		E540B330198754870054B7F7 /* AnimationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEvent.h; sourceTree = "<group>"; };
@@ -1637,6 +1645,19 @@
 				B255BE611A4D787200A01E5F /* CCWebView.mm */,
 			);
 			path = mac;
+			sourceTree = "<group>";
+		};
+		B25F19931A70D14500E3C3A3 /* bc */ = {
+			isa = PBXGroup;
+			children = (
+				B25F19941A70D14500E3C3A3 /* config.h */,
+				B25F19951A70D14500E3C3A3 /* lbc.c */,
+				B25F19961A70D14500E3C3A3 /* lbc.h */,
+				B25F19971A70D14500E3C3A3 /* number.c */,
+				B25F19981A70D14500E3C3A3 /* number.h */,
+				B25F19991A70D14500E3C3A3 /* README */,
+			);
+			path = bc;
 			sourceTree = "<group>";
 		};
 		E540B32B1987545F0054B7F7 /* DragonBones */ = {
@@ -2731,6 +2752,7 @@
 		F4CB8743180D02F600D81CF3 /* lua_extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B25F19931A70D14500E3C3A3 /* bc */,
 				F4CB8744180D02F600D81CF3 /* cjson */,
 				F47722591843450000EBA0D4 /* debugger */,
 				F4CB874B180D02F600D81CF3 /* filesystem */,
@@ -3992,6 +4014,7 @@
 				F4E880741770071600577406 /* CCMotionStreak.cpp in Sources */,
 				F4E880751770071600577406 /* CCProgressTimer.cpp in Sources */,
 				F431528C180CF7E30046351C /* cpGearJoint.c in Sources */,
+				B25F199A1A70D14500E3C3A3 /* lbc.c in Sources */,
 				F4CB86AF180D017700D81CF3 /* cocos2dx_extra_luabinding.cpp in Sources */,
 				F4E880761770071600577406 /* CCRenderTexture.cpp in Sources */,
 				F4E880771770071600577406 /* CCParticleBatchNode.cpp in Sources */,
@@ -4055,6 +4078,7 @@
 				F4E880931770071600577406 /* CCUserDefault.cpp in Sources */,
 				F431528B180CF7E30046351C /* cpDampedSpring.c in Sources */,
 				F4E880941770071600577406 /* CCUserDefault.mm in Sources */,
+				B25F199B1A70D14500E3C3A3 /* number.c in Sources */,
 				F4E880951770071600577406 /* CCUserDefaultAndroid.cpp in Sources */,
 				F4E880961770071600577406 /* ioapi.cpp in Sources */,
 				F412725619F75816005E6CD0 /* UITouchGroup.cpp in Sources */,
