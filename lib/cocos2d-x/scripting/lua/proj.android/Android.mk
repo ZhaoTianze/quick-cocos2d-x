@@ -20,6 +20,8 @@ LOCAL_SRC_FILES := ../cocos2dx_support/CCLuaEngine.cpp \
     ../tolua/tolua_to.c \
     ../cocos2dx_support/LuaCocos2d.cpp \
     ../cocos2dx_support/Lua_web_socket.cpp \
+    ../lua_extensions/bc/lbc.c \
+    ../lua_extensions/bc/number.c \
     ../lua_extensions/cjson/fpconv.c \
     ../lua_extensions/cjson/lua_cjson.c \
     ../lua_extensions/cjson/strbuf.c \
@@ -115,6 +117,7 @@ LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../lua/lua-5.1.5/src \
                            $(LOCAL_PATH)/../cocos2dx_support/platform/android \
                            $(LOCAL_PATH)/../lua_extensions \
                            $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/cjson \
+                           $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/bc \
                            $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/zlib \
                            $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/socket \
                            $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/filesystem \
@@ -128,6 +131,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/ \
                     $(LOCAL_PATH)/../cocos2dx_support/platform/android \
                     $(LOCAL_PATH)/../lua_extensions \
                     $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/cjson \
+                    $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/bc \
                     $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/zlib \
                     $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/socket \
                     $(LOCAL_PATH)/../cocos2d-x/scripting/lua/lua_extensions/filesystem \
