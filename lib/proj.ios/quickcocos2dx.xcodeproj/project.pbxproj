@@ -33,6 +33,8 @@
 		B255BE721A4D84B100A01E5F /* XBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6C1A4D84B100A01E5F /* XBJsonBase.m */; };
 		B255BE731A4D84B100A01E5F /* XBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */; };
 		B255BE741A4D84B100A01E5F /* XBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE701A4D84B100A01E5F /* XBJsonWriter.m */; };
+		B283DD821A70CA1A002E9F0A /* lbc.c in Sources */ = {isa = PBXBuildFile; fileRef = B283DD7E1A70CA1A002E9F0A /* lbc.c */; };
+		B283DD831A70CA1A002E9F0A /* number.c in Sources */ = {isa = PBXBuildFile; fileRef = B283DD7F1A70CA1A002E9F0A /* number.c */; };
 		B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC798F181BA55A001341D6 /* lsqlite3.c */; };
 		B2DC7994181BA55A001341D6 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC7991181BA55A001341D6 /* sqlite3.c */; };
 		DA56D2FE1A3819B3007350D6 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F42825B317575DBE001479DC /* libcurl.a */; };
@@ -564,6 +566,12 @@
 		B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonParser.m; sourceTree = "<group>"; };
 		B255BE6F1A4D84B100A01E5F /* XBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBJsonWriter.h; sourceTree = "<group>"; };
 		B255BE701A4D84B100A01E5F /* XBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonWriter.m; sourceTree = "<group>"; };
+		B283DD7D1A70CA1A002E9F0A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		B283DD7E1A70CA1A002E9F0A /* lbc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbc.c; sourceTree = "<group>"; };
+		B283DD7F1A70CA1A002E9F0A /* number.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = number.c; sourceTree = "<group>"; };
+		B283DD801A70CA1A002E9F0A /* number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = number.h; sourceTree = "<group>"; };
+		B283DD811A70CA1A002E9F0A /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		B283DD841A70CA72002E9F0A /* lbc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lbc.h; sourceTree = "<group>"; };
 		B2DC798F181BA55A001341D6 /* lsqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lsqlite3.c; sourceTree = "<group>"; };
 		B2DC7990181BA55A001341D6 /* lsqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lsqlite3.h; sourceTree = "<group>"; };
 		B2DC7991181BA55A001341D6 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
@@ -1684,6 +1692,19 @@
 			path = ios;
 			sourceTree = "<group>";
 		};
+		B283DD7C1A70CA1A002E9F0A /* bc */ = {
+			isa = PBXGroup;
+			children = (
+				B283DD7D1A70CA1A002E9F0A /* config.h */,
+				B283DD841A70CA72002E9F0A /* lbc.h */,
+				B283DD7E1A70CA1A002E9F0A /* lbc.c */,
+				B283DD7F1A70CA1A002E9F0A /* number.c */,
+				B283DD801A70CA1A002E9F0A /* number.h */,
+				B283DD811A70CA1A002E9F0A /* README */,
+			);
+			path = bc;
+			sourceTree = "<group>";
+		};
 		B2DC798E181BA55A001341D6 /* lsqlite3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2269,6 +2290,7 @@
 		F459EB1C180D0513006CBDF1 /* lua_extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B283DD7C1A70CA1A002E9F0A /* bc */,
 				B2DC798E181BA55A001341D6 /* lsqlite3 */,
 				F459EB1D180D0513006CBDF1 /* cjson */,
 				F459EB24180D0513006CBDF1 /* filesystem */,
@@ -3945,6 +3967,7 @@
 				F459EA77180D04D8006CBDF1 /* CCNative.mm in Sources */,
 				F47C66C316EB37DB00132435 /* snapshot.c in Sources */,
 				F459EB89180D0513006CBDF1 /* socket_scripts.c in Sources */,
+				B283DD821A70CA1A002E9F0A /* lbc.c in Sources */,
 				F4FDD0831A1DF75200DD4C0B /* liolib.c in Sources */,
 				F42824FA17575D88001479DC /* CCCamera.cpp in Sources */,
 				E5C463521987A250001192EA /* dbtinyxml2.cpp in Sources */,
@@ -4337,6 +4360,7 @@
 				F4E883C61770163800577406 /* CCControlPotentiometer.cpp in Sources */,
 				2EBAD93B1918BBDC00FF9BD6 /* CCTestFilter.cpp in Sources */,
 				F4E883C71770163800577406 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
+				B283DD831A70CA1A002E9F0A /* number.c in Sources */,
 				F459EB12180D04E1006CBDF1 /* cpSpaceHash.c in Sources */,
 				F4E883C81770163800577406 /* CCControlSlider.cpp in Sources */,
 				F4E883C91770163800577406 /* CCControlStepper.cpp in Sources */,

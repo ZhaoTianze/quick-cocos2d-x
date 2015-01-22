@@ -26,6 +26,9 @@ extern "C" {
 // lsqlite3
 #include "lsqlite3/lsqlite3.h"
 #endif
+    
+//bc super number
+#include "bc/lbc.h"
 
 static luaL_Reg luax_exts[] = {
     {"cjson", luaopen_cjson_safe},
@@ -34,6 +37,7 @@ static luaL_Reg luax_exts[] = {
     {"socket.core", luaopen_socket_core},
     {"mime.core", luaopen_mime_core},
     {"lfs", luaopen_lfs},
+    {"bc", luaopen_bc},
 
 #if CC_SQLITE_ENABLED > 0
     {"lsqlite3", luaopen_lsqlite3},
