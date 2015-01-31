@@ -159,7 +159,8 @@ if DEBUG_MEM then
     @ignore
     ]]
     local function showMemoryUsage()
-        printInfo(string.format("LUA VM MEMORY USED: %0.2f KB", collectgarbage("count")))
+        local used = collectgarbage("count")
+        printInfo(string.format("LUA VM MEMORY USED: %0.2f KB (%0.2f MB)", used,used/1024))
         sharedTextureCache:dumpCachedTextureInfo()
         printInfo("---------------------------------------------------")
     end
