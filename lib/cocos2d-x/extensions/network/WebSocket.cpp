@@ -475,11 +475,13 @@ int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
 //    CCLOG("socket callback for %d reason", reason);
     CCAssert(_wsContext == NULL || ctx == _wsContext, "Invalid context.");
     CCAssert(_wsInstance == NULL || wsi == NULL || wsi == _wsInstance, "Invaild websocket instance.");
-
+    
 	switch (reason)
     {
         case LWS_CALLBACK_DEL_POLL_FD:
+            break;
         case LWS_CALLBACK_PROTOCOL_DESTROY:
+            break;
         case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
             {
                 WsMessage* msg = NULL;
