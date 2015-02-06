@@ -47,7 +47,7 @@ public class QuickHTTPInterface {
         try {
             if ("POST".equalsIgnoreCase(strMedthod)) {
                 http.setDoOutput(true);
-                http.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                http.setRequestProperty("Content-Type", "application/octet-stream");
             }
             http.setRequestMethod(strMedthod);
         } catch (ProtocolException e) {
@@ -69,7 +69,6 @@ public class QuickHTTPInterface {
 
     static int connect(HttpURLConnection http) {
         int nSuc = 0;
-
         try {
             http.connect();
         } catch (IOException e) {
