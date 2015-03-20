@@ -321,6 +321,7 @@
     <ClCompile Include="..\cocos2d-x\extensions\network\WebSocket.cpp" />
     <ClCompile Include="..\cocos2d-x\extensions\proj.win32\Win32InputBox.cpp" />
     <ClCompile Include="..\cocos2d-x\extensions\ProjectConfig\SimulatorConfig.cpp" />
+    <ClCompile Include="..\cocos2d-x\extensions\webview\win32\CCWebView.cpp" />
     <ClCompile Include="..\cocos2d-x\external\chipmunk\cocos2dx_support\CCPhysicsBody.cpp" />
     <ClCompile Include="..\cocos2d-x\external\chipmunk\cocos2dx_support\CCPhysicsDebugNode.cpp" />
     <ClCompile Include="..\cocos2d-x\external\chipmunk\cocos2dx_support\CCPhysicsShape.cpp" />
@@ -512,6 +513,8 @@
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\lvm.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\lzio.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\print.c" />
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\lbc.c" />
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\number.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\fpconv.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\lua_cjson.c" />
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\strbuf.c" />
@@ -968,6 +971,7 @@
     <ClInclude Include="..\cocos2d-x\extensions\network\WebSocket.h" />
     <ClInclude Include="..\cocos2d-x\extensions\proj.win32\Win32InputBox.h" />
     <ClInclude Include="..\cocos2d-x\extensions\ProjectConfig\SimulatorConfig.h" />
+    <ClInclude Include="..\cocos2d-x\extensions\webview\CCWebView.h" />
     <ClInclude Include="..\cocos2d-x\external\chipmunk\cocos2dx_support\CCPhysicsBody.h" />
     <ClInclude Include="..\cocos2d-x\external\chipmunk\cocos2dx_support\CCPhysicsDebugNode.h" />
     <ClInclude Include="..\cocos2d-x\external\chipmunk\cocos2dx_support\CCPhysicsShape.h" />
@@ -1060,6 +1064,9 @@
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\lundump.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\lvm.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\lzio.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\config.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\lbc.h" />
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\number.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\fpconv.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\lua_cjson.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\cjson\strbuf.h" />
@@ -1088,6 +1095,9 @@
     <ClInclude Include="..\cocos2d-x\scripting\lua\tolua\tolua++.h" />
     <ClInclude Include="..\cocos2d-x\scripting\lua\tolua\tolua_event.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\README" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9E05AA4B-1A09-433C-B1DF-BCE6675EC0D5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -1098,13 +1108,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>

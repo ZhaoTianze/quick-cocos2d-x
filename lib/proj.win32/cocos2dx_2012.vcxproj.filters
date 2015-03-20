@@ -340,6 +340,15 @@
     <Filter Include="cocos2d-x\scripting\lua\lua">
       <UniqueIdentifier>{a749176d-bd4d-4aae-9e2c-33df575211e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cocos2d-x\scripting\lua\lua_extensions\bc">
+      <UniqueIdentifier>{5982b72b-90be-4dd6-97b5-d190548c55df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2d-x\extensions\webview">
+      <UniqueIdentifier>{b6f9e12a-69db-4b22-80f2-3a95ca818a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2d-x\extensions\webview\win32">
+      <UniqueIdentifier>{98f092fc-39cf-4778-b389-06a32f94bf20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cocos2d-x\scripting\lua\cocos2dx_support\CCLuaEngine.cpp">
@@ -1664,6 +1673,15 @@
     </ClCompile>
     <ClCompile Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\print.c">
       <Filter>cocos2d-x\scripting\lua\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\lbc.c">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\bc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\number.c">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\bc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2d-x\extensions\webview\win32\CCWebView.cpp">
+      <Filter>cocos2d-x\extensions\webview\win32</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3299,5 +3317,22 @@
     <ClInclude Include="..\cocos2d-x\scripting\lua\lua\lua-5.1.5\src\lzio.h">
       <Filter>cocos2d-x\scripting\lua\lua</Filter>
     </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\config.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\bc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\lbc.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\bc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\number.h">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\bc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2d-x\extensions\webview\CCWebView.h">
+      <Filter>cocos2d-x\extensions\webview</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\cocos2d-x\scripting\lua\lua_extensions\bc\README">
+      <Filter>cocos2d-x\scripting\lua\lua_extensions\bc</Filter>
+    </None>
   </ItemGroup>
 </Project>
