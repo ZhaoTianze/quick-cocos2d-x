@@ -38,9 +38,21 @@ typedef struct
 {
     unsigned int height;
     unsigned int width;
-    int         bitsPerComponent;
-    bool        hasAlpha;
-    bool        isPremultipliedAlpha;
+    int          bitsPerComponent;
+    bool         hasAlpha;
+    bool         isPremultipliedAlpha;
+    bool         hasShadow;
+    CGSize       shadowOffset;
+    float        shadowBlur;
+    float        shadowOpacity;
+    bool         hasStroke;
+    float        strokeColorR;
+    float        strokeColorG;
+    float        strokeColorB;
+    float        strokeSize;
+    float        tintColorR;
+    float        tintColorG;
+    float        tintColorB;
     unsigned char*  data;
 } tImageInfo;
 
@@ -342,7 +354,7 @@ static bool _isValidFontName(const char *fontName)
     return ret;
 }
 
-static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAlign, const char * pFontName, int nSize, tImageInfo* pInfo, cocos2d::ccColor3B* pStrokeColor)
+static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAlign, const char * pFontName, int nSize, tImageInfo* pInfo)
 {
     bool bRet = false;
 
@@ -351,13 +363,15 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
 	
 	do {
 		NSString * string  = [NSString stringWithUTF8String:pText];
-		
+        NSString * fntName = [NSString stringWithUTF8String:pFontName];
+        fntName = [[fntName lastPathComponent] stringByDeletingPathExtension];
 		// font
-		NSFont *font = [[NSFontManager sharedFontManager]
-						 fontWithFamily:[NSString stringWithUTF8String:pFontName]
-						traits:NSUnboldFontMask | NSUnitalicFontMask
-						 weight:0
-						 size:nSize];
+//		NSFont *font = [[NSFontManager sharedFontManager]
+//						 fontWithFamily:[NSString stringWithUTF8String:pFontName]
+//						traits:NSUnboldFontMask | NSUnitalicFontMask
+//						 weight:0
+//						 size:nSize];
+        NSFont *font = [NSFont fontWithName:fntName size:nSize];
 		
 		if (font == nil) {
 			font = [[NSFontManager sharedFontManager]
@@ -370,13 +384,22 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
 		
 		// color
 		NSColor* foregroundColor;
-		if (pStrokeColor) {
-			foregroundColor = [NSColor colorWithDeviceRed:pStrokeColor->r/255.0 green:pStrokeColor->g/255.0 blue:pStrokeColor->b/255.0 alpha:1];
+		if (pInfo->tintColorB && pInfo->tintColorG && pInfo->tintColorR) {
+			foregroundColor = [NSColor colorWithDeviceRed:pInfo->tintColorR green:pInfo->tintColorG blue:pInfo->tintColorB alpha:1];
 		} else {
 			foregroundColor = [NSColor whiteColor];
 		}
-		
-		
+        //stroke Color
+        NSColor * strokeColor;
+        if (pInfo->hasStroke && pInfo->strokeColorR && pInfo->strokeColorG && pInfo->strokeColorB) {
+            strokeColor = [NSColor colorWithDeviceRed:pInfo->strokeColorR
+                                                green:pInfo->strokeColorG
+                                                 blue:pInfo->strokeColorB
+                                                alpha:1];
+        } else {
+            strokeColor = [NSColor whiteColor];
+        }
+        
 		// alignment, linebreak
 		unsigned uHoriFlag = eAlign & 0x0f;
 		unsigned uVertFlag = (eAlign >> 4) & 0x0f;
@@ -390,10 +413,21 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
 		[paragraphStyle setAlignment:align];
 
 		// attribute
-		NSDictionary* tokenAttributesDict = [NSDictionary dictionaryWithObjectsAndKeys:
-											 foregroundColor,NSForegroundColorAttributeName,
-											 font, NSFontAttributeName,
-											 paragraphStyle, NSParagraphStyleAttributeName, nil];
+        NSDictionary *tokenAttributesDict;
+        if (pInfo->hasStroke) {
+            
+            tokenAttributesDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   foregroundColor,NSForegroundColorAttributeName,
+                                   [NSNumber numberWithFloat: - pInfo->strokeSize],NSStrokeWidthAttributeName,
+                                   strokeColor,NSStrokeColorAttributeName,
+                                   font, NSFontAttributeName,
+                                   paragraphStyle, NSParagraphStyleAttributeName, nil];
+        }else {
+            tokenAttributesDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   foregroundColor,NSForegroundColorAttributeName,
+                                   font, NSFontAttributeName,
+                                   paragraphStyle, NSParagraphStyleAttributeName, nil];
+        }
 
 		// linebreak
 		if (pInfo->width > 0) {
@@ -895,6 +929,59 @@ bool CCImage::_initWithRawData(void *pData, int nDatalen, int nWidth, int nHeigh
     return bRet;
 }
 
+bool CCImage::initWithStringShadowStroke(
+                                         const char * pText,
+                                         int         nWidth ,
+                                         int         nHeight ,
+                                         ETextAlign eAlignMask ,
+                                         const char * pFontName ,
+                                         int         nSize ,
+                                         float       textTintR,
+                                         float       textTintG,
+                                         float       textTintB,
+                                         bool shadow,
+                                         float shadowOffsetX,
+                                         float shadowOffsetY,
+                                         float shadowOpacity,
+                                         float shadowBlur,
+                                         bool  stroke,
+                                         float strokeR,
+                                         float strokeG,
+                                         float strokeB,
+                                         float strokeSize)
+{
+    tImageInfo info = {0};
+    info.width                  = nWidth;
+    info.height                 = nHeight;
+    info.hasShadow              = shadow;
+    info.shadowOffset.width     = shadowOffsetX;
+    info.shadowOffset.height    = shadowOffsetY;
+    info.shadowBlur             = shadowBlur;
+    info.shadowOpacity          = shadowOpacity;
+    info.hasStroke              =  stroke;
+    info.strokeColorR           =  strokeR;
+    info.strokeColorG           = strokeG;
+    info.strokeColorB           = strokeB;
+    info.strokeSize             = strokeSize;
+    info.tintColorR             = textTintR;
+    info.tintColorG             = textTintG;
+    info.tintColorB             = textTintB;
+    
+    
+    if (! _initWithString(pText, eAlignMask, pFontName, nSize, &info))
+    {
+        return false;
+    }
+    m_nHeight = (short)info.height;
+    m_nWidth = (short)info.width;
+    m_nBitsPerComponent = info.bitsPerComponent;
+    m_bHasAlpha = info.hasAlpha;
+    m_bPreMulti = info.isPremultipliedAlpha;
+    m_pData = info.data;
+    
+    return true;
+}
+
 bool CCImage::initWithString(
 	const char *    pText, 
 	int             nWidth, 
@@ -907,7 +994,7 @@ bool CCImage::initWithString(
     info.width = nWidth;
     info.height = nHeight;
 	
-    if (! _initWithString(pText, eAlignMask, pFontName, nSize, &info, NULL)) //pStrokeColor))
+    if (! _initWithString(pText, eAlignMask, pFontName, nSize, &info)) //pStrokeColor))
     {
         return false;
     }
