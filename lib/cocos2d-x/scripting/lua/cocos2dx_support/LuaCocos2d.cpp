@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Fri Dec 26 19:07:17 2014.
+** Generated automatically by tolua++-1.0.92 on Sat Apr 25 18:21:24 2015.
 */
 
 /****************************************************************************
@@ -42850,10 +42850,12 @@ static int tolua_Cocos2d_CCLabelTTF_create00(lua_State* tolua_S)
      !tolua_isstring(tolua_S,2,0,&tolua_err) ||
      !tolua_isstring(tolua_S,3,0,&tolua_err) ||
      !tolua_isnumber(tolua_S,4,0,&tolua_err) ||
-     (tolua_isvaluenil(tolua_S,5,&tolua_err) || !tolua_isusertype(tolua_S,5,"CCSize",0,&tolua_err)) ||
+     (tolua_isvaluenil(tolua_S,5,&tolua_err) || !tolua_isusertype(tolua_S,5,"const CCSize",0,&tolua_err)) ||
      !tolua_isnumber(tolua_S,6,0,&tolua_err) ||
      !tolua_isnumber(tolua_S,7,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,8,&tolua_err)
+     (tolua_isvaluenil(tolua_S,8,&tolua_err) || !tolua_isusertype(tolua_S,8,"ccColor3B",0,&tolua_err)) ||
+     !tolua_isnumber(tolua_S,9,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,10,&tolua_err)
  )
   goto tolua_lerror;
  else
@@ -42862,11 +42864,13 @@ static int tolua_Cocos2d_CCLabelTTF_create00(lua_State* tolua_S)
   const char* text = ((const char*)  tolua_tostring(tolua_S,2,0));
   const char* fontName = ((const char*)  tolua_tostring(tolua_S,3,0));
   float fontSize = ((float)  tolua_tonumber(tolua_S,4,0));
-  CCSize dimensions = *((CCSize*)  tolua_tousertype(tolua_S,5,0));
+  const CCSize* dimensions = ((const CCSize*)  tolua_tousertype(tolua_S,5,0));
   CCTextAlignment hAlignment = ((CCTextAlignment) (int)  tolua_tonumber(tolua_S,6,0));
   CCVerticalTextAlignment vAlignment = ((CCVerticalTextAlignment) (int)  tolua_tonumber(tolua_S,7,0));
+  ccColor3B strokeColor = *((ccColor3B*)  tolua_tousertype(tolua_S,8,0));
+  float strokeSize = ((float)  tolua_tonumber(tolua_S,9,0));
   {
-   CCLabelTTF* tolua_ret = (CCLabelTTF*)  CCLabelTTF::create(text,fontName,fontSize,dimensions,hAlignment,vAlignment);
+   CCLabelTTF* tolua_ret = (CCLabelTTF*)  CCLabelTTF::create(text,fontName,fontSize,*dimensions,hAlignment,vAlignment,strokeColor,strokeSize);
     int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
     int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
     toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCLabelTTF");
@@ -42884,6 +42888,43 @@ static int tolua_Cocos2d_CCLabelTTF_create00(lua_State* tolua_S)
 /* method: create of class  CCLabelTTF */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_CCLabelTTF_create01
 static int tolua_Cocos2d_CCLabelTTF_create01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"CCLabelTTF",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isstring(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,4,0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,5,&tolua_err) || !tolua_isusertype(tolua_S,5,"CCSize",0,&tolua_err)) ||
+     !tolua_isnumber(tolua_S,6,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,7,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,8,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  const char* text = ((const char*)  tolua_tostring(tolua_S,2,0));
+  const char* fontName = ((const char*)  tolua_tostring(tolua_S,3,0));
+  float fontSize = ((float)  tolua_tonumber(tolua_S,4,0));
+  CCSize dimensions = *((CCSize*)  tolua_tousertype(tolua_S,5,0));
+  CCTextAlignment hAlignment = ((CCTextAlignment) (int)  tolua_tonumber(tolua_S,6,0));
+  CCVerticalTextAlignment vAlignment = ((CCVerticalTextAlignment) (int)  tolua_tonumber(tolua_S,7,0));
+  {
+   CCLabelTTF* tolua_ret = (CCLabelTTF*)  CCLabelTTF::create(text,fontName,fontSize,dimensions,hAlignment,vAlignment);
+    int nID = (tolua_ret) ? (int)tolua_ret->m_uID : -1;
+    int* pLuaID = (tolua_ret) ? &tolua_ret->m_nLuaID : NULL;
+    toluafix_pushusertype_ccobject(tolua_S, nID, pLuaID, (void*)tolua_ret,"CCLabelTTF");
+  }
+ }
+ return 1;
+tolua_lerror:
+ return tolua_Cocos2d_CCLabelTTF_create00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: create of class  CCLabelTTF */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCLabelTTF_create02
+static int tolua_Cocos2d_CCLabelTTF_create02(lua_State* tolua_S)
 {
  tolua_Error tolua_err;
  if (
@@ -42912,13 +42953,13 @@ static int tolua_Cocos2d_CCLabelTTF_create01(lua_State* tolua_S)
  }
  return 1;
 tolua_lerror:
- return tolua_Cocos2d_CCLabelTTF_create00(tolua_S);
+ return tolua_Cocos2d_CCLabelTTF_create01(tolua_S);
 }
 #endif //#ifndef TOLUA_DISABLE
 
 /* method: create of class  CCLabelTTF */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCLabelTTF_create02
-static int tolua_Cocos2d_CCLabelTTF_create02(lua_State* tolua_S)
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCLabelTTF_create03
+static int tolua_Cocos2d_CCLabelTTF_create03(lua_State* tolua_S)
 {
  tolua_Error tolua_err;
  if (
@@ -42943,13 +42984,13 @@ static int tolua_Cocos2d_CCLabelTTF_create02(lua_State* tolua_S)
  }
  return 1;
 tolua_lerror:
- return tolua_Cocos2d_CCLabelTTF_create01(tolua_S);
+ return tolua_Cocos2d_CCLabelTTF_create02(tolua_S);
 }
 #endif //#ifndef TOLUA_DISABLE
 
 /* method: create of class  CCLabelTTF */
-#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCLabelTTF_create03
-static int tolua_Cocos2d_CCLabelTTF_create03(lua_State* tolua_S)
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCLabelTTF_create04
+static int tolua_Cocos2d_CCLabelTTF_create04(lua_State* tolua_S)
 {
  tolua_Error tolua_err;
  if (
@@ -42968,7 +43009,7 @@ static int tolua_Cocos2d_CCLabelTTF_create03(lua_State* tolua_S)
  }
  return 1;
 tolua_lerror:
- return tolua_Cocos2d_CCLabelTTF_create02(tolua_S);
+ return tolua_Cocos2d_CCLabelTTF_create03(tolua_S);
 }
 #endif //#ifndef TOLUA_DISABLE
 
@@ -59514,6 +59555,7 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
    tolua_function(tolua_S,"create",tolua_Cocos2d_CCLabelTTF_create01);
    tolua_function(tolua_S,"create",tolua_Cocos2d_CCLabelTTF_create02);
    tolua_function(tolua_S,"create",tolua_Cocos2d_CCLabelTTF_create03);
+   tolua_function(tolua_S,"create",tolua_Cocos2d_CCLabelTTF_create04);
    tolua_function(tolua_S,"initWithString",tolua_Cocos2d_CCLabelTTF_initWithString00);
    tolua_function(tolua_S,"initWithString",tolua_Cocos2d_CCLabelTTF_initWithString01);
    tolua_function(tolua_S,"initWithString",tolua_Cocos2d_CCLabelTTF_initWithString02);

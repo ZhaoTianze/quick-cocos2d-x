@@ -90,6 +90,11 @@ public:
                                const CCSize& dimensions, CCTextAlignment hAlignment, 
                                CCVerticalTextAlignment vAlignment);
     
+    static CCLabelTTF * create(const char *string, const char *fontName, float fontSize,
+                               const CCSize& dimensions, CCTextAlignment hAlignment,
+                               CCVerticalTextAlignment vAlignment,
+                               const ccColor3B &strokeColor,float strokeSize);
+    
     
     /** Create a lable with string and a font definition*/
     static CCLabelTTF * createWithFontDefinition(const char *string, ccFontDefinition &textDefinition);
@@ -161,6 +166,9 @@ public:
     
     const char* getFontName();
     void setFontName(const char *fontName);
+    
+    virtual const ccColor3B& getColor(void);
+    virtual void setColor(const ccColor3B& color);
     
 private:
     bool updateTexture();
