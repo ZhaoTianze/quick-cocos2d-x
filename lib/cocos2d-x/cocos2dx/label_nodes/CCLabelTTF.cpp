@@ -463,7 +463,7 @@ void CCLabelTTF::disableStroke(bool updateTexture)
 void CCLabelTTF::setFontFillColor(const ccColor3B &tintColor, bool updateTexture)
 {
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
-        if (m_textFillColor.r != tintColor.r || m_textFillColor.g != tintColor.g || m_textFillColor.b != tintColor.b)
+        if (ccc3BEqual(tintColor, m_textFillColor) == false)
         {
             m_textFillColor = tintColor;
             

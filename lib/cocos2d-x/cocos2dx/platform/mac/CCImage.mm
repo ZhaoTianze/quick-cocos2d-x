@@ -366,11 +366,6 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
         NSString * fntName = [NSString stringWithUTF8String:pFontName];
         fntName = [[fntName lastPathComponent] stringByDeletingPathExtension];
 		// font
-//		NSFont *font = [[NSFontManager sharedFontManager]
-//						 fontWithFamily:[NSString stringWithUTF8String:pFontName]
-//						traits:NSUnboldFontMask | NSUnitalicFontMask
-//						 weight:0
-//						 size:nSize];
         NSFont *font = [NSFont fontWithName:fntName size:nSize];
 		
 		if (font == nil) {
@@ -383,15 +378,11 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
 		CC_BREAK_IF(!font);
 		
 		// color
-		NSColor* foregroundColor;
-		if (pInfo->tintColorB && pInfo->tintColorG && pInfo->tintColorR) {
-			foregroundColor = [NSColor colorWithDeviceRed:pInfo->tintColorR green:pInfo->tintColorG blue:pInfo->tintColorB alpha:1];
-		} else {
-			foregroundColor = [NSColor whiteColor];
-		}
+        NSColor* foregroundColor = [NSColor colorWithDeviceRed:pInfo->tintColorR green:pInfo->tintColorG blue:pInfo->tintColorB alpha:1];
+
         //stroke Color
         NSColor * strokeColor;
-        if (pInfo->hasStroke && pInfo->strokeColorR && pInfo->strokeColorG && pInfo->strokeColorB) {
+        if (pInfo->hasStroke) {
             strokeColor = [NSColor colorWithDeviceRed:pInfo->strokeColorR
                                                 green:pInfo->strokeColorG
                                                  blue:pInfo->strokeColorB
