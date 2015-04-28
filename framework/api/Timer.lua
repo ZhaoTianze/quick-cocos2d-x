@@ -107,8 +107,8 @@ function Timer.new()
             interval = 30
         else
             interval = math.floor(interval)
-            if interval < 2 then
-                interval = 2
+            if interval < 1 then
+                interval = 1
             elseif interval > 120 then
                 interval = 120
             end
