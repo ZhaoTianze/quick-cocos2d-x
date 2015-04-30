@@ -217,7 +217,7 @@ public class Cocos2dxBitmap {
 	  }
 
 	  // set the paint color
-	  paint.setARGB(255, (int)(255.0 * fontTintR), (int)(255.0 * fontTintG), (int)(255.0 * fontTintB));
+	  paint.setARGB(255, (int)fontTintR, (int)fontTintG, (int)fontTintB);
 
 	  final TextProperty textProperty = Cocos2dxBitmap.computeTextProperty(pString, pWidth, pHeight, paint);
 	  final int bitmapTotalHeight = (pHeight == 0 ? textProperty.mTotalHeight: pHeight);
@@ -242,16 +242,18 @@ public class Cocos2dxBitmap {
 	  /* Draw string. */
 	  final FontMetricsInt fontMetricsInt = paint.getFontMetricsInt();
 	  
+	  int x = 0;
+      int y = Cocos2dxBitmap.computeY(fontMetricsInt, pHeight, textProperty.mTotalHeight, verticalAlignment);
+      
 	  // draw again with stroke on if needed 
 	  if ( stroke ) {
 	      
 	      final Paint paintStroke = Cocos2dxBitmap.newPaint(pFontName, pFontSize, horizontalAlignment);
 	      paintStroke.setStyle(Paint.Style.STROKE);
 	      paintStroke.setStrokeWidth(strokeSize);
-	      paintStroke.setARGB(255, (int)strokeR * 255, (int)strokeG * 255, (int)strokeB * 255);
+	      paintStroke.setARGB(255, (int)strokeR, (int)strokeG, (int)strokeB);
 	      
-	      int x = 0;
-	      int y = Cocos2dxBitmap.computeY(fontMetricsInt, pHeight, textProperty.mTotalHeight, verticalAlignment);
+	      
 	      final String[] lines2 = textProperty.mLines;
 	      
 	      for (final String line : lines2) {
@@ -266,8 +268,6 @@ public class Cocos2dxBitmap {
 	  }
 	  else
 	  {
-	      int x = 0;
-	      int y = Cocos2dxBitmap.computeY(fontMetricsInt, pHeight, textProperty.mTotalHeight, verticalAlignment);
 	      
 	      final String[] lines = textProperty.mLines;
 	      
