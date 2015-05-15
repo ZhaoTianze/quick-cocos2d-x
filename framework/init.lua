@@ -123,6 +123,7 @@ network    = require(cc.PACKAGE_NAME .. ".network")
 crypto     = require(cc.PACKAGE_NAME .. ".crypto")
 json       = require(cc.PACKAGE_NAME .. ".json")
 dragonbones= require(cc.PACKAGE_NAME .. ".dragonbones")
+webview = require(cc.PACKAGE_NAME .. ".webview")
 
 if device.platform == "android" then
     require(cc.PACKAGE_NAME .. ".platform.android")
