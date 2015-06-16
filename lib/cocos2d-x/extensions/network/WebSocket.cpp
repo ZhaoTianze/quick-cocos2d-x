@@ -475,13 +475,20 @@ int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
 //    CCLOG("socket callback for %d reason", reason);
     CCAssert(_wsContext == NULL || ctx == _wsContext, "Invalid context.");
     CCAssert(_wsInstance == NULL || wsi == NULL || wsi == _wsInstance, "Invaild websocket instance.");
-    
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    if (reason == 9) reason = LWS_CALLBACK_CLIENT_WRITEABLE;
+    if (reason == 7) reason = LWS_CALLBACK_CLIENT_RECEIVE;
+    #endif
 	switch (reason)
     {
         case LWS_CALLBACK_DEL_POLL_FD:
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
             break;
+#endif
         case LWS_CALLBACK_PROTOCOL_DESTROY:
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
             break;
+#endif
         case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
             {
                 WsMessage* msg = NULL;
