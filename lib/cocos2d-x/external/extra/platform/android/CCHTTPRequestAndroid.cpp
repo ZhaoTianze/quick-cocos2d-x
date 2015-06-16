@@ -66,10 +66,9 @@ static jclass getClassID_(const char *className, JNIEnv *env)
         
         if (NULL == s_classHttp) {
             ret = pEnv->FindClass(className);
-            s_classHttp = ret;
-        } else {
-            ret = (jclass)pEnv->NewLocalRef(s_classHttp);
+            s_classHttp = (jclass)pEnv->NewGlobalRef(ret);
         }
+        ret = (jclass)pEnv->NewLocalRef(s_classHttp);
         
         if (! ret)
         {
@@ -242,7 +241,7 @@ void CCHTTPRequest::setPOSTData(const char *data, size_t len)
 void CCHTTPRequest::addFormFile(const char *name, const char *filePath, const char *contentType)
 {
     m_postFile[string(name)] = string(filePath);
-    string str = string("Content-Type=");
+    string str = string("Content-Type:");
     str = str.append(contentType);
     m_headers.push_back(str);
 }
@@ -250,7 +249,7 @@ void CCHTTPRequest::addFormFile(const char *name, const char *filePath, const ch
 void CCHTTPRequest::addFormContents(const char *name, const char *value)
 {
     m_postContent[string(name)] = string(value);
-    string str = string("Content-Type=multipart/form-data");
+    string str = string("Content-Type:multipart/form-data");
     m_headers.push_back(str);
     CCLOG("addFormContents:%d", m_headers.size());
 }
@@ -296,7 +295,7 @@ bool CCHTTPRequest::start(void)
     {
         string val = *it;
         int len = val.length();
-        int pos = val.find('=');
+        int pos = val.find(':');
         if (-1 == pos || pos >= len) {
             continue;
         }
@@ -441,7 +440,7 @@ void CCHTTPRequest::update(float dt)
         {
             CCLuaValueDict dict;
 
-            dict["name"] = CCLuaValue::stringValue("progress");
+            dict["name"] = CCLuaValue::stringValue("inprogress");
             dict["total"] = CCLuaValue::intValue(m_ultotal);
             dict["dltotal"] = CCLuaValue::intValue(m_dltotal);
             dict["request"] = CCLuaValue::ccobjectValue(this, "CCHTTPRequest");
