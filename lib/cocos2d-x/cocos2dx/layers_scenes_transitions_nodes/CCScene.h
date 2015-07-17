@@ -65,6 +65,10 @@ public:
     void addTouchableNode(CCNode *node);
     void removeTouchableNode(CCNode *node);
 
+    void setTouchDelay(float _duration);
+    void setTouchLock();
+    void setTouchUnlock(); 
+
     virtual void registerWithTouchDispatcher(void) {}
     virtual void unregisterWithTouchDispatcher(void) {}
 
@@ -111,6 +115,8 @@ protected:
     CCArray *m_touchingTargets;
     bool m_touchDispatchingEnabled;
     bool m_touchRegistered;
+    float m_delayTime = 0;
+    bool m_touchDelayLock = false;
 
     void sortAllTouchableNodes(CCArray *nodes);
     void enableTouchDispatching();

@@ -111,8 +111,26 @@ void CCScene::removeTouchableNode(CCNode *node)
     }
 }
 
+void CCScene::setTouchDelay(float _duration) {
+    m_delayTime = _duration;
+}
+
+void CCScene::setTouchLock() {
+    if (m_delayTime <= 0) {
+        return;
+    }
+    m_touchDelayLock = true;
+    this->scheduleOnce(schedule_selector(CCScene::setTouchUnlock), m_delayTime);
+}
+
+void CCScene::setTouchUnlock() {
+    m_touchDelayLock = false;
+}
+
 void CCScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
+    if (m_touchDelayLock) return;
+
     if (!m_touchDispatchingEnabled) return;
 
     // save touches id
@@ -270,6 +288,7 @@ void CCScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 //        CCLOG("TOUCH ENDED, REMOVE ALL TOUCH TARGETS");
         m_touchingTargets->removeAllObjects();
     }
+    this->setTouchLock();
 }
 
 void CCScene::ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent)

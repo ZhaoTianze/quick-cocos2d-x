@@ -1,6 +1,6 @@
 /*
 ** Lua binding: Cocos2d
-** Generated automatically by tolua++-1.0.92 on Sat Apr 25 18:21:24 2015.
+** Generated automatically by tolua++-1.0.92 on Fri Jul 17 11:03:33 2015.
 */
 
 /****************************************************************************
@@ -40056,6 +40056,39 @@ static int tolua_Cocos2d_CCScene_create00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setTouchDelay of class  CCScene */
+#ifndef TOLUA_DISABLE_tolua_Cocos2d_CCScene_setTouchDelay00
+static int tolua_Cocos2d_CCScene_setTouchDelay00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CCScene",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CCScene* self = (CCScene*)  tolua_tousertype(tolua_S,1,0);
+  float _duration = ((float)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setTouchDelay'", NULL);
+#endif
+  {
+   self->setTouchDelay(_duration);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setTouchDelay'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: create of class  CCTransitionSceneOriented */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_CCTransitionSceneOriented_create00
 static int tolua_Cocos2d_CCTransitionSceneOriented_create00(lua_State* tolua_S)
@@ -59335,6 +59368,7 @@ TOLUA_API int tolua_Cocos2d_open (lua_State* tolua_S)
   tolua_cclass(tolua_S,"CCScene","CCScene","CCLayer",NULL);
   tolua_beginmodule(tolua_S,"CCScene");
    tolua_function(tolua_S,"create",tolua_Cocos2d_CCScene_create00);
+   tolua_function(tolua_S,"setTouchDelay",tolua_Cocos2d_CCScene_setTouchDelay00);
   tolua_endmodule(tolua_S);
   tolua_constant(tolua_S,"kCCTransitionOrientationLeftOver",kCCTransitionOrientationLeftOver);
   tolua_constant(tolua_S,"kCCTransitionOrientationRightOver",kCCTransitionOrientationRightOver);
