@@ -38,6 +38,8 @@ CCScene::CCScene()
 , m_touchingTargets(NULL)
 , m_touchDispatchingEnabled(false)
 , m_touchRegistered(false)
+, m_delayTime(0)
+, m_touchDelayLock(false)
 {
     m_touchableNodes = CCArray::createWithCapacity(100);
     m_touchableNodes->retain();

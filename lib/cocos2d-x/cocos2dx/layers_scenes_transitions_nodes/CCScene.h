@@ -115,8 +115,8 @@ protected:
     CCArray *m_touchingTargets;
     bool m_touchDispatchingEnabled;
     bool m_touchRegistered;
-    float m_delayTime = 0;
-    bool m_touchDelayLock = false;
+    float m_delayTime;
+    bool m_touchDelayLock;
 
     void sortAllTouchableNodes(CCArray *nodes);
     void enableTouchDispatching();
