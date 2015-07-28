@@ -39,7 +39,7 @@ public class Cocos2dxSound {
 	// ===========================================================
 	// Constants
 	// ===========================================================
-	public static final int MAX_SIMULTANEOUS_STREAMS_DEFAULT = 5;
+	public static final int MAX_SIMULTANEOUS_STREAMS_DEFAULT = 10;
 	public static final int MAX_SIMULTANEOUS_STREAMS_I9100 = 3;
 
 	private static final String TAG = "Cocos2dxSound";
