@@ -125,7 +125,7 @@ void CCScene::setTouchLock() {
     this->scheduleOnce(schedule_selector(CCScene::setTouchUnlock), m_delayTime);
 }
 
-void CCScene::setTouchUnlock() {
+void CCScene::setTouchUnlock(float _duration) {
     m_touchDelayLock = false;
 }
 

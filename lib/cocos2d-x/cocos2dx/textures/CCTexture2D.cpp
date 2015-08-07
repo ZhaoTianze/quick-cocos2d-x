@@ -508,7 +508,7 @@ bool CCTexture2D::initWithString(const char *text, const char *fontName, float f
     #endif
     
 }
-
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 bool CCTexture2D::initWithString(const char *text, ccFontDefinition *textDefinition)
 {
     #if CC_ENABLE_CACHE_TEXTURE_DATA
@@ -611,7 +611,7 @@ bool CCTexture2D::initWithString(const char *text, ccFontDefinition *textDefinit
         return bRet;
     
 }
-
+#endif
 
 // implementation CCTexture2D (Drawing)
 

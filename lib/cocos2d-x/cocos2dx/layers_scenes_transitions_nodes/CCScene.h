@@ -67,7 +67,7 @@ public:
 
     void setTouchDelay(float _duration);
     void setTouchLock();
-    void setTouchUnlock(); 
+	void setTouchUnlock(float);
 
     virtual void registerWithTouchDispatcher(void) {}
     virtual void unregisterWithTouchDispatcher(void) {}

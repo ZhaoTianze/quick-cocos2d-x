@@ -132,8 +132,12 @@ class WsThreadEntry
 public:
     static void* entry(void* arg)
     {
+		/*zgh*/
+		pthread_detach(pthread_self());
         WsThreadHelper* self = static_cast<WsThreadHelper*>(arg);
-        return self->wsThreadEntryFunc(arg);
+        self->wsThreadEntryFunc(arg);
+		pthread_exit(0);
+		return (void*)0;
     }
 };
 
@@ -190,8 +194,10 @@ void WsThreadHelper::sendMessageToSubThread(WsMessage *msg)
 
 void WsThreadHelper::joinSubThread()
 {
+	/*zgh
     void* ret = NULL;
     pthread_join(_subThreadInstance, &ret);
+	*/
 }
 
 void WsThreadHelper::update(float dt)
@@ -382,7 +388,7 @@ void WebSocket::close()
     if (_readyState == kStateClosing || _readyState == kStateClosed)
         return;
 
-    CCLOG("websocket (%p) connection closed by client", this);
+    CCLOG("websocket connection closed by %s", "client");
     _readyState = kStateClosed;
 
     _wsHelper->quitSubThread();
@@ -400,12 +406,15 @@ WebSocket::State WebSocket::getReadyState()
 
 int WebSocket::onSubThreadLoop()
 {
+	/*zgh
     if (_readyState == kStateClosed || _readyState == kStateClosing)
     {
+		CCLOG("onSubThreadLoop %s connection", "clean");
         libwebsocket_context_destroy(_wsContext);
         // return 1 to exit the loop.
         return 1;
     }
+	*/
     
     if (_wsContext && _readyState != kStateClosed && _readyState != kStateClosing)
     {
@@ -464,7 +473,11 @@ void WebSocket::onSubThreadStarted()
 
 void WebSocket::onSubThreadEnded()
 {
-
+	if (_readyState == kStateClosed || _readyState == kStateClosing)
+	{
+		CCLOG("%s websocket connection", "clean");
+		libwebsocket_context_destroy(_wsContext);
+	}
 }
 
 int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
@@ -616,7 +629,7 @@ int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
         case LWS_CALLBACK_CLOSED:
             {
                 
-                CCLOG("%s", "connection closing..");
+				CCLOG("websocket connection closed by %s", "server");
 
                 _wsHelper->quitSubThread();
                 

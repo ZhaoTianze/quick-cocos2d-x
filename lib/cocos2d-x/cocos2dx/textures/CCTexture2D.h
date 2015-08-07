@@ -163,9 +163,10 @@ public:
     bool initWithString(const char *text,  const char *fontName, float fontSize, const CCSize& dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment);
     /** Initializes a texture from a string with font name and font size */
     bool initWithString(const char *text, const char *fontName, float fontSize);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) || (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     /** Initializes a texture from a string using a text definition*/
     bool initWithString(const char *text, ccFontDefinition *textDefinition);
-    
+#endif
     /** Initializes a texture from a PVR file */
     bool initWithPVRFile(const char* file);
     
