@@ -338,29 +338,28 @@ bool CCParticleSystem::initWithDictionary(CCDictionary *dictionary, const char *
                 
                 CCTexture2D *tex = NULL;
                 
-                if (textureName.length() > 0)
-                {
-                    // set not pop-up message box when load image failed
-                    bool bNotify = CCFileUtils::sharedFileUtils()->isPopupNotify();
-                    CCFileUtils::sharedFileUtils()->setPopupNotify(false);
-                    tex = CCTextureCache::sharedTextureCache()->addImage(textureName.c_str());
-                    // reset the value of UIImage notify
-                    CCFileUtils::sharedFileUtils()->setPopupNotify(bNotify);
-                }
+
                 
-                if (tex)
+                //改动
+                const char *textureData = dictionary->valueForKey("textureImageData")->getCString();
+                if (textureData == NULL || strcmp(textureData,"") == 0)
                 {
-                    setTexture(tex);
+                    if (textureName.length() > 0) {
+                        // set not pop-up message box when load image failed
+                        bool bNotify = CCFileUtils::sharedFileUtils()->isPopupNotify();
+                        CCFileUtils::sharedFileUtils()->setPopupNotify(false);
+                        tex = CCTextureCache::sharedTextureCache()->addImage(textureName.c_str());
+                        // reset the value of UIImage notify
+                        CCFileUtils::sharedFileUtils()->setPopupNotify(bNotify);
+                        if (tex) { setTexture(tex); }
+                    }
                 }
                 else
-                {                        
-                    const char *textureData = dictionary->valueForKey("textureImageData")->getCString();
-                    CCAssert(textureData, "");
-                    
+                {
                     size_t dataLen = strlen(textureData);
                     if(dataLen)
                     {
-                        // if it fails, try to get it from the base64-gzipped data    
+                        // if it fails, try to get it from the base64-gzipped data
                         int decodeLen = base64Decode((unsigned char*)textureData, (unsigned int)dataLen, &buffer);
                         CCAssert( buffer != NULL, "CCParticleSystem: error decoding textureImageData");
                         CC_BREAK_IF(!buffer);
@@ -376,10 +375,57 @@ bool CCParticleSystem::initWithDictionary(CCDictionary *dictionary, const char *
                         CC_BREAK_IF(!isOK);
                         
                         setTexture(CCTextureCache::sharedTextureCache()->addUIImage(image, textureName.c_str()));
-
+                        
                         image->release();
                     }
                 }
+                //
+                
+                //源码
+//                if (textureName.length() > 0)
+//                {
+//                    // set not pop-up message box when load image failed
+//                    bool bNotify = CCFileUtils::sharedFileUtils()->isPopupNotify();
+//                    CCFileUtils::sharedFileUtils()->setPopupNotify(false);
+//                    tex = CCTextureCache::sharedTextureCache()->addImage(textureName.c_str());
+//                    // reset the value of UIImage notify
+//                    CCFileUtils::sharedFileUtils()->setPopupNotify(bNotify);
+//                }
+//                
+//                if (tex)
+//                {
+//                    setTexture(tex);
+//                }
+//                else
+//                {                        
+//                    const char *textureData = dictionary->valueForKey("textureImageData")->getCString();
+//                    CCAssert(textureData, "");
+//                    
+//                    size_t dataLen = strlen(textureData);
+//                    if(dataLen)
+//                    {
+//                        // if it fails, try to get it from the base64-gzipped data    
+//                        int decodeLen = base64Decode((unsigned char*)textureData, (unsigned int)dataLen, &buffer);
+//                        CCAssert( buffer != NULL, "CCParticleSystem: error decoding textureImageData");
+//                        CC_BREAK_IF(!buffer);
+//                        
+//                        int deflatedLen = ZipUtils::ccInflateMemory(buffer, decodeLen, &deflated);
+//                        CCAssert( deflated != NULL, "CCParticleSystem: error ungzipping textureImageData");
+//                        CC_BREAK_IF(!deflated);
+//                        
+//                        // For android, we should retain it in VolatileTexture::addCCImage which invoked in CCTextureCache::sharedTextureCache()->addUIImage()
+//                        image = new CCImage();
+//                        bool isOK = image->initWithImageData(deflated, deflatedLen);
+//                        CCAssert(isOK, "CCParticleSystem: error init image with Data");
+//                        CC_BREAK_IF(!isOK);
+//                        
+//                        setTexture(CCTextureCache::sharedTextureCache()->addUIImage(image, textureName.c_str()));
+//
+//                        image->release();
+//                    }
+//                }
+                //
+                
                 CCAssert( this->m_pTexture != NULL, "CCParticleSystem: error loading the texture");
             }
             bRet = true;
