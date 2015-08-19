@@ -159,21 +159,26 @@ bool WsThreadHelper::createThread(const WebSocket& ws)
 void WsThreadHelper::quitSubThread()
 {
     _needQuit = true;
+	_ws = NULL;
+
 }
 
 void* WsThreadHelper::wsThreadEntryFunc(void* arg)
 {
-    _ws->onSubThreadStarted();
-    
-    while (!_needQuit)
-    {
-        if (_ws->onSubThreadLoop())
-        {
-            break;
-        }
-    }
-    
-    _ws->onSubThreadEnded();
+	_ws->onSubThreadStarted();
+
+	while (!_needQuit)
+	{
+		if (_ws && _ws->onSubThreadLoop())
+		{
+			break;
+		}
+	}
+
+	if (_ws)
+	{
+		_ws->onSubThreadEnded();
+	}
 
     return (void*)0;
 }
@@ -388,7 +393,6 @@ void WebSocket::close()
     if (_readyState == kStateClosing || _readyState == kStateClosed)
         return;
 
-    CCLOG("websocket connection closed by %s", "client");
     _readyState = kStateClosed;
 
     _wsHelper->quitSubThread();
@@ -415,11 +419,15 @@ int WebSocket::onSubThreadLoop()
         return 1;
     }
 	*/
-    
-    if (_wsContext && _readyState != kStateClosed && _readyState != kStateClosing)
+
+    if (_wsContext && _wsInstance && _readyState != kStateClosed && _readyState != kStateClosing)
     {
         libwebsocket_service(_wsContext, 0);
     }
+	else
+	{
+		return 1;
+	}
     
     // Sleep 50 ms
 #ifdef WIN32
@@ -473,11 +481,13 @@ void WebSocket::onSubThreadStarted()
 
 void WebSocket::onSubThreadEnded()
 {
+	
 	if (_readyState == kStateClosed || _readyState == kStateClosing)
 	{
 		CCLOG("%s websocket connection", "clean");
 		libwebsocket_context_destroy(_wsContext);
 	}
+	
 }
 
 int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
@@ -485,7 +495,6 @@ int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
                      enum libwebsocket_callback_reasons reason,
                      void *user, void *in, size_t len)
 {
-//    CCLOG("socket callback for %d reason", reason);
     CCAssert(_wsContext == NULL || ctx == _wsContext, "Invalid context.");
     CCAssert(_wsInstance == NULL || wsi == NULL || wsi == _wsInstance, "Invaild websocket instance.");
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
