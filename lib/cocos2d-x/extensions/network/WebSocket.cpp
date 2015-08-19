@@ -639,8 +639,6 @@ int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
             {
                 
 				CCLOG("websocket connection closed by %s", "server");
-
-                _wsHelper->quitSubThread();
                 
                 if (_readyState != kStateClosed)
                 {
@@ -649,6 +647,8 @@ int WebSocket::onSocketCallback(struct libwebsocket_context *ctx,
                     msg->what = WS_MSG_TO_UITHREAD_CLOSE;
                     _wsHelper->sendMessageToUIThread(msg);
                 }
+
+				_wsHelper->quitSubThread();
             }
             break;
             
