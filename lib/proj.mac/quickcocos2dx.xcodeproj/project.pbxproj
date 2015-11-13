@@ -4364,6 +4364,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx/cocoa\"",
 					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx\"",
 					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx/include\"",
 					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx/platform\"",
@@ -4426,6 +4427,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx/cocoa\"",
 					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx\"",
 					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx/include\"",
 					"\"$(QUICK_COCOS2DX_ROOT)/lib/cocos2d-x/cocos2dx/platform\"",
