@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C685A971BF5ED0200B0E2C0 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C685A921BF5DFC200B0E2C0 /* libcurl.tbd */; };
 		9F27C1EE1945A8E70029D37A /* AppControllerBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F27C1E11945A8E70029D37A /* AppControllerBridge.mm */; };
 		9F27C1EF1945A8E70029D37A /* ConsoleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F27C1E31945A8E70029D37A /* ConsoleWindowController.m */; };
 		9F27C1F01945A8E70029D37A /* CreateNewProjectDialogController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9F27C1E51945A8E70029D37A /* CreateNewProjectDialogController.mm */; };
@@ -21,7 +22,6 @@
 		F4A5C15E16B7A35700A12606 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A5C15816B7A35700A12606 /* AudioToolbox.framework */; };
 		F4A5C15F16B7A35700A12606 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A5C15916B7A35700A12606 /* OpenAL.framework */; };
 		F4A5C16016B7A35700A12606 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A5C15A16B7A35700A12606 /* OpenGL.framework */; };
-		F4A5C16E16B7A3EC00A12606 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A5C16B16B7A3EC00A12606 /* libcurl.dylib */; };
 		F4A5C16F16B7A3EC00A12606 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A5C16C16B7A3EC00A12606 /* libxml2.dylib */; };
 		F4A5C17016B7A3EC00A12606 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A5C16D16B7A3EC00A12606 /* libz.dylib */; };
 		F4B0814A175C89050029F472 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F4B08140175C89050029F472 /* AppController.mm */; };
@@ -60,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C685A8F1BF5DDD200B0E2C0 /* libcurl.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.4.dylib; path = ../../../../../../usr/lib/libcurl.4.dylib; sourceTree = "<group>"; };
+		5C685A921BF5DFC200B0E2C0 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		9F27C1E01945A8E70029D37A /* AppControllerBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppControllerBridge.h; sourceTree = "<group>"; };
 		9F27C1E11945A8E70029D37A /* AppControllerBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppControllerBridge.mm; sourceTree = "<group>"; };
 		9F27C1E21945A8E70029D37A /* ConsoleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleWindowController.h; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C685A971BF5ED0200B0E2C0 /* libcurl.tbd in Frameworks */,
 				F4B08157175C89E90029F472 /* libquickcocos2dx.a in Frameworks */,
 				F4B4EF6616CA2A8B00736FFE /* SystemConfiguration.framework in Frameworks */,
 				F40EE898163F83E000090121 /* AppKit.framework in Frameworks */,
@@ -115,7 +118,6 @@
 				F4A5C15E16B7A35700A12606 /* AudioToolbox.framework in Frameworks */,
 				F4A5C15F16B7A35700A12606 /* OpenAL.framework in Frameworks */,
 				F4A5C16016B7A35700A12606 /* OpenGL.framework in Frameworks */,
-				F4A5C16E16B7A3EC00A12606 /* libcurl.dylib in Frameworks */,
 				F4A5C16F16B7A3EC00A12606 /* libxml2.dylib in Frameworks */,
 				F4A5C17016B7A3EC00A12606 /* libz.dylib in Frameworks */,
 			);
@@ -145,6 +147,8 @@
 		F44C957515F49004004D4151 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C685A921BF5DFC200B0E2C0 /* libcurl.tbd */,
+				5C685A8F1BF5DDD200B0E2C0 /* libcurl.4.dylib */,
 				F44C957915F49004004D4151 /* AppKit.framework */,
 				F4A5C15816B7A35700A12606 /* AudioToolbox.framework */,
 				F44C957615F49004004D4151 /* Cocoa.framework */,
@@ -431,6 +435,12 @@
 				INFOPLIST_OUTPUT_FORMAT = binary;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-pagezero_size",
+					10000,
+					"-image_base",
+					100000000,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -486,6 +496,12 @@
 				INFOPLIST_OUTPUT_FORMAT = binary;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-pagezero_size",
+					10000,
+					"-image_base",
+					100000000,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;

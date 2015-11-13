@@ -31,14 +31,14 @@ function AppBase:exit()
 end
 
 function AppBase:enterScene(sceneName, args, transitionType, time, more)
-    local scenePackageName = self. packageRoot .. ".scenes." .. sceneName
+    local scenePackageName = self.packageRoot .. ".scenes." .. sceneName
     local sceneClass = require(scenePackageName)
     local scene = sceneClass.new(unpack(checktable(args)))
     display.replaceScene(scene, transitionType, time, more)
 end
 
 function AppBase:createView(viewName, ...)
-    local viewPackageName = self. packageRoot .. ".views." .. viewName
+    local viewPackageName = self.packageRoot .. ".views." .. viewName
     local viewClass = require(viewPackageName)
     return viewClass.new(...)
 end
