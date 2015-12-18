@@ -528,7 +528,6 @@
 		5C9791121C09C485003D94BF /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
 		5C9791131C09C485003D94BF /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
 		5C9791141C09C485003D94BF /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
-		5C9793EA1C09C55E003D94BF /* libluajit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libluajit.a; path = "../cocos2d-x/scripting/lua/luajit/ios/libluajit.a"; sourceTree = "<group>"; };
 		5C9793EC1C09C634003D94BF /* libluajit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libluajit.a; path = "../cocos2d-x/scripting/lua/luajit/mac/libluajit.a"; sourceTree = "<group>"; };
 		B255BE5B1A4D787200A01E5F /* CCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebView.h; sourceTree = "<group>"; };
 		B255BE611A4D787200A01E5F /* CCWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCWebView.mm; sourceTree = "<group>"; };
@@ -2774,7 +2773,6 @@
 			isa = PBXGroup;
 			children = (
 				5C9793EC1C09C634003D94BF /* libluajit.a */,
-				5C9793EA1C09C55E003D94BF /* libluajit.a */,
 				5C685A951BF5EC0400B0E2C0 /* libcurl.tbd */,
 				F4DE082316800061005DB2DB /* Cocoa.framework */,
 				F45FF35316C7DE1F00275222 /* libcurl.dylib */,
