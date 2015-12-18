@@ -17,7 +17,7 @@ ISDKVER=iPhoneOS${BUNDLE_ID}.sdk
 echo "ISDKVER = $ISDKVER"
 
 
-if [ "${ISDKVER}" = "iPhoneOS8.0.sdk" ] || [ "${ISDKVER}" = "iPhoneOS9.1.sdk" ]; then
+if [ "${ISDKVER}" = "iPhoneOS8.0.sdk" ] || [ "${ISDKVER}" = "iPhoneOS9.2.sdk" ]; then
 ISDKP=$IXCODE/usr/bin/
 else
 ISDKP=$ISDK/usr/bin/
