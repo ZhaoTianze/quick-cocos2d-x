@@ -114,6 +114,7 @@ LOCAL_SRC_FILES += \
     CCBReader/CCParticleSystemQuadLoader.cpp \
     CCBReader/CCScale9SpriteLoader.cpp \
     CCBReader/CCScrollViewLoader.cpp \
+    CCBReader/CCBLocalizationManager.cpp \
     CCBReader/CCSpriteLoader.cpp
 endif
 
