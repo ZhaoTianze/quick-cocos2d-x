@@ -31,6 +31,7 @@
 #include "CCBReader/CCBSequenceProperty.h"
 #include "CCBReader/CCBValue.h"
 #include "CCBReader/CCNode+CCBRelativePositioning.h"
+#include "CCBReader/CCBLocalizationManager.hpp"
 #endif // CC_CCB_ENABLED
 #include "CCBReader/CCData.h"
 

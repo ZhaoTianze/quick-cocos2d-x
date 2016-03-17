@@ -34,6 +34,7 @@
 		B255BE721A4D84B100A01E5F /* XBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6C1A4D84B100A01E5F /* XBJsonBase.m */; };
 		B255BE731A4D84B100A01E5F /* XBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */; };
 		B255BE741A4D84B100A01E5F /* XBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B255BE701A4D84B100A01E5F /* XBJsonWriter.m */; };
+		B26B0D941C9147F9009E18F2 /* CCBLocalizationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B26B0D921C9147F9009E18F2 /* CCBLocalizationManager.cpp */; };
 		B283DD821A70CA1A002E9F0A /* lbc.c in Sources */ = {isa = PBXBuildFile; fileRef = B283DD7E1A70CA1A002E9F0A /* lbc.c */; };
 		B283DD831A70CA1A002E9F0A /* number.c in Sources */ = {isa = PBXBuildFile; fileRef = B283DD7F1A70CA1A002E9F0A /* number.c */; };
 		B2DC7993181BA55A001341D6 /* lsqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2DC798F181BA55A001341D6 /* lsqlite3.c */; };
@@ -542,6 +543,8 @@
 		B255BE6E1A4D84B100A01E5F /* XBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonParser.m; sourceTree = "<group>"; };
 		B255BE6F1A4D84B100A01E5F /* XBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBJsonWriter.h; sourceTree = "<group>"; };
 		B255BE701A4D84B100A01E5F /* XBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBJsonWriter.m; sourceTree = "<group>"; };
+		B26B0D921C9147F9009E18F2 /* CCBLocalizationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBLocalizationManager.cpp; sourceTree = "<group>"; };
+		B26B0D931C9147F9009E18F2 /* CCBLocalizationManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CCBLocalizationManager.hpp; sourceTree = "<group>"; };
 		B283DD7D1A70CA1A002E9F0A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		B283DD7E1A70CA1A002E9F0A /* lbc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lbc.c; sourceTree = "<group>"; };
 		B283DD7F1A70CA1A002E9F0A /* number.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = number.c; sourceTree = "<group>"; };
@@ -3689,6 +3692,8 @@
 				F4E883761770162500577406 /* CCScrollViewLoader.h */,
 				F4E883771770162500577406 /* CCSpriteLoader.cpp */,
 				F4E883781770162500577406 /* CCSpriteLoader.h */,
+				B26B0D921C9147F9009E18F2 /* CCBLocalizationManager.cpp */,
+				B26B0D931C9147F9009E18F2 /* CCBLocalizationManager.hpp */,
 			);
 			path = CCBReader;
 			sourceTree = "<group>";
@@ -3790,6 +3795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26B0D941C9147F9009E18F2 /* CCBLocalizationManager.cpp in Sources */,
 				F459EB08180D04E1006CBDF1 /* cpArray.c in Sources */,
 				F459EA82180D04D8006CBDF1 /* CCNetworkIOSMac.mm in Sources */,
 				F45A2D9A166B168100760194 /* CDAudioManager.m in Sources */,

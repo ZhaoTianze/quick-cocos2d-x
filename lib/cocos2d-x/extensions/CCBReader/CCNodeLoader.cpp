@@ -4,6 +4,7 @@
 #include "CCBAnimationManager.h"
 #include "CCData.h"
 #include "CCNode+CCBRelativePositioning.h"
+#include "CCBLocalizationManager.hpp"
 
 using namespace std;
 
@@ -295,7 +296,7 @@ void CCNodeLoader::parseProperties(CCNode * pNode, CCNode * pParent, CCBReader *
                 }
                 break;
             }
-            case kCCBPropTypeFntFile: 
+            case kCCBPropTypeFntFile: //BMFont文件
             {
                 std::string fntFile = pCCBReader->getCCBRootPath() + this->parsePropTypeFntFile(pNode, pParent, pCCBReader);
                 if(setProp) 
@@ -304,24 +305,27 @@ void CCNodeLoader::parseProperties(CCNode * pNode, CCNode * pParent, CCBReader *
                 }
                 break;
             }
-            case kCCBPropTypeFontTTF: {
+            case kCCBPropTypeFontTTF: { //设置fnt字体文件
                 std::string fontTTF = this->parsePropTypeFontTTF(pNode, pParent, pCCBReader);
+                const char *value = CCBLocalizationManager::getInstance()->getLocalizationString(fontTTF);
                 if(setProp) {
-                    this->onHandlePropTypeFontTTF(pNode, pParent, propertyName.c_str(), fontTTF.c_str(), pCCBReader);
+                    this->onHandlePropTypeFontTTF(pNode, pParent, propertyName.c_str(), value, pCCBReader);
                 }
                 break;
             }
-            case kCCBPropTypeString: {
+            case kCCBPropTypeString: { //设置按钮字体
                 std::string string = this->parsePropTypeString(pNode, pParent, pCCBReader);
+                const char *value = CCBLocalizationManager::getInstance()->getLocalizationString(string);
                 if(setProp) {
-                    this->onHandlePropTypeString(pNode, pParent, propertyName.c_str(), string.c_str(), pCCBReader);
+                    this->onHandlePropTypeString(pNode, pParent, propertyName.c_str(), value, pCCBReader);
                 }
                 break;
             }
-            case kCCBPropTypeText: {
+            case kCCBPropTypeText: { //设置label显示
                 std::string text = this->parsePropTypeText(pNode, pParent, pCCBReader);
+                const char *value = CCBLocalizationManager::getInstance()->getLocalizationString(text);
                 if(setProp) {
-                    this->onHandlePropTypeText(pNode, pParent, propertyName.c_str(), text.c_str(), pCCBReader);
+                    this->onHandlePropTypeText(pNode, pParent, propertyName.c_str(), value, pCCBReader);
                 }
                 break;
             }
