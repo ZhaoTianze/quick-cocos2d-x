@@ -36,6 +36,7 @@
 		B255BE671A4D787200A01E5F /* CCWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B255BE611A4D787200A01E5F /* CCWebView.mm */; };
 		B25F199A1A70D14500E3C3A3 /* lbc.c in Sources */ = {isa = PBXBuildFile; fileRef = B25F19951A70D14500E3C3A3 /* lbc.c */; };
 		B25F199B1A70D14500E3C3A3 /* number.c in Sources */ = {isa = PBXBuildFile; fileRef = B25F19971A70D14500E3C3A3 /* number.c */; };
+		B2DE02A81C9A5D020013CDB3 /* CCBLocalizationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2DE02A61C9A5D020013CDB3 /* CCBLocalizationManager.cpp */; };
 		E540B383198754880054B7F7 /* AnimationEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B32F198754870054B7F7 /* AnimationEvent.cpp */; };
 		E540B384198754880054B7F7 /* ArmatureEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B331198754870054B7F7 /* ArmatureEvent.cpp */; };
 		E540B385198754880054B7F7 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E540B333198754870054B7F7 /* Event.cpp */; };
@@ -537,6 +538,8 @@
 		B25F19971A70D14500E3C3A3 /* number.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = number.c; sourceTree = "<group>"; };
 		B25F19981A70D14500E3C3A3 /* number.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = number.h; sourceTree = "<group>"; };
 		B25F19991A70D14500E3C3A3 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		B2DE02A61C9A5D020013CDB3 /* CCBLocalizationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBLocalizationManager.cpp; sourceTree = "<group>"; };
+		B2DE02A71C9A5D020013CDB3 /* CCBLocalizationManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CCBLocalizationManager.hpp; sourceTree = "<group>"; };
 		E540B32D198754870054B7F7 /* IDisplayBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDisplayBridge.h; sourceTree = "<group>"; };
 		E540B32F198754870054B7F7 /* AnimationEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationEvent.cpp; sourceTree = "<group>"; };
 		E540B330198754870054B7F7 /* AnimationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationEvent.h; sourceTree = "<group>"; };
@@ -3519,6 +3522,8 @@
 		F4E880F517700E5E00577406 /* CCBReader */ = {
 			isa = PBXGroup;
 			children = (
+				B2DE02A61C9A5D020013CDB3 /* CCBLocalizationManager.cpp */,
+				B2DE02A71C9A5D020013CDB3 /* CCBLocalizationManager.hpp */,
 				F4E880F617700E5E00577406 /* CCBAnimationManager.cpp */,
 				F4E880F717700E5E00577406 /* CCBAnimationManager.h */,
 				F4E880F817700E5E00577406 /* CCBFileLoader.cpp */,
@@ -4037,6 +4042,7 @@
 				F4CB87A6180D02F600D81CF3 /* auxiliar.c in Sources */,
 				F4E8813717700E5E00577406 /* CCLayerGradientLoader.cpp in Sources */,
 				F4CB87A3180D02F600D81CF3 /* lfs.c in Sources */,
+				B2DE02A81C9A5D020013CDB3 /* CCBLocalizationManager.cpp in Sources */,
 				F4CB87A7180D02F600D81CF3 /* except.c in Sources */,
 				F4E8813817700E5E00577406 /* CCLayerLoader.cpp in Sources */,
 				F4E8813917700E5E00577406 /* CCMenuItemImageLoader.cpp in Sources */,
