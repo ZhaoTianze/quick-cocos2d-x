@@ -121,6 +121,7 @@ void CCScene::setTouchLock() {
     if (m_delayTime <= 0) {
         return;
     }
+    if (m_touchDelayLock) return;
     m_touchDelayLock = true;
     this->scheduleOnce(schedule_selector(CCScene::setTouchUnlock), m_delayTime);
 }
