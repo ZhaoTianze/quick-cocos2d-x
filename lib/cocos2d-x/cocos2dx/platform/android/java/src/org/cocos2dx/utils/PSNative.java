@@ -7,6 +7,8 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.provider.Settings;
+import android.content.res.Configuration;
 
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -207,9 +209,17 @@ public class PSNative {
 
 	public static String getOpenUDID() {
 		String id = null;
-		if (mTelephonyManager != null) {
-			id = mTelephonyManager.getDeviceId();
+		String type = getDeviceType();
+		if (type.equals("android")){
+			if (mTelephonyManager != null) {
+				id = mTelephonyManager.getDeviceId();
+			}
+		}else{
+			if (mContext != null) {
+				id = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
+			}
 		}
+
 		if (id == null) {
 			id = getMacAddress();
 		}
@@ -217,6 +227,18 @@ public class PSNative {
 			id = "";
 		}
 		return id;
+	}
+
+	public static String getDeviceType() {
+		if (mContext == null) {
+			return "android";
+		}
+        if ((mContext.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE){
+            return "tablet";
+        }else{
+            return "android";
+        }
 	}
 
 	public static String getDeviceName() {
