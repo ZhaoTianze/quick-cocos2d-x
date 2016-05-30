@@ -5,6 +5,7 @@ enum
     kTargetLinux,
     kTargetMacOS,
     kTargetAndroid,
+    kTargetTablet,
     kTargetIphone,
     kTargetIpad,
     kTargetBlackBerry,
