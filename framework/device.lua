@@ -68,10 +68,13 @@ if target == kTargetWindows then
     device.platform = "windows"
 elseif target == kTargetMacOS then
     device.platform = "mac"
-elseif target == kTargetAndroid then
+elseif target == kTargetAndroid or target == kTargetTablet then
     device.platform = "android"
-elseif target == kTargetTablet then
-    --todo
+    if target == kTargetTablet then
+        device.model = "tablet"
+    else
+        device.model = "android"
+    end
 elseif target == kTargetIphone or target == kTargetIpad then
     device.platform = "ios"
     if target == kTargetIphone then
