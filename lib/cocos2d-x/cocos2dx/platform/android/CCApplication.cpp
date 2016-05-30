@@ -138,13 +138,13 @@ TargetPlatform CCApplication::getTargetPlatform()
     JniMethodInfo t;
     std::string ret("");
 
-    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "getCocos2dxPackageName", "()Ljava/lang/String;")) {
+    if (JniHelper::getStaticMethodInfo(t, "org/cocos2dx/utils/PSNative", "getDeviceType", "()Ljava/lang/String;")) {
         jstring str = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
         t.env->DeleteLocalRef(t.classID);
         ret = JniHelper::jstring2string(str);
         t.env->DeleteLocalRef(str);
     }
-    if (strcmp(ret, "android") == 0)
+    if (strcmp(ret.c_str(), "android") == 0)
     {
         return kTargetAndroid;
     }
