@@ -135,7 +135,20 @@ ccLanguageType CCApplication::getCurrentLanguage()
 
 TargetPlatform CCApplication::getTargetPlatform()
 {
-    return kTargetAndroid;
+    JniMethodInfo t;
+    std::string ret("");
+
+    if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "getCocos2dxPackageName", "()Ljava/lang/String;")) {
+        jstring str = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
+        t.env->DeleteLocalRef(t.classID);
+        ret = JniHelper::jstring2string(str);
+        t.env->DeleteLocalRef(str);
+    }
+    if (strcmp(ret, "android") == 0)
+    {
+        return kTargetAndroid;
+    }
+    return kTargetTablet;
 }
 
 NS_CC_END

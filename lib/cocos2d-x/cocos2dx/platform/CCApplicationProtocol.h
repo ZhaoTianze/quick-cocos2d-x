@@ -33,6 +33,7 @@ enum TargetPlatform
     kTargetLinux,
     kTargetMacOS,
     kTargetAndroid,
+    kTargetTablet,
     kTargetIphone,
     kTargetIpad,
     kTargetBlackBerry,

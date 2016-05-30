@@ -70,6 +70,8 @@ elseif target == kTargetMacOS then
     device.platform = "mac"
 elseif target == kTargetAndroid then
     device.platform = "android"
+elseif target == kTargetTablet then
+    --todo
 elseif target == kTargetIphone or target == kTargetIpad then
     device.platform = "ios"
     if target == kTargetIphone then
