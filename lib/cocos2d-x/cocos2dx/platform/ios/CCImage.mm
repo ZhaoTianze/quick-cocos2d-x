@@ -169,40 +169,6 @@ static bool _initWithData(void * pBuffer, int length, tImageInfo *pImageinfo)
     return ret;
 }
 
-static CGSize _calculateStringSize(NSString *str, id font, CGSize *constrainSize)
-{
-    NSArray *listItems = [str componentsSeparatedByString: @"\n"];
-    CGSize dim = CGSizeZero;
-    CGSize textRect = CGSizeZero;
-    textRect.width = constrainSize->width > 0 ? constrainSize->width
-                                              : 0x7fffffff;
-    textRect.height = constrainSize->height > 0 ? constrainSize->height
-                                              : 0x7fffffff;
-    
-    
-    for (NSString *s in listItems)
-    {
-        CGSize tmp = [s sizeWithFont:font constrainedToSize:textRect];
-        
-        if (tmp.width > dim.width)
-        {
-           dim.width = tmp.width; 
-        }
-        
-        dim.height += tmp.height;
-    }
-    
-    dim.width = ceilf(dim.width);
-    dim.height = ceilf(dim.height);
-    
-    return dim;
-}
-
-// refer CCImage::ETextAlign
-#define ALIGN_TOP    1
-#define ALIGN_CENTER 3
-#define ALIGN_BOTTOM 2
-
 static bool s_isIOS7OrHigher = false;
 
 static inline void lazyCheckIOS7()
@@ -214,6 +180,46 @@ static inline void lazyCheckIOS7()
         isInited = true;
     }
 }
+
+static CGSize _calculateStringSize(NSString *str, id font, CGSize *constrainSize)
+{
+//    NSArray *listItems = [str componentsSeparatedByString: @"\n"];
+    CGSize dim = CGSizeZero;
+    CGSize textRect = CGSizeZero;
+    textRect.width = constrainSize->width > 0 ? constrainSize->width
+                                              : 0x7fffffff;
+    textRect.height = constrainSize->height > 0 ? constrainSize->height
+                                              : 0x7fffffff;
+
+//    for (NSString *s in listItems)
+//    {
+//        CGSize tmp = [s sizeWithFont:font constrainedToSize:textRect];
+//        
+//        if (tmp.width > dim.width)
+//        {
+//           dim.width = tmp.width; 
+//        }
+//        
+//        dim.height += tmp.height;
+//    }
+    if(s_isIOS7OrHigher){
+        NSDictionary *attibutes = @{NSFontAttributeName:font};
+        dim = [str boundingRectWithSize:textRect options:(NSStringDrawingOptions)(NSStringDrawingUsesLineFragmentOrigin) attributes:attibutes context:nil].size;
+    }else {
+        dim = [str sizeWithFont:font constrainedToSize:textRect];
+    }
+    dim.width = ceilf(dim.width);
+    dim.height = ceilf(dim.height);
+    
+    return dim;
+}
+
+// refer CCImage::ETextAlign
+#define ALIGN_TOP    1
+#define ALIGN_CENTER 3
+#define ALIGN_BOTTOM 2
+
+
 
 static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAlign, const char * pFontName, int nSize, tImageInfo* pInfo)
 {
@@ -292,8 +298,8 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
             dim.height = constrainSize.height;
         }
         
-        dim.width = (int)(dim.width / 2) * 2 + 2;
-        dim.height = (int)(dim.height / 2) * 2 + 2;
+//        dim.width = (int)(dim.width / 2) * 2 + 2;
+//        dim.height = (int)(dim.height / 2) * 2 + 2;
         
         // compute the padding needed by shadow and stroke
         float shadowStrokePaddingX = 0.0f;
@@ -305,17 +311,11 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
             shadowStrokePaddingY = ceilf(pInfo->strokeSize);
         }
         
-        if ( pInfo->hasShadow )
-        {
-            shadowStrokePaddingX = std::max(shadowStrokePaddingX, (float)abs(pInfo->shadowOffset.width));
-            shadowStrokePaddingY = std::max(shadowStrokePaddingY, (float)abs(pInfo->shadowOffset.height));
-        }
-        
         // add the padding (this could be 0 if no shadow and no stroke)
-        dim.width  += shadowStrokePaddingX;
-        dim.height += shadowStrokePaddingY;
+        dim.width  += shadowStrokePaddingX*2;
+        dim.height += shadowStrokePaddingY*2;
         
-        unsigned char* data = new unsigned char[(int)(dim.width * dim.height * 4)];
+        unsigned char* data = (unsigned char*)malloc(sizeof(unsigned char) * (int)(dim.width * dim.height * 4));
         memset(data, 0, (int)(dim.width * dim.height * 4));
         
         // draw text
@@ -332,7 +332,8 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
         
         if (!context)
         {
-            delete[] data;
+            CGColorSpaceRelease(colorSpace);
+            CC_SAFE_FREE(data);
             break;
         }
 
@@ -346,12 +347,11 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
         UIGraphicsPushContext(context);
         
         // measure text size with specified font and determine the rectangle to draw text in
-        unsigned uHoriFlag = eAlign & 0x0f;
+        unsigned uHoriFlag = (int)eAlign & 0x0f;
         NSTextAlignment align = (NSTextAlignment)((2 == uHoriFlag) ? NSTextAlignmentRight
                                 : (3 == uHoriFlag) ? NSTextAlignmentCenter
                                 : NSTextAlignmentLeft);
 
-        
         //------------------------------------------------------------------------------------
         
         // compute the rect used for rendering the text
