@@ -209,17 +209,9 @@ public class PSNative {
 
 	public static String getOpenUDID() {
 		String id = null;
-		String type = getDeviceType();
-		if (type.equals("android")){
-			if (mTelephonyManager != null) {
-				id = mTelephonyManager.getDeviceId();
-			}
-		}else{
-			if (mContext != null) {
-				id = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
-			}
+		if (mContext != null) {
+			id = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
 		}
-
 		if (id == null) {
 			id = getMacAddress();
 		}
