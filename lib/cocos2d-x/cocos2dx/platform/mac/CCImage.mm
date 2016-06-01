@@ -354,6 +354,32 @@ static bool _isValidFontName(const char *fontName)
     return ret;
 }
 
+static NSSize _calculateStringSize(NSString *str, id font, CGSize *constrainSize)
+{
+    NSSize textRect = NSZeroSize;
+    textRect.width = constrainSize->width > 0 ? constrainSize->width
+    : 0x7fffffff;
+    textRect.height = constrainSize->height > 0 ? constrainSize->height
+    : 0x7fffffff;
+    
+    NSSize dim;
+    NSDictionary *attibutes = @{NSFontAttributeName:font};
+#ifdef __MAC_10_11
+    #if __MAC_OS_X_VERSION_MAX_ALLOWED >= __MAC_10_11
+    dim = [str boundingRectWithSize:textRect options:(NSStringDrawingOptions)(NSStringDrawingUsesLineFragmentOrigin) attributes:attibutes context:nil].size;
+    #else
+    dim = [str boundingRectWithSize:textRect options:(NSStringDrawingOptions)(NSStringDrawingUsesLineFragmentOrigin) attributes:attibutes].size;
+    #endif
+#else
+    dim = [str boundingRectWithSize:textRect options:(NSStringDrawingOptions)(NSStringDrawingUsesLineFragmentOrigin) attributes:attibutes].size;
+#endif
+    
+    dim.width = ceilf(dim.width);
+    dim.height = ceilf(dim.height);
+
+    return dim;
+}
+
 static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAlign, const char * pFontName, int nSize, tImageInfo* pInfo)
 {
     bool bRet = false;
@@ -365,8 +391,12 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
 		NSString * string  = [NSString stringWithUTF8String:pText];
         NSString * fntName = [NSString stringWithUTF8String:pFontName];
         fntName = [[fntName lastPathComponent] stringByDeletingPathExtension];
-		// font
-        NSFont *font = [NSFont fontWithName:fntName size:nSize];
+        // font
+        NSFont *font = [[NSFontManager sharedFontManager]
+                        fontWithFamily:fntName
+                        traits:NSUnboldFontMask | NSUnitalicFontMask
+                        weight:0
+                        size:nSize];
 		
 		if (font == nil) {
 			font = [[NSFontManager sharedFontManager]
@@ -391,17 +421,24 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
             strokeColor = [NSColor whiteColor];
         }
         
-		// alignment, linebreak
-		unsigned uHoriFlag = eAlign & 0x0f;
-		unsigned uVertFlag = (eAlign >> 4) & 0x0f;
-		NSTextAlignment align = (2 == uHoriFlag) ? NSRightTextAlignment
-			: (3 == uHoriFlag) ? NSCenterTextAlignment
-			: NSLeftTextAlignment;
+		// alignment
+        unsigned uHoriFlag = (int)eAlign & 0x0f;
+        NSTextAlignment align = NSLeftTextAlignment;
+        switch (uHoriFlag) {
+            case 2:
+                align = NSRightTextAlignment;
+                break;
+            case 3:
+                align = NSCenterTextAlignment;
+                break;
+            default:
+                break;
+        }
 		
 		NSMutableParagraphStyle *paragraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
-		[paragraphStyle setParagraphStyle:[NSParagraphStyle defaultParagraphStyle]];
-		[paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
-		[paragraphStyle setAlignment:align];
+        [paragraphStyle setParagraphStyle:[NSParagraphStyle defaultParagraphStyle]];
+        [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
+        [paragraphStyle setAlignment:align];
 
 		// attribute
         NSDictionary *tokenAttributesDict;
@@ -420,92 +457,61 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
                                    paragraphStyle, NSParagraphStyleAttributeName, nil];
         }
 
-		// linebreak
-		if (pInfo->width > 0) {
-			if ([string sizeWithAttributes:tokenAttributesDict].width > pInfo->width) {
-				NSMutableString *lineBreak = [[[NSMutableString alloc] init] autorelease];
-				NSUInteger length = [string length];
-				NSRange range = NSMakeRange(0, 1);
-				NSUInteger width = 0;
-				NSUInteger lastBreakLocation = 0;
-				for (NSUInteger i = 0; i < length; i++) {
-					range.location = i;
-					NSString *character = [string substringWithRange:range];
-					[lineBreak appendString:character];
-					if ([@"!?.,-= " rangeOfString:character].location != NSNotFound) { lastBreakLocation = i; }
-					width = [lineBreak sizeWithAttributes:tokenAttributesDict].width;
-					if (width > pInfo->width) {
-						[lineBreak insertString:@"\r\n" atIndex:(lastBreakLocation > 0) ? lastBreakLocation : [lineBreak length] - 1];
-					}
-				}
-				string = lineBreak;
-			}
-		}
-
 		NSAttributedString *stringWithAttributes =[[[NSAttributedString alloc] initWithString:string
 										 attributes:tokenAttributesDict] autorelease];
-				
-		NSSize realDimensions = [stringWithAttributes size];
+	   CGSize dimensions = CGSizeMake(pInfo->width, pInfo->height);
+		NSSize realDimensions = _calculateStringSize(string, font, &dimensions);
 		// Mac crashes if the width or height is 0
 		CC_BREAK_IF(realDimensions.width <= 0 || realDimensions.height <= 0);
-				
-		CGSize dimensions = CGSizeMake(pInfo->width, pInfo->height);
-		
 	
-		if(dimensions.width <= 0 && dimensions.height <= 0) {
-			dimensions.width = realDimensions.width;
-			dimensions.height = realDimensions.height;
-		} else if (dimensions.height <= 0) {
-			dimensions.height = realDimensions.height;
-		}
-
+		if(dimensions.width <= 0.f) {
+            dimensions.width = realDimensions.width;
+        }
+        if (dimensions.height <= 0.f) {
+            dimensions.height = realDimensions.height;
+        }
         dimensions.width = (int)(dimensions.width / 2) * 2 + 2;
         dimensions.height = (int)(dimensions.height / 2) * 2 + 2;
+        //Alignment
+            
+        CGFloat xPadding = 0;
+        switch (align) {
+            case NSLeftTextAlignment: xPadding = 0; break;
+            case NSCenterTextAlignment: xPadding = (dimensions.width-realDimensions.width)/2.0f; break;
+            case NSRightTextAlignment: xPadding = dimensions.width-realDimensions.width; break;
+            default: break;
+        }
+
+        CGFloat yPadding = 0.f;
+        unsigned uVertFlag = ((int)eAlign >> 4) & 0x0f;
+        switch (uVertFlag) {
+            // align to top
+            case 1: yPadding = dimensions.height - realDimensions.height; break;
+            // align to bottom
+            case 2: yPadding = 0.f; break;
+            // align to center
+            case 3: yPadding = (dimensions.height - realDimensions.height) / 2.0f; break;
+            default: break;
+        }
 
 		NSUInteger POTWide = (NSUInteger)dimensions.width;
-		NSUInteger POTHigh = (NSUInteger)(MAX(dimensions.height, realDimensions.height));
-		unsigned char*			data;
-		//Alignment
-			
-		CGFloat xPadding = 0;
-		switch (align) {
-			case NSLeftTextAlignment: xPadding = 0; break;
-			case NSCenterTextAlignment: xPadding = (dimensions.width-realDimensions.width)/2.0f; break;
-			case NSRightTextAlignment: xPadding = dimensions.width-realDimensions.width; break;
-			default: break;
-		}
-
-		// 1: TOP
-		// 2: BOTTOM
-		// 3: CENTER
-		CGFloat yPadding = (1 == uVertFlag || realDimensions.height >= dimensions.height) ? (dimensions.height - realDimensions.height)	// align to top
-		: (2 == uVertFlag) ? 0																	// align to bottom
-		: (dimensions.height - realDimensions.height) / 2.0f;									// align to center
-		
-		
-		NSRect textRect = NSMakeRect(xPadding, POTHigh - dimensions.height + yPadding, realDimensions.width, realDimensions.height);
-		//Disable antialias
-		
-		[[NSGraphicsContext currentContext] setShouldAntialias:NO];	
-		
-		NSImage *image = [[NSImage alloc] initWithSize:NSMakeSize(POTWide, POTHigh)];
-        
-		[image lockFocus];
-        
+		NSUInteger POTHigh = (NSUInteger)dimensions.height;
+        NSRect textRect = NSMakeRect(xPadding, POTHigh - dimensions.height + yPadding, realDimensions.width, realDimensions.height);
+        [[NSGraphicsContext currentContext] setShouldAntialias:NO]; 
+        NSImage *image = [[NSImage alloc] initWithSize:NSMakeSize(POTWide, POTHigh)];
+        [image lockFocus];
         // patch for mac retina display and lableTTF
         [[NSAffineTransform transform] set];
-		
-		//[stringWithAttributes drawAtPoint:NSMakePoint(xPadding, offsetY)]; // draw at offset position	
-		[stringWithAttributes drawInRect:textRect];
-		//[stringWithAttributes drawInRect:textRect withAttributes:tokenAttributesDict];
-		NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect (0.0f, 0.0f, POTWide, POTHigh)];
-		[image unlockFocus];
-		
-		data = (unsigned char*) [bitmap bitmapData];  //Use the same buffer to improve the performance.
+        [stringWithAttributes drawInRect:textRect];
+        NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc] initWithFocusedViewRect:NSMakeRect (0.0f, 0.0f, POTWide, POTHigh)];
+        [image unlockFocus];
+
+		unsigned char* data = (unsigned char*) [bitmap bitmapData];
+
 		
 		NSUInteger textureSize = POTWide*POTHigh*4;
 		
-		unsigned char* dataNew = new unsigned char[textureSize];
+		unsigned char* dataNew = (unsigned char*)malloc(sizeof(unsigned char) * textureSize);
 		if (dataNew) {
 			memcpy(dataNew, data, textureSize);
 			// output params
