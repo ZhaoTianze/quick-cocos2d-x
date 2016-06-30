@@ -332,7 +332,7 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
         
         if (!context)
         {
-            CGColorSpaceRelease(colorSpace);
+//            CGColorSpaceRelease(colorSpace);
             CC_SAFE_FREE(data);
             break;
         }
