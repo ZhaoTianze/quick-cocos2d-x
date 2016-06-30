@@ -172,7 +172,8 @@ LOCAL_EXPORT_LDLIBS := -lGLESv2 \
                        -llog \
                        -lz
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos_libpng_static
+LOCAL_WHOLE_STATIC_LIBRARIES := cocos_libzip_static
+LOCAL_WHOLE_STATIC_LIBRARIES += cocos_libpng_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos_libxml2_static
 
 ifeq ($(CC_JPEG_ENABLED),1)
@@ -193,6 +194,7 @@ LOCAL_EXPORT_CFLAGS := -Wno-psabi -DUSE_FILE32API
 
 include $(BUILD_STATIC_LIBRARY)
 
+$(call import-module,libzip)
 $(call import-module,libpng)
 
 ifeq ($(CC_JPEG_ENABLED),1)
