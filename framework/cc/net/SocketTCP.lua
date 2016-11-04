@@ -74,7 +74,22 @@ function SocketTCP:connect(__host, __port, __retryConnectWhenFailure)
 	if __retryConnectWhenFailure ~= nil then self.isRetryConnect = __retryConnectWhenFailure end
 	assert(self.host or self.port, "Host and port are necessary!")
 	--printInfo("%s.connect(%s, %d)", self.name, self.host, self.port)
-	self.tcp = socket.tcp()
+	-- self.tcp = socket.tcp()
+	local isipv6_only = false;
+	local addrifo,err = socket.dns.getaddrinfo(self.host);
+	if addrifo ~= nil then
+		for k,v in pairs(addrifo) do
+			if v.family == "inet6" then
+				isipv6_only = true;
+				break;
+			end
+		end
+	end
+	if isipv6_only then
+		self.tcp = socket.tcp6();
+	else
+		self.tcp = socket.tcp();
+	end
 	self.tcp:settimeout(0)
 
 	local function __checkConnect()

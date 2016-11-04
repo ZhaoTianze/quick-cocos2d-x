@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E11CFD61DCC5BCB004BF0F7 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E11CFD41DCC5BCB004BF0F7 /* libcrypto.a */; };
+		2E11CFD71DCC5BCB004BF0F7 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E11CFD51DCC5BCB004BF0F7 /* libssl.a */; };
 		2EBAD92C1918BBDC00FF9BD6 /* CCBlurFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EBAD8E91918BBDC00FF9BD6 /* CCBlurFilter.cpp */; };
 		2EBAD92D1918BBDC00FF9BD6 /* CCBrightnessFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EBAD8EB1918BBDC00FF9BD6 /* CCBrightnessFilter.cpp */; };
 		2EBAD92E1918BBDC00FF9BD6 /* CCContrastFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EBAD8ED1918BBDC00FF9BD6 /* CCContrastFilter.cpp */; };
@@ -456,6 +458,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E11CFD41DCC5BCB004BF0F7 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		2E11CFD51DCC5BCB004BF0F7 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		2E11CFD81DCC5BDE004BF0F7 /* curlbuild-32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "curlbuild-32.h"; sourceTree = "<group>"; };
+		2E11CFD91DCC5BDE004BF0F7 /* curlbuild-64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "curlbuild-64.h"; sourceTree = "<group>"; };
 		2EBAD8E71918BBDC00FF9BD6 /* cocos2dFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocos2dFilters.h; sourceTree = "<group>"; };
 		2EBAD8E91918BBDC00FF9BD6 /* CCBlurFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCBlurFilter.cpp; sourceTree = "<group>"; };
 		2EBAD8EA1918BBDC00FF9BD6 /* CCBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBlurFilter.h; sourceTree = "<group>"; };
@@ -1485,6 +1491,8 @@
 			files = (
 				5C9791011C099094003D94BF /* libluajit.a in Frameworks */,
 				F45A2BA1166B07B600760194 /* Foundation.framework in Frameworks */,
+				2E11CFD71DCC5BCB004BF0F7 /* libssl.a in Frameworks */,
+				2E11CFD61DCC5BCB004BF0F7 /* libcrypto.a in Frameworks */,
 				DA56D2FE1A3819B3007350D6 /* libcurl.a in Frameworks */,
 				F4A8F6BB17F0B1A400110198 /* libwebsockets.a in Frameworks */,
 				F42825BA17575DBE001479DC /* libwebp.a in Frameworks */,
@@ -1888,6 +1896,8 @@
 		F42825A817575DBE001479DC /* curl */ = {
 			isa = PBXGroup;
 			children = (
+				2E11CFD81DCC5BDE004BF0F7 /* curlbuild-32.h */,
+				2E11CFD91DCC5BDE004BF0F7 /* curlbuild-64.h */,
 				F42825A917575DBE001479DC /* curl.h */,
 				F42825AA17575DBE001479DC /* curlbuild.h */,
 				F42825AB17575DBE001479DC /* curlrules.h */,
@@ -1905,6 +1915,8 @@
 			isa = PBXGroup;
 			children = (
 				F42825B317575DBE001479DC /* libcurl.a */,
+				2E11CFD41DCC5BCB004BF0F7 /* libcrypto.a */,
+				2E11CFD51DCC5BCB004BF0F7 /* libssl.a */,
 				F42825B417575DBE001479DC /* libwebp.a */,
 			);
 			path = libraries;
