@@ -678,9 +678,24 @@ int CCLuaStack::lua_loadChunksFromZIP(lua_State *L)
     const char *zipFilename = lua_tostring(L, -1);
     lua_settop(L, 0);
     CCFileUtils *utils = CCFileUtils::sharedFileUtils();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    string zipFilePath;
+    if (sizeof(void*) == 4) {
+        zipFilePath = utils->fullPathForFilename(zipFilename);
+    } else if (sizeof(void*) == 8) {
+        int pathCharLen = strlen(zipFilename)+7;
+        char *newPath = (char*)malloc(pathCharLen);
+        memset(newPath, 0, pathCharLen);
+        int index = strlen(zipFilename)-4;
+        memcpy(newPath, zipFilename, index);
+        strcat(newPath, "_arm64.zip");
+        zipFilePath = utils->fullPathForFilename(newPath);
+        free(newPath);
+    }
+#else
     string zipFilePath = utils->fullPathForFilename(zipFilename);
+#endif
     zipFilename = NULL;
-
     CCLuaStack *stack = CCLuaStack::stack(L);
 
     do

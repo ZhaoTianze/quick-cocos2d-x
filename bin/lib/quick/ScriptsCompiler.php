@@ -258,7 +258,7 @@ class ScriptsCompiler
         $modulesBytes = array();
         foreach ($modules as $path => $module)
         {
-            $bytes = getScriptFileBytecodes($path, $module['tempFilePath'], $this->config['jit']);
+            $bytes = getScriptFileBytecodes($path, $module['tempFilePath'], $this->config['jit'],$this->config['arm64']);
             if ($xxtea)
             {
                 $bytes = $sign . $xxtea->encrypt($bytes);

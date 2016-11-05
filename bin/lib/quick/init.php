@@ -8,6 +8,7 @@ if (DS == '/')
 {
     define('LUAJIT_BIN', 'luajit');
     define('LUA_BIN', BIN_DIR . '/mac/luac');
+    define('LUAJIT_BIN_ARM64', '/usr/local/bin/luajit-2.1.0-arm64');
 }
 else
 {
@@ -144,7 +145,7 @@ function findFiles($dir, array & $files)
     closedir($dh);
 }
 
-function getScriptFileBytecodes($path, $tmpfile, $usingluajit = 0)
+function getScriptFileBytecodes($path, $tmpfile, $usingluajit = 0, $usingarm64 = 0)
 {
     if (!file_exists($path))
     {
@@ -162,8 +163,12 @@ function getScriptFileBytecodes($path, $tmpfile, $usingluajit = 0)
     }
 
     @mkdir(pathinfo($tmpfile, PATHINFO_DIRNAME), 0777, true);
-
-    if ($usingluajit != 0)
+    if ($usingluajit != 0 && $usingarm64 != 0)
+    {
+        printf("use arm64 jit to compile");
+        $command = sprintf('%s -b -s "%s" "%s"', LUAJIT_BIN_ARM64, $path, $tmpfile);
+    }
+    else if ($usingluajit != 0)
     {
         $command = sprintf('%s -b -s "%s" "%s"', LUAJIT_BIN, $path, $tmpfile);
     }
