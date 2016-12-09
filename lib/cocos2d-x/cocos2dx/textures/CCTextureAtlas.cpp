@@ -635,7 +635,7 @@ void CCTextureAtlas::drawNumberOfQuads(unsigned int n, unsigned int start)
 #else
     glDrawElements(GL_TRIANGLES, (GLsizei) n*6, GL_UNSIGNED_SHORT, (GLvoid*) (start*6*sizeof(m_pIndices[0])) );
 #endif // CC_TEXTURE_ATLAS_USE_TRIANGLE_STRIP
-
+    ccGLBindVAO(0);
 #if CC_REBIND_INDICES_BUFFER
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 #endif
