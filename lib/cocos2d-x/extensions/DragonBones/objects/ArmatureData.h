@@ -101,7 +101,7 @@ namespace dragonBones
             animationDataList.push_back(animationData);
         }
         
-        static bool sortBone(const std::pair<int , BoneData*>& a , const std::pair<int , BoneData*>& b)
+        static bool sortBoneData(const std::pair<int , BoneData*>& a , const std::pair<int , BoneData*>& b)
         {
             return a.first < b.first;
         }
@@ -126,7 +126,7 @@ namespace dragonBones
                 helpArray.push_back(std::make_pair(level , boneData));
             }
             
-            std::sort(helpArray.begin() , helpArray.end() , sortBone);
+            std::sort(helpArray.begin() , helpArray.end() , sortBoneData);
             
             size_t i = helpArray.size();
             while(i --)

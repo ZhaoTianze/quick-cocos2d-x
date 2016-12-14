@@ -254,6 +254,10 @@ static EAGLView *view = 0;
 
 - (void) layoutSubviews
 {
+    bool isVaild = cocos2d::CCDirector::sharedDirector()->isInvalid();
+    if (isVaild){
+        return;
+    }
     [renderer_ resizeFromLayer:(CAEAGLLayer*)self.layer];
     size_ = [renderer_ backingSize];
 
@@ -267,7 +271,10 @@ static EAGLView *view = 0;
 
     // Avoid flicker. Issue #350
     //[director performSelectorOnMainThread:@selector(drawScene) withObject:nil waitUntilDone:YES];
-    cocos2d::CCDirector::sharedDirector()->drawScene();
+    if ([NSThread isMainThread]){
+        cocos2d::CCDirector::sharedDirector()->drawScene();
+    }
+    
 }
 
 - (void) swapBuffers

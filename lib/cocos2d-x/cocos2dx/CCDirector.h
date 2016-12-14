@@ -125,6 +125,8 @@ public:
     inline double getAnimationInterval(void) { return m_dAnimationInterval; }
     /** Set the FPS value. */
     virtual void setAnimationInterval(double dValue) = 0;
+    
+    virtual bool isInvalid() = 0;
 
     /** Whether or not to display the FPS on the bottom-left corner */
     inline bool isDisplayStats(void) { return m_bDisplayStats; }
@@ -465,6 +467,7 @@ public:
     virtual void setAnimationInterval(double dValue);
     virtual void startAnimation(void);
     virtual void stopAnimation();
+    virtual bool isInvalid();
 
 protected:
     bool m_bInvalid;

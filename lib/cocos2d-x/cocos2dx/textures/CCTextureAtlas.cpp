@@ -654,7 +654,8 @@ void CCTextureAtlas::drawNumberOfQuads(unsigned int n, unsigned int start)
     // XXX: update is done in draw... perhaps it should be done in a timer
     if (m_bDirty) 
     {
-        glBufferSubData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0])*start, sizeof(m_pQuads[0]) * n , &m_pQuads[start] );
+//        glBufferSubData(GL_ARRAY_BUFFER, sizeof(m_pQuads[0])*start, sizeof(m_pQuads[0]) * n , &m_pQuads[start] );
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(m_pQuads[0]) * m_uTotalQuads, &m_pQuads[start]);
         m_bDirty = false;
     }
 

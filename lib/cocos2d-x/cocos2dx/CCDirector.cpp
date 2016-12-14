@@ -1104,5 +1104,10 @@ void CCDisplayLinkDirector::setAnimationInterval(double dValue)
     }    
 }
 
+bool CCDisplayLinkDirector::isInvalid()
+{
+    return m_bInvalid;
+}
+
 NS_CC_END
 
