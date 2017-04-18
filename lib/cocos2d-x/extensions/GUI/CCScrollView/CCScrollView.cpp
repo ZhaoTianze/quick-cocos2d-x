@@ -664,6 +664,10 @@ void CCScrollView::ccTouchMoved(CCTouch* touch, CCEvent* event)
             if (m_eDirection == kCCScrollViewDirectionVertical)
             {
                 dis = moveDistance.y;
+                // float pos = this->getContentOffset().y;
+                // if (!(minContainerOffset().y <= pos && pos <= maxContainerOffset().y)) {
+                //     moveDistance.y *= 0.25;
+                // }
             }
             else if (m_eDirection == kCCScrollViewDirectionHorizontal)
             {
